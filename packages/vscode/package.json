@@ -1,0 +1,48 @@
+{
+	"private": true,
+	"name": "vscode-html1",
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/volarjs/starter.git",
+		"directory": "packages/vscode"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"displayName": "HTML1 Language Features",
+	"description": "HTML1 Language Features",
+	"author": "volarjs",
+	"publisher": "volarjs",
+	"engines": {
+		"vscode": "^1.82.0"
+	},
+	"activationEvents": [
+		"onLanguage:html1"
+	],
+	"main": "./dist/client.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "html1",
+				"extensions": [
+					".html1"
+				]
+			}
+		]
+	},
+	"scripts": {
+		"build": "node scripts/build -- --minify",
+		"watch": "npm run build -- --watch",
+		"pack": "npm run build && vsce package --pre-release",
+		"release": "npm run build && vsce publish --pre-release"
+	},
+	"devDependencies": {
+		"@html1/language-server": "workspace:*",
+		"@types/vscode": "^1.82.0",
+		"@volar/language-server": "~2.4.0",
+		"@volar/vscode": "~2.4.0",
+		"esbuild": "latest",
+		"vsce": "latest"
+	}
+}
