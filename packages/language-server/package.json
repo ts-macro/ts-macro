@@ -1,5 +1,5 @@
 {
-	"name": "@html1/language-server",
+	"name": "@tsm/language-server",
 	"version": "0.0.1",
 	"main": "out/index.js",
 	"license": "MIT",
@@ -8,17 +8,22 @@
 		"out/**/*.d.ts"
 	],
 	"bin": {
-		"html1-language-server": "./bin/html1-language-server.js"
+		"tsm-language-server": "./bin/tsm-language-server.js"
 	},
 	"dependencies": {
+		"@babel/parser": "^7.25.8",
 		"@volar/language-core": "~2.4.0",
 		"@volar/language-server": "~2.4.0",
 		"@volar/typescript": "~2.4.0",
+		"@vue-macros/common": "^1.15.0",
+		"estree-walker": "^3.0.3",
 		"volar-service-css": "volar-2.4",
 		"volar-service-emmet": "volar-2.4",
-		"volar-service-html": "volar-2.4",
 		"volar-service-typescript": "volar-2.4",
 		"vscode-html-languageservice": "^5.3.1",
 		"vscode-uri": "^3.0.8"
+	},
+	"devDependencies": {
+		"@babel/types": "^7.25.8"
 	}
 }

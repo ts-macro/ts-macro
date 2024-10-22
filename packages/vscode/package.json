@@ -1,34 +1,45 @@
 {
-	"private": true,
-	"name": "vscode-html1",
+	"name": "vscode-ts-macros",
 	"version": "0.0.1",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/volarjs/starter.git",
+		"url": "https://github.com/vue-macros/ts-macros.git",
 		"directory": "packages/vscode"
 	},
 	"categories": [
 		"Programming Languages"
 	],
-	"displayName": "HTML1 Language Features",
-	"description": "HTML1 Language Features",
-	"author": "volarjs",
-	"publisher": "volarjs",
+	"displayName": "TS Macros",
+	"description": "Define TS|TSX macro powered by Volar.js",
+	"author": "zhiyuanzmj",
+	"publisher": "zhiyuanzmj",
 	"engines": {
-		"vscode": "^1.82.0"
+		"vscode": "^1.85.0"
 	},
 	"activationEvents": [
-		"onLanguage:html1"
+		"onLanguage:typescript",
+		"onLanguage:typescriptreact"
 	],
 	"main": "./dist/client.js",
+	"icon": "assets/logo.png",
 	"contributes": {
-		"languages": [
+		"grammars": [
 			{
-				"id": "html1",
-				"extensions": [
-					".html1"
-				]
-			}
+        "scopeName": "source.tsm-inject",
+        "path": "./syntaxes/tsm-inject.json",
+        "embeddedLanguages": {
+          "source.css": "css",
+          "source.css.scss": "scss",
+          "source.css.less": "less",
+          "source.css.postcss": "postcss",
+          "source.sass": "sass",
+          "source.stylus": "stylus"
+        },
+        "injectTo": [
+          "source.ts",
+					"source.tsx"
+        ]
+      }
 		]
 	},
 	"scripts": {
@@ -38,7 +49,7 @@
 		"release": "npm run build && vsce publish --pre-release"
 	},
 	"devDependencies": {
-		"@html1/language-server": "workspace:*",
+		"@tsm/language-server": "workspace:*",
 		"@types/vscode": "^1.82.0",
 		"@volar/language-server": "~2.4.0",
 		"@volar/vscode": "~2.4.0",

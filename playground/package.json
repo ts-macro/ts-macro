@@ -1,0 +1,8 @@
+{
+	"name": "sample",
+	"private": true,
+	"license": "MIT",
+	"dependencies": {
+		"typescript": "latest"
+	}
+}

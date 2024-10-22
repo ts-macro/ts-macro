@@ -14,7 +14,7 @@
 		"noUnusedParameters": true,
 		"baseUrl": "./",
 		"paths": {
-			"@html1/language-server": [
+			"@tsm/language-server": [
 				"packages/language-server/src"
 			],
 		},
