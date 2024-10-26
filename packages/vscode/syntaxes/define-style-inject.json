@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "scopeName": "source.tsm-inject",
+  "scopeName": "source.define-style-inject",
   "injectionSelector": "L:source -comment.line -comment.block",
   "patterns": [
     {
@@ -16,9 +16,7 @@
         "1": { "name": "punctuation.definition.string.end.css.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css" }
-      ]
+      "patterns": [{ "include": "source.css" }]
     },
     {
       "begin": "(defineStyle)(\\.)(css)(\\()(`)",
@@ -35,9 +33,7 @@
         "1": { "name": "punctuation.definition.string.end.css.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css" }
-      ]
+      "patterns": [{ "include": "source.css" }]
     },
     {
       "begin": "(defineStyle)(\\.)(scss)(\\()(`)",
@@ -54,9 +50,7 @@
         "1": { "name": "punctuation.definition.string.end.scss.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css.scss" }
-      ]
+      "patterns": [{ "include": "source.css.scss" }]
     },
     {
       "begin": "(defineStyle)(\\.)(sass)(\\()(`)",
@@ -73,9 +67,7 @@
         "1": { "name": "punctuation.definition.string.end.sass.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css.sass" }
-      ]
+      "patterns": [{ "include": "source.css.sass" }]
     },
     {
       "begin": "(defineStyle)(\\.)(less)(\\()(`)",
@@ -92,9 +84,7 @@
         "1": { "name": "punctuation.definition.string.end.less.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css.less" }
-      ]
+      "patterns": [{ "include": "source.css.less" }]
     },
     {
       "begin": "(defineStyle)(\\.)(stylus)(\\()(`)",
@@ -111,9 +101,7 @@
         "1": { "name": "punctuation.definition.string.end.stylus.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.stylus" }
-      ]
+      "patterns": [{ "include": "source.stylus" }]
     },
     {
       "begin": "(defineStyle)(\\.)(postcss)(\\()(`)",
@@ -130,9 +118,7 @@
         "1": { "name": "punctuation.definition.string.end.postcss.ts" },
         "2": { "name": "meta.brace.round.ts" }
       },
-      "patterns": [
-        { "include": "source.css.postcss" }
-      ]
+      "patterns": [{ "include": "source.css.postcss" }]
     }
   ]
 }

@@ -16,8 +16,8 @@ defineStyle.stylus(`
     font font-size Arial, sans-serif
 `);
 
-function Comp() {
-  let color = "red";
+export function Comp() {
+  const color = "red";
   // scoped is true.
   defineStyle.scss(`
     .foo {
@@ -27,7 +27,5 @@ function Comp() {
     }
   `);
 
-  return <div class="foo">1</div>
+  return null;
 }
-
-

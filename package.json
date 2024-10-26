@@ -1,18 +1,24 @@
 {
-	"private": true,
-	"packageManager": "pnpm@9.1.0",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/volarjs/starter.git"
-	},
-	"scripts": {
-		"build": "cd ./packages/vscode && npm run build",
-		"watch": "cd ./packages/vscode && npm run watch",
-		"pack": "cd ./packages/vscode && npm run pack",
-		"release": "cd ./packages/vscode && npm run release"
-	},
-	"devDependencies": {
-		"@types/node": "latest",
-		"typescript": "latest"
-	}
+  "private": true,
+  "packageManager": "pnpm@9.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/volarjs/starter.git"
+  },
+  "scripts": {
+    "build": "cd ./packages/vscode && npm run build",
+    "watch": "cd ./packages/vscode && npm run watch",
+    "pack": "cd ./packages/vscode && npm run pack",
+    "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
+    "format": "prettier --write --cache .",
+    "release": "cd ./packages/vscode && npm run release"
+  },
+  "devDependencies": {
+    "@sxzz/eslint-config": "^4.4.0",
+    "@types/node": "^22.8.1",
+    "eslint": "^9.13.0",
+    "jiti": "^2.3.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
 }
