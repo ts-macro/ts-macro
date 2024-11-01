@@ -13,7 +13,7 @@ Same with the article, this template uses .html1 as an example to implement embe
 - pnpm: monorepo support
 - esbuild: bundle extension
 
-## Running the Sample
+## Running the Playground
 
 - Run `pnpm install` in this folder. This installs all necessary npm modules in both the client and server folder
 - Open VS Code on this folder.

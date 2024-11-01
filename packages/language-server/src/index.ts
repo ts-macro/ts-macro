@@ -1,41 +1,45 @@
 import {
   createConnection,
   createServer,
-  createTypeScriptProject,
+  createSimpleProject,
   loadTsdkByPath,
-} from "@volar/language-server/node";
-import { create as createCssService } from "volar-service-css";
-import { create as createEmmetService } from "volar-service-emmet";
-import { create as createTypeScriptServices } from "volar-service-typescript";
-import { getLanguagePlugin } from "./language-plugin";
+} from '@volar/language-server/node'
+import { getLanguagePlugin } from 'ts-macro'
+import { create as createCssService } from 'volar-service-css'
+import { create as createEmmetService } from 'volar-service-emmet'
+import { create as createTypeScriptServices } from 'volar-service-typescript'
+export { getLanguagePlugin }
 
-const connection = createConnection();
-const server = createServer(connection);
+const connection = createConnection()
+const server = createServer(connection)
 
-connection.listen();
+connection.listen()
 
-connection.onInitialize((params) => {
+connection.onInitialize(async (params) => {
   const tsdk = loadTsdkByPath(
     params.initializationOptions.typescript.tsdk,
     params.locale,
-  );
-  const project = createTypeScriptProject(
-    tsdk.typescript,
-    tsdk.diagnosticMessages,
-    () => ({
-      languagePlugins: [getLanguagePlugin(tsdk.typescript)],
-    }),
-  );
+  )
 
-  return server.initialize(params, project, [
-    createCssService(),
-    createEmmetService(),
-    ...createTypeScriptServices(tsdk.typescript).filter(
-      (plugin) => plugin.name === "typescript-syntactic",
-    ),
-  ]);
-});
+  const result = await server.initialize(
+    params,
+    createSimpleProject([
+      getLanguagePlugin(tsdk.typescript, params.workspaceFolders![0].uri),
+    ]),
+    [
+      createCssService(),
+      createEmmetService(),
+      ...createTypeScriptServices(tsdk.typescript).filter(
+        (plugin) => plugin.name === 'typescript-syntactic',
+      ),
+    ],
+  )
 
-connection.onInitialized(server.initialized);
+  result.capabilities.semanticTokensProvider = undefined
 
-connection.onShutdown(server.shutdown);
+  return result
+})
+
+connection.onInitialized(server.initialized)
+
+connection.onShutdown(server.shutdown)

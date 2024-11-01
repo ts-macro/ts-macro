@@ -19,23 +19,6 @@
       "patterns": [{ "include": "source.css" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(css)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.css.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "2": { "name": "punctuation.accessor.ts" },
-        "3": { "name": "support.style.macro.css.ts" },
-        "4": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.css.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.css.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
-      "patterns": [{ "include": "source.css" }]
-    },
-    {
       "begin": "(defineStyle)(\\.)(scss)(\\()(`)",
       "beginCaptures": {
         "0": { "name": "meta.name.function.macro.scss.start.ts" },

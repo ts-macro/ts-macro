@@ -1,5 +1,5 @@
 {
-  "name": "@ts-macro/language-server",
+  "name": "ts-macro",
   "version": "0.0.1",
   "license": "MIT",
   "files": [
@@ -13,20 +13,22 @@
       "dev": "./src/index.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
-    }
-  },
-  "bin": {
-    "tsm-language-server": "./bin/tsm-language-server.js"
+    },
+    "./*": [
+      "./*",
+      "./*.d.ts"
+    ]
   },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
   },
   "dependencies": {
-    "@volar/language-server": "~2.4.0",
-    "ts-macro": "workspace:*",
-    "volar-service-css": "volar-2.4",
-    "volar-service-emmet": "volar-2.4",
-    "volar-service-typescript": "volar-2.4"
+    "@ts-macro/language-server": "workspace:*",
+    "@volar/language-core": "~2.4.0",
+    "@volar/typescript": "~2.4.0",
+    "jiti": "^2.3.3",
+    "muggle-string": "^0.4.1",
+    "vscode-uri": "^3.0.8"
   }
 }

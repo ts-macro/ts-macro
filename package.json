@@ -6,7 +6,8 @@
     "url": "https://github.com/volarjs/starter.git"
   },
   "scripts": {
-    "build": "cd ./packages/vscode && npm run build",
+    "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
+    "build": "pnpm run --filter=\"./packages/*\" --parallel build",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
     "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
@@ -15,10 +16,13 @@
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^4.4.0",
+    "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.8.1",
     "eslint": "^9.13.0",
     "jiti": "^2.3.3",
     "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
     "typescript": "^5.6.3"
-  }
+  },
+  "prettier": "@sxzz/prettier-config"
 }

@@ -1,30 +1,34 @@
 {
-  "name": "vscode-ts-macros",
+  "name": "vscode-ts-macro",
   "version": "0.0.1",
   "description": "Define TS(X) macro powered by Volar.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vue-macros/ts-macros.git",
+    "url": "https://github.com/ts-macro/ts-macro.git",
     "directory": "packages/vscode"
   },
   "categories": [
     "Programming Languages"
   ],
-  "displayName": "TS Macros",
+  "displayName": "TS Macro",
   "author": "zhiyuanzmj",
   "publisher": "zhiyuanzmj",
   "main": "./dist/client.js",
   "scripts": {
     "build": "node scripts/build -- --minify",
     "watch": "npm run build -- --watch",
-    "pack": "npm run build && vsce package --pre-release",
-    "release": "npm run build && vsce publish --pre-release"
+    "pack": "npm run build && vsce package --pre-release --no-dependencies",
+    "release": "npm run build && vsce publish --pre-release --no-dependencies"
+  },
+  "dependencies": {
+    "@ts-macro/language-server": "workspace:*",
+    "@ts-macro/typescript-plugin": "workspace:*",
+    "@volar/language-server": "~2.4.0",
+    "@volar/typescript": "~2.4.0",
+    "@volar/vscode": "~2.4.0"
   },
   "devDependencies": {
-    "@tsm/language-server": "workspace:*",
     "@types/vscode": "^1.82.0",
-    "@volar/language-server": "~2.4.0",
-    "@volar/vscode": "~2.4.0",
     "esbuild": "latest",
     "vsce": "latest"
   },
@@ -53,6 +57,12 @@
           "source.ts",
           "source.tsx"
         ]
+      }
+    ],
+    "typescriptServerPlugins": [
+      {
+        "name": "@ts-macro/typescript-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
       }
     ]
   }
