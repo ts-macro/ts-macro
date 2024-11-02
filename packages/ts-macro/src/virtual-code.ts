@@ -1,10 +1,6 @@
 import { toString, type Segment } from 'muggle-string'
 import type { Code, Options, Plugin } from './types'
-import type {
-  CodeMapping,
-  Mapping,
-  VirtualCode as VirtualCode,
-} from '@volar/language-core'
+import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
 
 export const allCodeFeatures = {
   completion: true,
@@ -43,13 +39,7 @@ export class TsmVirtualCode implements VirtualCode {
       ts.ScriptTarget.Latest,
     )
 
-    let plugins: Plugin[] = []
-    try {
-      plugins = sortPlugins((options?.plugins ?? []).flat())
-    } catch (error) {
-      console.error(error)
-    }
-
+    const plugins = sortPlugins((options?.plugins ?? []).flat())
     for (const plugin of plugins) {
       try {
         plugin.resolveVirtualCode?.(this)
@@ -70,70 +60,6 @@ export class TsmVirtualCode implements VirtualCode {
       getChangeRange() {
         return undefined
       },
-    }
-
-    if (this.ast) this.embeddedCodes = [...this.getEmbeddedCodes(this.ast)]
-  }
-  *getEmbeddedCodes(
-    sourceFile: import('typescript').SourceFile,
-  ): Generator<VirtualCode> {
-    const styles: import('typescript').CallExpression[] = []
-    const walk = (ast: import('typescript').Node) => {
-      this.ts.forEachChild(ast, (node) => {
-        if (
-          this.ts.isCallExpression(node) &&
-          (this.ts.isPropertyAccessExpression(node.expression) &&
-          this.ts.isIdentifier(node.expression.expression)
-            ? node.expression.expression.text
-            : this.ts.isIdentifier(node.expression) && node.expression.text) ===
-            'defineStyle' &&
-          node.arguments[0] &&
-          this.ts.isTemplateLiteral(node.arguments[0])
-        ) {
-          styles.push(node)
-        }
-        walk(node)
-      })
-    }
-    walk(sourceFile)
-
-    for (const [i, node] of styles.entries()) {
-      const languageId =
-        this.ts.isPropertyAccessExpression(node.expression) &&
-        this.ts.isIdentifier(node.expression.name)
-          ? node.expression.name.text
-          : 'css'
-      const style = node.arguments[0]
-      const styleText = style
-        .getText(this.ast)
-        .slice(1, -1)
-        .replaceAll('${', ' {')
-
-      yield {
-        id: `style_${i}`,
-        languageId,
-        snapshot: {
-          getText: (start, end) => styleText.slice(start, end),
-          getLength: () => styleText.length,
-          getChangeRange: () => undefined,
-        },
-        mappings: [
-          {
-            sourceOffsets: [style.getStart(this.ast)! + 1],
-            generatedOffsets: [0],
-            lengths: [styleText.length],
-            data: {
-              completion: true,
-              format: true,
-              navigation: true,
-              semantic: true,
-              structure: true,
-              verification: true,
-            },
-          },
-        ],
-        embeddedCodes: [],
-      }
     }
   }
 }

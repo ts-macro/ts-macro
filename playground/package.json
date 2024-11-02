@@ -6,11 +6,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@volar/language-core": "~2.4.0",
     "muggle-string": "^0.4.1",
-    "ts-macro": "workspace:*",
-    "typescript": "latest"
+    "ts-macro": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12"
+    "@types/react": "^18.3.12",
+    "typescript": "latest"
   }
 }

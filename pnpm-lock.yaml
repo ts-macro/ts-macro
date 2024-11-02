@@ -111,19 +111,22 @@ importers:
 
   playground:
     dependencies:
+      '@volar/language-core':
+        specifier: ~2.4.0
+        version: 2.4.8
       muggle-string:
         specifier: ^0.4.1
         version: 0.4.1
       ts-macro:
         specifier: workspace:*
         version: link:../packages/ts-macro
-      typescript:
-        specifier: latest
-        version: 5.6.3
     devDependencies:
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
+      typescript:
+        specifier: latest
+        version: 5.6.3
 
 packages:
 
