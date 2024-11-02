@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
-    "build": "pnpm run --filter=\"./packages/*\" --parallel build",
+    "build": "pnpm run --filter=\"./packages/*\" build",
     "release": "pnpm run --filter=\"./packages/*\" --parallel release",
     "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
