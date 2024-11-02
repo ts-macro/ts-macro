@@ -17,6 +17,7 @@
   "scripts": {
     "build": "node scripts/build -- --minify",
     "watch": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
     "pack": "npm run build && vsce package --pre-release --no-dependencies",
     "release": "npm run build && vsce publish --pre-release --no-dependencies"
   },

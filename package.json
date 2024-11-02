@@ -8,11 +8,12 @@
   "scripts": {
     "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
     "build": "pnpm run --filter=\"./packages/*\" --parallel build",
+    "release": "pnpm run --filter=\"./packages/*\" --parallel release",
+    "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
     "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
-    "format": "prettier --write --cache .",
-    "release": "cd ./packages/vscode && npm run release"
+    "format": "prettier --write --cache ."
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^4.4.0",

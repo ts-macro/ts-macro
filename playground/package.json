@@ -2,6 +2,9 @@
   "name": "playground",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "muggle-string": "^0.4.1",
     "ts-macro": "workspace:*",
