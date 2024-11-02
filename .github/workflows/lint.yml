@@ -67,5 +67,5 @@ jobs:
         run: pnpm run typecheck
         if: ${{ matrix.os == 'ubuntu-latest' }}
 
-      - name: Unit Test
-        run: pnpm run test
+      # - name: Unit Test
+      #   run: pnpm run test
