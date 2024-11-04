@@ -1,59 +1,55 @@
+// import jsxDirective from '@vue-macros/volar/jsx-directive'
 import { replaceRange } from 'muggle-string'
-import { defineConfig, type Plugin } from 'ts-macro'
+import { createPlugin, defineConfig } from 'ts-macro'
+
 import type { VirtualCode } from '@volar/language-core'
 
-function defineStylePlugin(userOptions = { macro: 'defineStyle' }): Plugin {
-  return {
-    name: 'volar-plugin-define-style',
-    enforce: 'pre',
-    resolveVirtualCode({ ts, ast, codes, embeddedCodes }) {
-      // append the defineStyle type for every ts file
-      codes.push(`
+const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
+  ({ ts, options = { macro: 'defineStyle' } }) => {
+    return {
+      name: 'volar-plugin-define-style',
+      enforce: 'pre',
+      resolveVirtualCode({ ast, codes, embeddedCodes }) {
+        // append the defineStyle type for every ts file
+        codes.push(`
        type __VLS_StyleArgs = [style: string, options?: { scoped?: boolean }]
        declare const defineStyle: { <T>(...args: __VLS_StyleArgs): T; scss: <T>(...args: __VLS_StyleArgs)=> T; sass: <T>(...args: __VLS_StyleArgs)=> T; stylus: <T>(...args: __VLS_StyleArgs)=> T; less: <T>(...args: __VLS_StyleArgs)=> T; postcss: <T>(...args: __VLS_StyleArgs)=> T } 
       `)
 
-      // add embedded codes
-      embeddedCodes.push(...getEmbeddedCodes(ts, ast))
+        // add embedded codes
+        embeddedCodes.push(...getEmbeddedCodes(ts, ast))
 
-      // walk the AST to find the defineStyle calls, and automatically add the generic type
-      ts.forEachChild(ast, walk)
+        // walk the AST to find the defineStyle calls, and automatically add the generic type
+        ts.forEachChild(ast, walk)
 
-      function walk(
-        node: import('typescript').Node,
-        parents: import('typescript').Node[] = [],
-      ) {
-        if (
-          parents[2] &&
-          ts.isVariableStatement(parents[2]) &&
-          ts.isCallExpression(node) &&
-          node.expression.getText(ast).startsWith(userOptions.macro)
+        function walk(
+          node: import('typescript').Node,
+          parents: import('typescript').Node[] = [],
         ) {
-          replaceRange(
-            codes,
-            node.arguments.pos - 1,
-            node.arguments.pos - 1,
-            '<{ foo: string }>',
-          )
+          if (
+            parents[2] &&
+            ts.isVariableStatement(parents[2]) &&
+            ts.isCallExpression(node) &&
+            node.expression.getText(ast).startsWith(options.macro)
+          ) {
+            replaceRange(
+              codes,
+              node.arguments.pos - 1,
+              node.arguments.pos - 1,
+              '<{ foo: string }>',
+            )
+          }
+
+          ts.forEachChild(node, (child) => {
+            parents.unshift(node)
+            walk(child, parents)
+            parents.shift()
+          })
         }
-
-        ts.forEachChild(node, (child) => {
-          parents.unshift(node)
-          walk(child, parents)
-          parents.shift()
-        })
-      }
-    },
-  }
-}
-
-export default defineConfig({
-  plugins: [
-    defineStylePlugin({
-      macro: 'defineStyle',
-    }),
-  ],
-})
+      },
+    }
+  },
+)
 
 function* getEmbeddedCodes(
   ts: typeof import('typescript'),
@@ -115,3 +111,10 @@ function* getEmbeddedCodes(
     }
   }
 }
+
+export default defineConfig({
+  plugins: [
+    defineStylePlugin(),
+    // jsxDirective()
+  ],
+})

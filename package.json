@@ -11,7 +11,7 @@
     "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
-    "release": "bumpp --all -x 'pnpm run changelog' && pnpm publish --filter=\"@ts-macro/*\" && pnpm run --filter=\"./packages/vscode\" release",
+    "release": "bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm publish --filter=\"@ts-macro/*\" && pnpm run --filter=\"./packages/vscode\" release",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
     "format": "prettier --write --cache ."

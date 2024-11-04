@@ -25,5 +25,10 @@ export function Comp({ color = 'red' }) {
     }
   `)
 
-  return <div className={foo} />
+  let bar!: number
+  return (
+    <div v-if={bar === 1} className={foo}>
+      {bar}
+    </div>
+  )
 }
