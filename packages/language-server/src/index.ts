@@ -1,7 +1,7 @@
 import {
   createConnection,
   createServer,
-  createSimpleProject,
+  createTypeScriptProject,
   loadTsdkByPath,
 } from '@volar/language-server/node'
 import { getLanguagePlugin } from 'ts-macro'
@@ -23,9 +23,32 @@ connection.onInitialize(async (params) => {
 
   const result = await server.initialize(
     params,
-    createSimpleProject([
-      getLanguagePlugin(tsdk.typescript, params.workspaceFolders![0].uri),
-    ]),
+    createTypeScriptProject(
+      tsdk.typescript,
+      tsdk.diagnosticMessages,
+      ({ projectHost, sys, configFileName }) => {
+        const configDir = projectHost.getCurrentDirectory()
+        const configFilePath = configFileName || `${configDir}/tsconfig.json`
+        const parsedCommandLine =
+          tsdk.typescript.parseJsonSourceFileConfigFileContent(
+            tsdk.typescript.readJsonConfigFile(configFilePath, sys.readFile),
+            sys,
+            configDir,
+            {},
+            configFilePath,
+          )
+        return {
+          languagePlugins: [
+            getLanguagePlugin(
+              tsdk.typescript,
+              configDir,
+              parsedCommandLine.options,
+              sys,
+            ),
+          ],
+        }
+      },
+    ),
     [
       createCssService(),
       createEmmetService(),

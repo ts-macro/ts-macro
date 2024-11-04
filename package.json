@@ -8,10 +8,11 @@
   "scripts": {
     "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
     "build": "pnpm run --filter=\"./packages/*\" build",
-    "release": "pnpm run --filter=\"./packages/*\" --parallel release",
     "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
+    "release": "bumpp --all -x 'pnpm run changelog' && pnpm publish --filter=\"@ts-macro/*\" && pnpm run --filter=\"./packages/vscode\" release",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
     "format": "prettier --write --cache ."
   },
@@ -19,6 +20,8 @@
     "@sxzz/eslint-config": "^4.4.0",
     "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.8.1",
+    "bumpp": "^9.8.1",
+    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.13.0",
     "jiti": "^2.3.3",
     "prettier": "^3.3.3",

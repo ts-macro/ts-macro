@@ -1,5 +1,5 @@
 import { toString, type Segment } from 'muggle-string'
-import type { Code, Options, Plugin } from './types'
+import type { Code, TsmLanguagePlugin } from './types'
 import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
 
 export const allCodeFeatures = {
@@ -12,35 +12,24 @@ export const allCodeFeatures = {
 }
 
 export class TsmVirtualCode implements VirtualCode {
-  id = 'root'
+  readonly id = 'root'
   mappings: CodeMapping[]
   embeddedCodes: VirtualCode[] = []
   codes: Code[] = []
   snapshot: import('typescript').IScriptSnapshot
   text = ''
-  rawText = ''
-
-  ast: import('typescript').SourceFile
+  source: 'script' | 'scriptSetup' | undefined
 
   constructor(
-    public fileName: string,
-    public rawSnapshot: import('typescript').IScriptSnapshot,
-    public ts: typeof import('typescript'),
-    public languageId: string,
-    public options: Partial<Options> = {},
+    public readonly fileName: string,
+    public readonly rawText: string,
+    public readonly ast: import('typescript').SourceFile,
+    public readonly languageId: string = 'tsx',
+    private readonly plugins: TsmLanguagePlugin[] = [],
   ) {
-    this.rawText = rawSnapshot.getText(0, rawSnapshot.getLength()).toString()
-
     this.codes.push([this.rawText, undefined, 0, allCodeFeatures])
 
-    this.ast = ts.createSourceFile(
-      `index.${languageId}`,
-      this.rawText,
-      ts.ScriptTarget.Latest,
-    )
-
-    const plugins = sortPlugins((options?.plugins ?? []).flat())
-    for (const plugin of plugins) {
+    for (const plugin of this.plugins) {
       try {
         plugin.resolveVirtualCode?.(this)
       } catch (error) {
@@ -49,14 +38,10 @@ export class TsmVirtualCode implements VirtualCode {
     }
 
     this.mappings = buildMappings(this.codes)
-    const text = (this.text = toString(this.codes))
+    this.text = toString(this.codes)
     this.snapshot = {
-      getLength() {
-        return text.length
-      },
-      getText(start, end) {
-        return text.slice(start, end)
-      },
+      getLength: () => this.text.length,
+      getText: (start, end) => this.text.slice(start, end),
       getChangeRange() {
         return undefined
       },
@@ -81,20 +66,4 @@ function buildMappings<T>(chunks: Segment<T>[]) {
     }
   }
   return mappings
-}
-
-export function sortPlugins(plugins: Plugin[]): Plugin[] {
-  const prePlugins: Plugin[] = []
-  const postPlugins: Plugin[] = []
-  const normalPlugins: Plugin[] = []
-
-  if (plugins) {
-    plugins.flat().forEach((p) => {
-      if (p.enforce === 'pre') prePlugins.push(p)
-      else if (p.enforce === 'post') postPlugins.push(p)
-      else normalPlugins.push(p)
-    })
-  }
-
-  return [...prePlugins, ...normalPlugins, ...postPlugins]
 }
