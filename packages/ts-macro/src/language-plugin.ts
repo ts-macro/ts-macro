@@ -12,7 +12,6 @@ export const getLanguagePlugin = (
   ts: typeof import('typescript'),
   configDir: string,
   compilerOptions: import('typescript').CompilerOptions,
-  sys: import('typescript').System,
 ): LanguagePlugin<URI> => {
   let options: Options | undefined
   if (configDir) {
@@ -29,7 +28,6 @@ export const getLanguagePlugin = (
         return plugin({
           ts,
           compilerOptions,
-          sys,
         })
       } else {
         return plugin

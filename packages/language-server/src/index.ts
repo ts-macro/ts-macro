@@ -43,7 +43,6 @@ connection.onInitialize(async (params) => {
               tsdk.typescript,
               configDir,
               parsedCommandLine.options,
-              sys,
             ),
           ],
         }

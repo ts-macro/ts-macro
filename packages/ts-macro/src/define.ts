@@ -1,9 +1,4 @@
 import type { Factory, Options, PluginReturn } from './types'
-import type {
-  Sfc,
-  VueEmbeddedCode,
-  VueLanguagePlugin,
-} from '@vue/language-core'
 
 export function defineConfig(config: Options) {
   return config
@@ -13,13 +8,12 @@ export function createPlugin<UserOptions, Nested extends boolean = boolean>(
   factory: Factory<UserOptions, Nested>,
 ): PluginReturn<UserOptions, Nested>
 export function createPlugin(factory: any) {
-  return (options: Parameters<VueLanguagePlugin>[0]) => {
+  return (options: any) => {
     // compatible with @vue/language-tools
     if (options?.modules) {
       const result: any = factory({
         ts: options.modules.typescript,
-        get userOptions() {
-          // @ts-expect-error custom options
+        get options() {
           return options.vueCompilerOptions[result.name]
         },
         ...options,
@@ -27,8 +21,8 @@ export function createPlugin(factory: any) {
       if (result.resolveVirtualCode) {
         result.resolveEmbeddedCode = (
           fileName: string,
-          sfc: Sfc,
-          embeddedFile: VueEmbeddedCode,
+          sfc: any,
+          embeddedFile: any,
         ) => {
           for (const source of ['script', 'scriptSetup'] as const) {
             const ast = sfc[source]?.ast

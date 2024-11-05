@@ -8,7 +8,6 @@ const plugin = createLanguageServicePlugin((ts, info) => {
         ts,
         info.project.getCurrentDirectory(),
         info.languageServiceHost.getCompilationSettings(),
-        info.serverHost,
       ) as any,
     ],
   }

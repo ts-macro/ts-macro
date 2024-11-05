@@ -18,7 +18,6 @@ export type TsmLanguagePlugin = {
 
 export type Context = {
   ts: typeof import('typescript')
-  sys: import('typescript').System
   compilerOptions: import('typescript').CompilerOptions
 }
 
