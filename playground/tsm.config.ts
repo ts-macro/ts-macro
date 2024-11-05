@@ -5,7 +5,7 @@ import { createPlugin, defineConfig } from 'ts-macro'
 import type { VirtualCode } from '@volar/language-core'
 
 const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
-  ({ ts, options = { macro: 'defineStyle' } }) => {
+  ({ ts }, options = { macro: 'defineStyle' }) => {
     return {
       name: 'volar-plugin-define-style',
       enforce: 'pre',

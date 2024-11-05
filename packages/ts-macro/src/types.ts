@@ -1,5 +1,6 @@
 import type { TsmVirtualCode } from './virtual-code'
 import type { CodeInformation } from '@volar/language-core'
+import type { VueCompilerOptions } from '@vue/language-core'
 import type { Segment } from 'muggle-string'
 
 export type Code = Segment<CodeInformation>
@@ -16,13 +17,15 @@ export type TsmLanguagePlugin = {
   resolveVirtualCode?: (virtualCode: TsmVirtualCode) => void
 }
 
-export type Context = {
+export type Context<UserOptions = any> = {
   ts: typeof import('typescript')
   compilerOptions: import('typescript').CompilerOptions
+  vueCompilerOptions?: VueCompilerOptions & Record<string, UserOptions>
 }
 
 export type Factory<UserOptions, Nested extends boolean = boolean> = (
-  options: { options: UserOptions } & Context,
+  context: Context<UserOptions>,
+  userOptions: UserOptions,
 ) => Nested extends true ? Array<TsmLanguagePlugin> : TsmLanguagePlugin
 export type FactoryReturn<Nested extends boolean = boolean> = (
   context: Context,

@@ -28,6 +28,7 @@
     "@ts-macro/language-server": "workspace:*",
     "@volar/language-core": "~2.4.0",
     "@volar/typescript": "~2.4.0",
+    "@vue/language-core": "^2.1.10",
     "jiti": "^2.3.3",
     "muggle-string": "^0.4.1",
     "vscode-uri": "^3.0.8"
