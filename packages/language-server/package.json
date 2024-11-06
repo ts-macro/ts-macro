@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup --minify",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
