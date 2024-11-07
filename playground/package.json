@@ -11,8 +11,8 @@
     "ts-macro": "workspace:*"
   },
   "devDependencies": {
+    "@ts-macro/tsc": "workspace:*",
     "@types/react": "^18.3.12",
-    "tsmc": "workspace:*",
     "typescript": "latest"
   }
 }

@@ -86,7 +86,7 @@ importers:
         specifier: ^3.0.8
         version: 3.0.8
 
-  packages/tsmc:
+  packages/tsc:
     dependencies:
       '@volar/language-core':
         specifier: ^2.4.8
@@ -146,12 +146,12 @@ importers:
         specifier: workspace:*
         version: link:../packages/ts-macro
     devDependencies:
+      '@ts-macro/tsc':
+        specifier: workspace:*
+        version: link:../packages/tsc
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
-      tsmc:
-        specifier: workspace:*
-        version: link:../packages/tsmc
       typescript:
         specifier: latest
         version: 5.6.3

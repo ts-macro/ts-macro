@@ -1,5 +1,5 @@
 {
-  "name": "tsmc",
+  "name": "@ts-macro/tsc",
   "version": "0.0.7",
   "description": "Command line typescript checker for TS Macro",
   "keywords": [
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup --minify"
   },
   "dependencies": {
     "@volar/language-core": "^2.4.8",
