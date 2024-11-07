@@ -28,6 +28,7 @@
     "@volar/language-server": "^2.4.8",
     "@volar/vscode": "^2.4.8",
     "@vscode/vsce": "latest",
+    "reactive-vscode": "0.2.7-beta.1",
     "ts-macro": "workspace:*",
     "vscode-uri": "^3.0.8"
   },
@@ -40,6 +41,13 @@
   ],
   "icon": "assets/logo.png",
   "contributes": {
+    "commands": [
+      {
+        "command": "tsm.action.restartServer",
+        "title": "Restart TS Macro and TS servers",
+        "category": "TSM"
+      }
+    ],
     "grammars": [
       {
         "scopeName": "source.define-style-inject",
