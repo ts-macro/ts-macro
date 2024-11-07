@@ -13,6 +13,7 @@ export const getLanguagePlugin = (
   configDir: string,
   compilerOptions: import('typescript').CompilerOptions,
 ): LanguagePlugin<URI> => {
+  // eslint-disable-next-line no-console
   console.log('[ts-macro]: startup successfully.')
 
   let options: Options | undefined
