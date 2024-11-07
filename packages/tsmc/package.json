@@ -1,0 +1,27 @@
+{
+  "name": "tsmc",
+  "version": "0.0.6",
+  "description": "Command line typescript checker for TS Macro",
+  "keywords": [
+    "TS",
+    "Macro"
+  ],
+  "license": "MIT",
+  "author": "zhiyuanzmj",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "bin": {
+    "tsmc": "./bin/tsmc.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@volar/language-core": "^2.4.8",
+    "@volar/typescript": "^2.4.8",
+    "ts-macro": "workspace:*"
+  }
+}

@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsmc --noEmit"
   },
   "dependencies": {
     "@volar/language-core": "~2.4.0",
@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
+    "tsmc": "workspace:*",
     "typescript": "latest"
   }
 }
