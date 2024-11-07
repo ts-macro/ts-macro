@@ -35,7 +35,7 @@ export default defineConfig([
             if (pathEsm.includes('vscode-uri')) {
               pathEsm = pathEsm
                 .replace('/esm/index.js', '/esm/index.mjs')
-                .replace('\\esm\\index.js', '\\esm\\index.mjs')
+                .replace(String.raw`\esm\index.js`, String.raw`\esm\index.mjs`)
             }
 
             return { path: pathEsm }
