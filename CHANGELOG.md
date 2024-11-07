@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.0.5...v) (2024-11-07)
+
+
+### Bug Fixes
+
+* **vscode:** correct build ([56cc4a9](https://github.com/volarjs/starter/commit/56cc4a9b56c01abff94f810ecd04b46fed4a5358))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.0.4...v) (2024-11-06)
 
 
