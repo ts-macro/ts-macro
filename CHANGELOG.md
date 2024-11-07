@@ -1,3 +1,18 @@
+# [](https://github.com/volarjs/starter/compare/v0.0.6...v) (2024-11-07)
+
+
+### Bug Fixes
+
+* ignore console.log ([27136e5](https://github.com/volarjs/starter/commit/27136e5ae2fe87a6241666d6a2923507d573de1f))
+* lint ([255133a](https://github.com/volarjs/starter/commit/255133a7371da6353f290c9ca7c032624594053e))
+
+
+### Features
+
+* **tsc:** add tsmc package ([dddf917](https://github.com/volarjs/starter/commit/dddf9175aa7bcacb471e094c525b72d3bcd43b97))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.0.5...v) (2024-11-07)
 
 
