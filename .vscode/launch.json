@@ -12,7 +12,11 @@
         "--extensionDevelopmentPath=${workspaceRoot}/packages/vscode",
         "--folder-uri=${workspaceRoot}/playground"
       ],
-      "outFiles": ["${workspaceRoot}/packages/vscode/dist/*.js"]
+      "outFiles": ["${workspaceRoot}/packages/vscode/dist/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "watch"
+      }
     },
     {
       "name": "Attach to Server",

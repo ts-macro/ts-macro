@@ -6,12 +6,12 @@
     "url": "https://github.com/volarjs/starter.git"
   },
   "scripts": {
-    "dev": "pnpm run --filter=\"./packages/*\" dev",
+    "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
     "build": "pnpm run --filter=\"./packages/*\" build",
     "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
-    "release": "bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm run build && pnpm publish --filter=\"@ts-macro/*\" --filter=\"ts-macro\" && pnpm run --filter=\"./packages/vscode\" release",
+    "release": "pnpm run build && bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm publish --filter=\"!vscode-ts-macro\" && pnpm run --filter=\"vscode-ts-macro\" release",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
     "format": "prettier --write --cache ."
@@ -27,6 +27,11 @@
     "prettier": "^3.3.3",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "vscode-uri": "^3.0.8"
+    }
   },
   "prettier": "@sxzz/prettier-config"
 }

@@ -13,6 +13,8 @@ export const getLanguagePlugin = (
   configDir: string,
   compilerOptions: import('typescript').CompilerOptions,
 ): LanguagePlugin<URI> => {
+  console.log('[ts-macro]: startup successfully.')
+  
   let options: Options | undefined
   if (configDir) {
     try {

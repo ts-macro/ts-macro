@@ -29,9 +29,14 @@ export default defineConfig([
               paths: [args.resolveDir],
             })
             // Call twice the replace is to solve the problem of the path in Windows
-            const pathEsm = pathUmdMay
+            let pathEsm = pathUmdMay
               .replace('/umd/', '/esm/')
               .replace('\\umd\\', '\\esm\\')
+            if (pathEsm.includes('vscode-uri')) {
+              pathEsm = pathEsm
+                .replace('/esm/index.js', '/esm/index.mjs')
+                .replace('\\esm\\index.js', '\\esm\\index.mjs')
+            }
 
             return { path: pathEsm }
           })

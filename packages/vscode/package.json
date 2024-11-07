@@ -15,18 +15,11 @@
   "publisher": "zhiyuanzmj",
   "main": "./dist/client.js",
   "scripts": {
-    "dev": "tsup --watch",
+    "watch": "tsup --watch",
     "build": "tsup --minify",
     "typecheck": "tsc --noEmit",
     "pack": "npm run build && vsce package --pre-release",
-    "release": "npm run build && vsce publish --pre-release"
-  },
-  "peerDependencies": {
-    "@ts-macro/typescript-plugin": "workspace:*",
-    "@volar/language-server": "^2.4.8",
-    "@volar/vscode": "^2.4.8",
-    "ts-macro": "workspace:*",
-    "vscode-uri": "3.0.8"
+    "release": "vsce publish --pre-release"
   },
   "devDependencies": {
     "@ts-macro/language-server": "workspace:*",
