@@ -18,8 +18,8 @@
     "watch": "tsup --watch",
     "build": "tsup --minify",
     "typecheck": "tsc --noEmit",
-    "pack": "npm run build && vsce package --pre-release",
-    "release": "vsce publish --pre-release"
+    "pack": "npm run build && vsce package",
+    "release": "vsce publish"
   },
   "devDependencies": {
     "@ts-macro/language-server": "workspace:*",

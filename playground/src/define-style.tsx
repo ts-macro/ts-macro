@@ -7,7 +7,7 @@ defineStyle.stylus(`
 `)
 
 export function Comp({ color = 'red' }) {
-  // scoped is true.
+  // scoped is true
   defineStyle.scss(`
     .foo {
       div {
@@ -17,18 +17,10 @@ export function Comp({ color = 'red' }) {
   `)
 
   // css modules
-  const { foo } = defineStyle.scss(`
-    .foo { 
-      div {
-        color: red;
-      }
+  const { fooBar } = defineStyle(`
+    .fooBar { 
+      color: red;
     }
   `)
-
-  let bar!: number
-  return (
-    <div v-if={bar === 1} className={foo}>
-      {bar}
-    </div>
-  )
+  return <div className={fooBar}>{fooBar}</div>
 }

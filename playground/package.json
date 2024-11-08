@@ -7,7 +7,9 @@
   },
   "dependencies": {
     "@volar/language-core": "~2.4.0",
+    "@vue-macros/volar": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/volar@dc0f932",
     "muggle-string": "^0.4.1",
+    "react": "^18.3.1",
     "ts-macro": "workspace:*"
   },
   "devDependencies": {
