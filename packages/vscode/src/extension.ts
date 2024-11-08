@@ -63,10 +63,10 @@ export = defineExtension(async () => {
     if (restartTsServer) {
       await executeCommand('typescript.restartTsServer')
     }
-    await client.stop()
     client.clientOptions.initializationOptions = await getInitializationOptions(
       extensionContext.value!,
     )
+    await client.stop()
     return client.start()
   }
 
