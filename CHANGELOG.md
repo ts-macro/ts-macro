@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.0.7...v) (2024-11-08)
+
+
+### Bug Fixes
+
+* **vscode:** client is not exist error ([5f1956e](https://github.com/volarjs/starter/commit/5f1956ef018fabaf2fbb9246f86512cc2098de8d))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.0.6...v) (2024-11-07)
 
 
