@@ -12,7 +12,7 @@ export default () => {
   return (
     <>
       <DefineExpose ref={(e) => (exposeRef.current = e)} foo={1 as const} />
-      {double}
+      <span v-if={double}>{double}</span>
 
       <div v-for={index in 4} key={index}>
         {index}
