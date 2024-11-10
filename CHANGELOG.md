@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.0...v) (2024-11-10)
+
+
+### Features
+
+* **vscode:** disable plugin if tsm.config.ts not found ([e9bc314](https://github.com/volarjs/starter/commit/e9bc3142aa6cc7207afad219b533d072b1e34287))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.0.7...v) (2024-11-08)
 
 
