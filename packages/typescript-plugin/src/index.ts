@@ -1,15 +1,14 @@
 import { createLanguageServicePlugin } from '@volar/typescript/lib/quickstart/createLanguageServicePlugin'
-import { getLanguagePlugin } from 'ts-macro'
+import { getLanguagePlugins } from 'ts-macro'
 
 const plugin = createLanguageServicePlugin((ts, info) => {
+  ts.sys.getCurrentDirectory = () =>
+    info.languageServiceHost.getCurrentDirectory()
   return {
-    languagePlugins: [
-      getLanguagePlugin(
-        ts,
-        info.project.getCurrentDirectory(),
-        info.languageServiceHost.getCompilationSettings(),
-      ) as any,
-    ],
+    languagePlugins: getLanguagePlugins(
+      ts,
+      info.languageServiceHost.getCompilationSettings(),
+    ),
   }
 })
 

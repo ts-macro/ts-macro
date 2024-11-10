@@ -31,9 +31,6 @@
   "pnpm": {
     "overrides": {
       "vscode-uri": "^3.0.8"
-    },
-    "patchedDependencies": {
-      "@volar/typescript": "patches/@volar__typescript.patch"
     }
   },
   "prettier": "@sxzz/prettier-config"

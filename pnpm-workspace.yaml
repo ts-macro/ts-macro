@@ -1,3 +1,7 @@
+catalog:
+  vscode-uri: ^2.4.8
+  '@volar/typescript': ^2.4.8
+  '@volar/language-core': ^2.4.8
 packages:
   - 'packages/*'
   - playground

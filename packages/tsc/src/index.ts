@@ -1,25 +1,21 @@
 import { runTsc } from '@volar/typescript/lib/quickstart/runTsc'
-import { getLanguagePlugin } from 'ts-macro'
-import type { LanguagePlugin } from '@volar/language-core'
+import { getLanguagePlugins } from 'ts-macro'
 
 export function run() {
   const tscSdk = require.resolve('typescript/lib/tsc')
   const main = () => {
-    runTsc(tscSdk, ['.ts', '.tsx'], (ts, runTscOptions) => {
-      const languagePlugins: LanguagePlugin[] = []
-
-      languagePlugins.push(
-        getLanguagePlugin(
-          ts,
-          ts.sys.getCurrentDirectory(),
-          runTscOptions.options,
-        ),
-      )
-
-      return {
-        languagePlugins,
-      }
-    })
+    runTsc(
+      tscSdk,
+      {
+        extraSupportedExtensions: ['.ts', '.tsx'],
+        extraExtensionsToRemove: [],
+      },
+      (ts, runTscOptions) => {
+        return {
+          languagePlugins: getLanguagePlugins(ts, runTscOptions.options),
+        }
+      },
+    )
   }
 
   try {

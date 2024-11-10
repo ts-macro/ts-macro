@@ -8,19 +8,15 @@ import type { URI } from 'vscode-uri'
 
 const jiti = createJiti(import.meta.url)
 
-export const getLanguagePlugin = (
+export const getLanguagePlugins = (
   ts: typeof import('typescript'),
-  configDir: string,
   compilerOptions: import('typescript').CompilerOptions,
-): LanguagePlugin<URI> => {
+): LanguagePlugin<string | URI>[] => {
   let options: Options | undefined
-  if (configDir) {
-    try {
-      options = jiti(`${configDir}/tsm.config`).default
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  try {
+    options = jiti(`${ts.sys.getCurrentDirectory()}/tsm.config`).default
+  } catch {}
+  if (!options) return []
 
   const plugins = sortPlugins(
     (options?.plugins ?? []).flatMap((plugin) => {
@@ -35,40 +31,40 @@ export const getLanguagePlugin = (
     }),
   )
 
-  return {
-    getLanguageId() {
-      return undefined
-    },
-    createVirtualCode(uri, rawLanguageId, snapshot) {
-      if (['typescript', 'typescriptreact'].includes(rawLanguageId)) {
-        // @ts-expect-error maybe a string
-        const fileName = uri.path || (uri as string)
-        const languageId = rawLanguageId === 'typescript' ? 'ts' : 'tsx'
-        const rawText = snapshot.getText(0, snapshot.getLength()).toString()
-        const ast = ts.createSourceFile(
-          `index.${languageId}`,
-          rawText,
-          ts.ScriptTarget.Latest,
-        )
-        return new TsmVirtualCode(fileName, rawText, ast, languageId, plugins)
-      }
-    },
-    typescript: {
-      extraFileExtensions: [],
-      getServiceScript(root) {
-        for (const code of forEachEmbeddedCode(root)) {
-          if (code.id === 'root') {
-            return {
-              fileName: `${code.id}.${code.languageId}`,
-              code,
-              extension: `.${code.languageId}`,
-              scriptKind: code.languageId === 'tsx' ? 4 : 3,
-            }
-          }
+  return [
+    {
+      getLanguageId() {
+        return undefined
+      },
+      createVirtualCode(uri, rawLanguageId, snapshot) {
+        if (['typescript', 'typescriptreact'].includes(rawLanguageId)) {
+          const fileName = typeof uri === 'string' ? uri : uri.path
+          const languageId = rawLanguageId === 'typescript' ? 'ts' : 'tsx'
+          const rawText = snapshot.getText(0, snapshot.getLength()).toString()
+          const ast = ts.createSourceFile(
+            `index.${languageId}`,
+            rawText,
+            99 satisfies typeof ts.ScriptTarget.Latest,
+          )
+          return new TsmVirtualCode(fileName, rawText, ast, languageId, plugins)
         }
       },
+      typescript: {
+        extraFileExtensions: [],
+        getServiceScript(root) {
+          for (const code of forEachEmbeddedCode(root)) {
+            if (code.id === 'root') {
+              return {
+                code,
+                extension: `.${code.languageId}`,
+                scriptKind: code.languageId === 'tsx' ? 4 : 3,
+              }
+            }
+          }
+        },
+      },
     },
-  }
+  ]
 }
 
 function sortPlugins(plugins: TsmLanguagePlugin[]): TsmLanguagePlugin[] {

@@ -1,9 +1,5 @@
 import type { TsmVirtualCode } from './virtual-code'
-import type { CodeInformation } from '@volar/language-core'
 import type { VueCompilerOptions } from '@vue/language-core'
-import type { Segment } from 'muggle-string'
-
-export type Code = Segment<CodeInformation>
 
 export type Options = {
   plugins: Plugin[]

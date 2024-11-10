@@ -1,20 +1,26 @@
-import { useRef } from 'react'
-import { DefineExpose } from './define-export'
+import { useEffect, useRef, useState } from 'react'
+import { DefineExpose } from './define-expose'
 import { DefineSlots } from './define-slots'
 
-export const App = () => {
+// eslint-disable-next-line import/no-default-export
+export default () => {
   const exposeRef = useRef()
+  const [double, setDouble] = useState<number>()
+  useEffect(() => {
+    setDouble(exposeRef.current?.double)
+  })
   return (
     <>
       <DefineExpose ref={(e) => (exposeRef.current = e)} foo={1 as const} />
+      {double}
 
-      <div v-if={exposeRef.current}>{exposeRef.current.foo === 1}</div>
+      <div v-for={index in 4} key={index}>
+        {index}
+      </div>
 
-      <div v-for={index in 4}>{index}</div>
-
-      <DefineSlots<'1'>>
-        <template v-slot:default={{ foo }}>{foo === '1'}</template>
-        <template v-slot:title={{ bar }}>{bar === '1'}</template>
+      <DefineSlots foo={1 as const}>
+        <div>default slot</div>
+        <template v-slot:title={{ bar }}>title slot: {bar}</template>
       </DefineSlots>
     </>
   )

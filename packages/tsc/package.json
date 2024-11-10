@@ -20,8 +20,7 @@
     "build": "tsup --minify"
   },
   "dependencies": {
-    "@volar/language-core": "^2.4.8",
-    "@volar/typescript": "^2.4.8",
+    "@volar/typescript": "catalog:",
     "ts-macro": "workspace:*"
   }
 }

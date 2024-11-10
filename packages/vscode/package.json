@@ -28,7 +28,7 @@
     "@volar/language-server": "^2.4.8",
     "@volar/vscode": "^2.4.8",
     "@vscode/vsce": "latest",
-    "reactive-vscode": "0.2.7-beta.1",
+    "reactive-vscode": "0.2.7",
     "ts-macro": "workspace:*",
     "vscode-uri": "^3.0.8"
   },

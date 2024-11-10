@@ -4,11 +4,10 @@ import {
   createTypeScriptProject,
   loadTsdkByPath,
 } from '@volar/language-server/node'
-import { getLanguagePlugin } from 'ts-macro'
+import { getLanguagePlugins } from 'ts-macro'
 import { create as createCssService } from 'volar-service-css'
 import { create as createEmmetService } from 'volar-service-emmet'
 import { create as createTypeScriptServices } from 'volar-service-typescript'
-export { getLanguagePlugin }
 
 const connection = createConnection()
 const server = createServer(connection)
@@ -26,25 +25,13 @@ connection.onInitialize(async (params) => {
     createTypeScriptProject(
       tsdk.typescript,
       tsdk.diagnosticMessages,
-      ({ projectHost, sys, configFileName }) => {
-        const configDir = projectHost.getCurrentDirectory()
-        const configFilePath = configFileName || `${configDir}/tsconfig.json`
-        const parsedCommandLine =
-          tsdk.typescript.parseJsonSourceFileConfigFileContent(
-            tsdk.typescript.readJsonConfigFile(configFilePath, sys.readFile),
-            sys,
-            configDir,
-            {},
-            configFilePath,
-          )
+      ({ configFileName }) => {
+        const compilerOptions = getCompilerOptions(
+          tsdk.typescript,
+          configFileName,
+        )
         return {
-          languagePlugins: [
-            getLanguagePlugin(
-              tsdk.typescript,
-              configDir,
-              parsedCommandLine.options,
-            ),
-          ],
+          languagePlugins: getLanguagePlugins(tsdk.typescript, compilerOptions),
         }
       },
     ),
@@ -65,3 +52,21 @@ connection.onInitialize(async (params) => {
 connection.onInitialized(server.initialized)
 
 connection.onShutdown(server.shutdown)
+
+function getCompilerOptions(
+  ts: typeof import('typescript'),
+  configFileName?: string,
+) {
+  if (configFileName) {
+    const parsedCommandLine = ts.parseJsonSourceFileConfigFileContent(
+      ts.readJsonConfigFile(configFileName, ts.sys.readFile),
+      ts.sys,
+      ts.sys.getCurrentDirectory(),
+      {},
+      configFileName,
+    )
+    return parsedCommandLine.options
+  } else {
+    return ts.getDefaultCompilerOptions()
+  }
+}

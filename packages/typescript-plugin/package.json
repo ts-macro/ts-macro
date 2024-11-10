@@ -21,7 +21,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@volar/typescript": "~2.4.0",
+    "@volar/typescript": "catalog:",
     "ts-macro": "workspace:*"
   }
 }

@@ -1,6 +1,14 @@
 import { toString, type Segment } from 'muggle-string'
-import type { Code, TsmLanguagePlugin } from './types'
-import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
+import type { TsmLanguagePlugin } from './types'
+import type {
+  CodeInformation,
+  CodeMapping,
+  Mapping,
+  VirtualCode,
+} from '@volar/language-core'
+
+export type Code = Segment<CodeInformation>
+export { CodeInformation, VirtualCode }
 
 export const allCodeFeatures = {
   completion: true,
@@ -27,7 +35,11 @@ export class TsmVirtualCode implements VirtualCode {
     public readonly languageId: string = 'tsx',
     private readonly plugins: TsmLanguagePlugin[] = [],
   ) {
-    this.codes.push([this.rawText, undefined, 0, allCodeFeatures])
+    this.codes.push(
+      `/* placeholder */\n`,
+      [`\n`, undefined, 0, allCodeFeatures],
+      [this.rawText, undefined, 0, allCodeFeatures],
+    )
 
     for (const plugin of this.plugins) {
       try {

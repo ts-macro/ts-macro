@@ -1,12 +1,12 @@
-export const DefineSlots = <T extends string>({ foo = {} as T }) => {
+export const DefineSlots = <T,>({ foo = (undefined as T)! }) => {
   const slots = defineSlots({
-    default: (props: { foo: T }) => <div>default slot: {props.foo}</div>,
-    title: (props: { bar: T }) => <div>title slot: {props.bar}</div>,
+    default: () => <div>[default slot]</div>,
+    title: (props: { bar: T }) => <div> [title slot]: {String(props.bar)}</div>,
   })
   return (
     <div>
       <slots.title bar={foo} />
-      <slots.default foo={foo} />
+      <slots.default />
     </div>
   )
 }

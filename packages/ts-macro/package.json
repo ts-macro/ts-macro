@@ -21,15 +21,15 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup --minify",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@volar/language-core": "~2.4.8",
-    "@volar/typescript": "^2.4.8",
+    "@volar/language-core": "catalog:",
+    "@volar/typescript": "catalog:",
     "@vue/language-core": "^2.1.10",
     "jiti": "^2.3.3",
     "muggle-string": "^0.4.1",
-    "vscode-uri": "^3.0.8"
+    "vscode-uri": "catalog:"
   }
 }
