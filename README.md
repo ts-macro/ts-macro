@@ -84,6 +84,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    ```
 
 4. Result
+   
    <img width="369" alt="image" src="https://github.com/user-attachments/assets/31578a94-fd0d-4f7d-836d-87d83b8e9bbc">
 
 ## Example
