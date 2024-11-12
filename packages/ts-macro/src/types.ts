@@ -1,8 +1,11 @@
 import type { TsmVirtualCode } from './virtual-code'
+import type { FilterPattern } from '@rollup/pluginutils'
 import type { VueCompilerOptions } from '@vue/language-core'
 
 export type Options = {
-  plugins: Plugin[]
+  exclude?: FilterPattern
+  include?: FilterPattern
+  plugins?: Plugin[]
 }
 
 export type Plugin = FactoryReturn | TsmLanguagePlugin | TsmLanguagePlugin[]

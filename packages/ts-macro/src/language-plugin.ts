@@ -1,5 +1,6 @@
 /// <reference types="@volar/typescript" />
 
+import { createFilter } from '@rollup/pluginutils'
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
 import { createJiti } from 'jiti'
 import { TsmVirtualCode } from './virtual-code'
@@ -17,6 +18,11 @@ export const getLanguagePlugins = (
     options = jiti(`${ts.sys.getCurrentDirectory()}/tsm.config`).default
   } catch {}
   if (!options) return []
+
+  const filter = createFilter(
+    options.include,
+    options.exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
+  )
 
   const plugins = sortPlugins(
     (options?.plugins ?? []).flatMap((plugin) => {
@@ -37,8 +43,11 @@ export const getLanguagePlugins = (
         return undefined
       },
       createVirtualCode(uri, rawLanguageId, snapshot) {
-        if (['typescript', 'typescriptreact'].includes(rawLanguageId)) {
-          const filePath = typeof uri === 'string' ? uri : uri.path
+        const filePath = typeof uri === 'string' ? uri : uri.path
+        if (
+          ['typescript', 'typescriptreact'].includes(rawLanguageId) &&
+          filter(filePath)
+        ) {
           const languageId = rawLanguageId === 'typescript' ? 'ts' : 'tsx'
           const ast = ts.createSourceFile(
             `index.${languageId}`,
@@ -52,7 +61,7 @@ export const getLanguagePlugins = (
         extraFileExtensions: [],
         getServiceScript(root) {
           for (const code of forEachEmbeddedCode(root)) {
-            if (code.id === 'root') {
+            if (code.id === `root_${code.languageId}`) {
               return {
                 code,
                 extension: `.${code.languageId}`,

@@ -20,7 +20,7 @@ export const allCodeFeatures = {
 }
 
 export class TsmVirtualCode implements VirtualCode {
-  readonly id = 'root'
+  id: string
   mappings: CodeMapping[]
   embeddedCodes: VirtualCode[] = []
   codes: Code[] = []
@@ -33,6 +33,7 @@ export class TsmVirtualCode implements VirtualCode {
     public readonly languageId: string = 'tsx',
     private readonly plugins: TsmLanguagePlugin[] = [],
   ) {
+    this.id = `root_${this.languageId}`
     this.codes.push(
       `/* placeholder */\n`,
       [`\n`, undefined, 0, allCodeFeatures],
