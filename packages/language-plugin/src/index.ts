@@ -3,8 +3,7 @@
 import { createFilter } from '@rollup/pluginutils'
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
 import { createJiti } from 'jiti'
-import { TsmVirtualCode } from './virtual-code'
-import type { Options, TsmLanguagePlugin } from './types'
+import { TsmVirtualCode, type Options, type TsmLanguagePlugin } from 'ts-macro'
 import type { URI } from 'vscode-uri'
 
 const jiti = createJiti(import.meta.url)

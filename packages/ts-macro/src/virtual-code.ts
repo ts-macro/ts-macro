@@ -1,14 +1,6 @@
 import { toString, type Segment } from 'muggle-string'
-import type { TsmLanguagePlugin } from './types'
-import type {
-  CodeInformation,
-  CodeMapping,
-  Mapping,
-  VirtualCode,
-} from '@volar/language-core'
-
-export type Code = Segment<CodeInformation>
-export { CodeInformation, VirtualCode }
+import type { Code, TsmLanguagePlugin } from './types'
+import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
 
 export const allCodeFeatures = {
   completion: true,

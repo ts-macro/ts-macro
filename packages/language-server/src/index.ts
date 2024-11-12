@@ -1,10 +1,10 @@
+import { getLanguagePlugins } from '@ts-macro/language-plugin'
 import {
   createConnection,
   createServer,
   createTypeScriptProject,
   loadTsdkByPath,
 } from '@volar/language-server/node'
-import { getLanguagePlugins } from 'ts-macro'
 import { create as createCssService } from 'volar-service-css'
 import { create as createEmmetService } from 'volar-service-emmet'
 import { create as createTypeScriptServices } from 'volar-service-typescript'

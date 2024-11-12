@@ -24,8 +24,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@volar/language-server": "~2.4.0",
-    "ts-macro": "workspace:*",
+    "@ts-macro/language-plugin": "workspace:*",
+    "@volar/language-server": "catalog:",
     "volar-service-css": "volar-2.4",
     "volar-service-emmet": "volar-2.4",
     "volar-service-typescript": "volar-2.4"

@@ -1,6 +1,8 @@
 import type { TsmVirtualCode } from './virtual-code'
 import type { FilterPattern } from '@rollup/pluginutils'
+import type { CodeInformation, VirtualCode } from '@volar/language-core'
 import type { VueCompilerOptions } from '@vue/language-core'
+import type { Segment } from 'muggle-string'
 
 export type Options = {
   exclude?: FilterPattern
@@ -32,3 +34,6 @@ export type FactoryReturn<Nested extends boolean = boolean> = (
 export type PluginReturn<UserOptions, Nested extends boolean = boolean> = (
   ...args: undefined extends UserOptions ? [UserOptions] | [] : [UserOptions]
 ) => FactoryReturn<Nested>
+
+export type Code = Segment<CodeInformation>
+export { CodeInformation, VirtualCode }

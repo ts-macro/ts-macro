@@ -29,7 +29,6 @@
     "@volar/vscode": "catalog:",
     "@vscode/vsce": "latest",
     "reactive-vscode": "0.2.7",
-    "ts-macro": "workspace:*",
     "vscode-uri": "catalog:"
   },
   "engines": {
