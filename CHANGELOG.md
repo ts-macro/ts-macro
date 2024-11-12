@@ -1,3 +1,13 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.1...v) (2024-11-12)
+
+
+### Features
+
+* **ts-macro:**  rename fileName to filePath & remove rawText and text options ([f76850d](https://github.com/volarjs/starter/commit/f76850d2b7eda90b66479cac5ebe1096d06f1226))
+* **ts-macro:** add include & exclude option for tsm.config.ts ([11f4d02](https://github.com/volarjs/starter/commit/11f4d0259c494b215ffbc9a2469fc87ccebedcf3))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.0...v) (2024-11-10)
 
 
