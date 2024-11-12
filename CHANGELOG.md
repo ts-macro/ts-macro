@@ -1,3 +1,13 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.3...v) (2024-11-12)
+
+
+### Bug Fixes
+
+* pnpm install error ([2d47ecb](https://github.com/volarjs/starter/commit/2d47ecbb40a70f3368c0dafa5ae3a56696bdad85))
+* **ts-macro:** use filePath instead of fileName for createPlugin ([75d0e0c](https://github.com/volarjs/starter/commit/75d0e0c75143418b8015598587b2c5a6526b0664))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.2...v) (2024-11-12)
 
 
