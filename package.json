@@ -30,7 +30,7 @@
   },
   "pnpm": {
     "overrides": {
-      "vscode-uri": "catalog:"
+      "vscode-uri": "^3.0.8"
     }
   },
   "prettier": "@sxzz/prettier-config"
