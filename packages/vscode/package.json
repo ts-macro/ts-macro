@@ -25,12 +25,12 @@
     "@ts-macro/language-server": "workspace:*",
     "@ts-macro/typescript-plugin": "workspace:*",
     "@types/vscode": "^1.85.0",
-    "@volar/language-server": "^2.4.8",
-    "@volar/vscode": "^2.4.8",
+    "@volar/language-server": "catalog:",
+    "@volar/vscode": "catalog:",
     "@vscode/vsce": "latest",
     "reactive-vscode": "0.2.7",
     "ts-macro": "workspace:*",
-    "vscode-uri": "^3.0.8"
+    "vscode-uri": "catalog:"
   },
   "engines": {
     "vscode": "^1.85.0"
