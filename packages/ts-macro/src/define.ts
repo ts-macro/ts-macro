@@ -18,7 +18,7 @@ export function createPlugin(factory: any) {
       })
       if (result.resolveVirtualCode) {
         result.resolveEmbeddedCode = (
-          fileName: string,
+          filePath: string,
           sfc: Sfc,
           embeddedFile: VueEmbeddedCode,
         ) => {
@@ -28,7 +28,7 @@ export function createPlugin(factory: any) {
             result.resolveVirtualCode({
               ast,
               source,
-              fileName,
+              filePath,
               id: embeddedFile.id,
               codes: embeddedFile.content,
               languageId: embeddedFile.lang,
