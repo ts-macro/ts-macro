@@ -13,14 +13,16 @@ export const getLanguagePlugins = (
   compilerOptions: import('typescript').CompilerOptions,
 ): LanguagePlugin<string | URI>[] => {
   let options: Options | undefined
+  const currentDirectory = ts.sys.getCurrentDirectory()
   try {
-    options = jiti(`${ts.sys.getCurrentDirectory()}/tsm.config`).default
+    options = jiti(`${currentDirectory}/tsm.config`).default
   } catch {}
   if (!options) return []
 
   const filter = createFilter(
     options.include,
     options.exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
+    { resolve: currentDirectory },
   )
 
   const plugins = sortPlugins(

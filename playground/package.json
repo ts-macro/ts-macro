@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@ts-macro/tsc": "workspace:*",
-    "@vue-macros/jsx-directive": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-directive@004d62f",
-    "@vue-macros/jsx-macros": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@004d62f",
-    "@vue-macros/volar": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/volar@004d62f",
+    "@vue-macros/jsx-directive": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-directive@bbcceae",
+    "@vue-macros/jsx-macros": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@bbcceae",
+    "@vue-macros/volar": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/volar@bbcceae",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-macro": "workspace:*"
