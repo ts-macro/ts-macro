@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.4...v) (2024-11-13)
+
+
+### Bug Fixes
+
+* **typescript:** add resolve option for createFilter ([37645bb](https://github.com/volarjs/starter/commit/37645bbcbce08caf3af311d4f9585dbc44c3f06c))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.3...v) (2024-11-12)
 
 
