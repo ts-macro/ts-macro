@@ -13,7 +13,7 @@ export type Options = {
 export type Plugin = FactoryReturn | TsmLanguagePlugin | TsmLanguagePlugin[]
 
 export type TsmLanguagePlugin = {
-  name?: string
+  name: string
   enforce?: 'pre' | 'post'
   resolveVirtualCode?: (virtualCode: TsmVirtualCode) => void
 }

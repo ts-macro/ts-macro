@@ -13,7 +13,12 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 ## Usage
 
 1. Install [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro)
-2. Create `tsm.config.ts` at the same level of `tsconfig.json` .
+
+2. Create `tsm.config.ts` at the same level of `tsconfig.json`.
+   > `TS Macro` supports automatic registration of Volar plugins from vite.config.ts, similar to `xxx.d.ts`. \
+     For plugin authors, you need to export a `volar` file, and `TS Macro` will automatically load the plugin and share userOptions with the vite plugin. [Example](https://github.com/zhiyuanzmj/unplugin-vue-reactivity-function/tree/main/src). \
+     For plugin users, you only need to install the `TS Macro` VSCode plugin, and there's no need to write tsm.config.ts.
+
 3. Writing your first plugin.
 
    ```ts

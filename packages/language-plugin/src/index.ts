@@ -3,7 +3,13 @@
 import { createFilter } from '@rollup/pluginutils'
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
 import { createJiti } from 'jiti'
-import { TsmVirtualCode, type Options, type TsmLanguagePlugin } from 'ts-macro'
+import {
+  TsmVirtualCode,
+  type Options,
+  type Plugin,
+  type TsmLanguagePlugin,
+} from 'ts-macro'
+import { getPluginsFromVite } from './config'
 import type { URI } from 'vscode-uri'
 
 const jiti = createJiti(import.meta.url)
@@ -13,29 +19,38 @@ export const getLanguagePlugins = (
   compilerOptions: import('typescript').CompilerOptions,
 ): LanguagePlugin<string | URI>[] => {
   let options: Options | undefined
+  const plugins: Plugin[] = []
   const currentDirectory = ts.sys.getCurrentDirectory()
   try {
     options = jiti(`${currentDirectory}/tsm.config`).default
+    plugins.push(...(options?.plugins ?? []))
   } catch {}
-  if (!options) return []
 
-  const filter = createFilter(
-    options.include,
-    options.exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
-    { resolve: currentDirectory },
-  )
+  const vitePlugins = getPluginsFromVite(currentDirectory)
+  if (vitePlugins) {
+    plugins.push(...vitePlugins)
+  }
 
-  const plugins = sortPlugins(
-    (options?.plugins ?? []).flatMap((plugin) => {
+  const resolvedPlugins = resolvePlugins(
+    plugins.flatMap((plugin) => {
       if (typeof plugin === 'function') {
-        return plugin({
-          ts,
-          compilerOptions,
-        })
+        try {
+          return plugin({
+            ts,
+            compilerOptions,
+          })
+        } catch {}
       } else {
         return plugin
       }
     }),
+  )
+  if (!resolvedPlugins.length) return []
+
+  const filter = createFilter(
+    options?.include,
+    options?.exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
+    { resolve: currentDirectory },
   )
 
   return [
@@ -55,7 +70,7 @@ export const getLanguagePlugins = (
             snapshot.getText(0, snapshot.getLength()).toString(),
             99 satisfies typeof ts.ScriptTarget.Latest,
           )
-          return new TsmVirtualCode(filePath, ast, languageId, plugins)
+          return new TsmVirtualCode(filePath, ast, languageId, resolvedPlugins)
         }
       },
       typescript: {
@@ -76,18 +91,24 @@ export const getLanguagePlugins = (
   ]
 }
 
-function sortPlugins(plugins: TsmLanguagePlugin[]): TsmLanguagePlugin[] {
+function resolvePlugins(
+  plugins: (TsmLanguagePlugin | undefined)[],
+): TsmLanguagePlugin[] {
   const prePlugins: TsmLanguagePlugin[] = []
   const postPlugins: TsmLanguagePlugin[] = []
   const normalPlugins: TsmLanguagePlugin[] = []
 
   if (plugins) {
     plugins.flat().forEach((p) => {
+      if (!p) return
       if (p.enforce === 'pre') prePlugins.push(p)
       else if (p.enforce === 'post') postPlugins.push(p)
       else normalPlugins.push(p)
     })
   }
+  const result = [...prePlugins, ...normalPlugins, ...postPlugins]
 
-  return [...prePlugins, ...normalPlugins, ...postPlugins]
+  // unique
+  const map = new Map()
+  return result.filter((a) => !map.has(a.name) && map.set(a.name, 1))
 }
