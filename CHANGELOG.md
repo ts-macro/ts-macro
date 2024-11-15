@@ -1,3 +1,17 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.5...v) (2024-11-15)
+
+
+### Bug Fixes
+
+* **vscode:** prevent restart error ([a4d80bc](https://github.com/volarjs/starter/commit/a4d80bc6f1e190bcaf47fa69b07944b9fd9c8919))
+
+
+### Features
+
+* **language-plugin:** support automatically load volar plugin from vite.config.ts ([12474a0](https://github.com/volarjs/starter/commit/12474a0b674ecd3a804aa8e3f3caab4740cafcf5))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.4...v) (2024-11-13)
 
 
