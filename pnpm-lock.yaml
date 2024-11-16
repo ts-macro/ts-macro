@@ -71,9 +71,6 @@ importers:
       jiti:
         specifier: ^2.3.3
         version: 2.3.3
-      magicast:
-        specifier: ^0.3.5
-        version: 0.3.5
       ts-macro:
         specifier: workspace:*
         version: link:../ts-macro
@@ -182,6 +179,9 @@ importers:
       ts-macro:
         specifier: workspace:*
         version: link:../packages/ts-macro
+      unplugin-vue-reactivity-function:
+        specifier: ^0.3.3
+        version: 0.3.3(rollup@4.24.3)(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3))
     devDependencies:
       '@types/node':
         specifier: ^22.9.0
@@ -1246,6 +1246,15 @@ packages:
     resolution: {tarball: https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/boolean-prop@bbcceae}
     version: 0.5.2
     engines: {node: '>=16.14.0'}
+
+  '@vue-macros/common@1.15.0':
+    resolution: {integrity: sha512-yg5VqW7+HRfJGimdKvFYzx8zorHUYo0hzPwuraoC1DWa7HHazbTMoVsHDvk3JHa1SGfSL87fRnzmlvgjEHhszA==}
+    engines: {node: '>=16.14.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    peerDependenciesMeta:
+      vue:
+        optional: true
 
   '@vue-macros/common@https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/common@bbcceae':
     resolution: {tarball: https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/common@bbcceae}
@@ -3397,6 +3406,9 @@ packages:
   ts-macro@0.1.4:
     resolution: {integrity: sha512-UKSQw9C+HTpFBtiweU8BNgSFDS/YAsjDX1u6S3r80f97KTqT0HOHSZ8FI8suuFagPTGU37IEjA89h9FaRoV1hw==}
 
+  ts-macro@0.1.6:
+    resolution: {integrity: sha512-xUAUoc24AyPVqNZRtVgrcgdc7ei2/7evEWa0eM1C0bjQpdP4F7w3MSYk2HYCQKF0oopJxANueXm/BNR7M13T2Q==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -3521,6 +3533,10 @@ packages:
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
+
+  unplugin-vue-reactivity-function@0.3.3:
+    resolution: {integrity: sha512-J9MfyvhtDZnrK8nWFdsv3/Vz4+no3Zwpll1xhw33qjkdsy/XKkYjQ3R7oUacRsn4riFnC9stQPrhyZ5Q1nkSvw==}
+    engines: {node: '>=16.14.0'}
 
   unplugin@1.15.0:
     resolution: {integrity: sha512-jTPIs63W+DUEDW207ztbaoO7cQ4p5aVaB823LSlxpsFEU3Mykwxf3ZGC/wzxFJeZlASZYgVrWeo7LgOrqJZ8RA==}
@@ -4724,6 +4740,19 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - vue
+
+  '@vue-macros/common@1.15.0(rollup@4.24.3)(vue@3.5.12(typescript@5.6.3))':
+    dependencies:
+      '@babel/types': 7.26.0
+      '@rollup/pluginutils': 5.1.3(rollup@4.24.3)
+      '@vue/compiler-sfc': 3.5.12
+      ast-kit: 1.3.1
+      local-pkg: 0.5.0
+      magic-string-ast: 0.6.2
+    optionalDependencies:
+      vue: 3.5.12(typescript@5.6.3)
+    transitivePeerDependencies:
+      - rollup
 
   '@vue-macros/common@https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/common@bbcceae(rollup@4.24.3)(vue@3.5.12(typescript@5.6.3))':
     dependencies:
@@ -6275,6 +6304,7 @@ snapshots:
       '@babel/parser': 7.26.2
       '@babel/types': 7.26.0
       source-map-js: 1.2.1
+    optional: true
 
   make-synchronized@0.2.9: {}
 
@@ -7305,6 +7335,16 @@ snapshots:
       - rollup
       - typescript
 
+  ts-macro@0.1.6(rollup@4.24.3)(typescript@5.6.3):
+    dependencies:
+      '@rollup/pluginutils': 5.1.3(rollup@4.24.3)
+      '@volar/language-core': 2.4.10
+      '@vue/language-core': 2.1.10(typescript@5.6.3)
+      muggle-string: 0.4.1
+    transitivePeerDependencies:
+      - rollup
+      - typescript
+
   tslib@2.8.1: {}
 
   tsup@8.3.5(jiti@2.3.3)(postcss@8.4.47)(tsx@4.19.2)(typescript@5.6.3)(yaml@2.6.0):
@@ -7436,6 +7476,18 @@ snapshots:
       unist-util-visit-parents: 6.0.1
 
   universalify@2.0.1: {}
+
+  unplugin-vue-reactivity-function@0.3.3(rollup@4.24.3)(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3)):
+    dependencies:
+      '@vue-macros/common': 1.15.0(rollup@4.24.3)(vue@3.5.12(typescript@5.6.3))
+      muggle-string: 0.4.1
+      ts-macro: 0.1.6(rollup@4.24.3)(typescript@5.6.3)
+      unplugin: 1.15.0
+    transitivePeerDependencies:
+      - rollup
+      - typescript
+      - vue
+      - webpack-sources
 
   unplugin@1.15.0:
     dependencies:

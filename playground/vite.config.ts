@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react'
 import jsxDirective from '@vue-macros/jsx-directive/vite'
 import jsxMacros from '@vue-macros/jsx-macros/vite'
+import reactivityFunction from 'unplugin-vue-reactivity-function/vite'
 import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 
@@ -12,5 +13,8 @@ export default defineConfig({
     jsxDirective(),
     react(),
     Inspect(),
+    reactivityFunction({
+      ignore: ['$fetch'],
+    }),
   ],
 })

@@ -12,6 +12,8 @@ import {
 import { getPluginsFromVite } from './config'
 import type { URI } from 'vscode-uri'
 
+export * from './config'
+
 const jiti = createJiti(import.meta.url)
 
 export const getLanguagePlugins = (
@@ -26,7 +28,7 @@ export const getLanguagePlugins = (
     plugins.push(...(options?.plugins ?? []))
   } catch {}
 
-  const vitePlugins = getPluginsFromVite(currentDirectory)
+  const vitePlugins = getPluginsFromVite(currentDirectory, ts)
   if (vitePlugins) {
     plugins.push(...vitePlugins)
   }

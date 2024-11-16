@@ -14,7 +14,8 @@
     "@vue-macros/volar": "https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/volar@bbcceae",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ts-macro": "workspace:*"
+    "ts-macro": "workspace:*",
+    "unplugin-vue-reactivity-function": "^0.3.3"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
