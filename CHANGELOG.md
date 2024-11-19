@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.7...v) (2024-11-19)
+
+
+### Features
+
+* **ts-macro:** support nested plugins ([fd86337](https://github.com/volarjs/starter/commit/fd8633709a6d2bf0140f07b32763d541203d4dc2))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.6...v) (2024-11-16)
 
 
