@@ -12,36 +12,39 @@ export function createPlugin(factory: any) {
   return (options: any) => {
     // compatible with @vue/language-tools
     if (options?.modules) {
-      const result: any = factory({
-        ts: options.modules.typescript,
-        ...options,
-      })
-      if (result.resolveVirtualCode) {
-        result.resolveEmbeddedCode = (
-          filePath: string,
-          sfc: Sfc,
-          embeddedFile: VueEmbeddedCode,
-        ) => {
-          for (const source of ['script', 'scriptSetup'] as const) {
-            const ast = sfc[source]?.ast
-            if (!ast) continue
-            result.resolveVirtualCode({
-              ast,
-              source,
-              filePath,
-              id: embeddedFile.id,
-              codes: embeddedFile.content,
-              languageId: embeddedFile.lang,
-              embeddedCodes: embeddedFile.embeddedCodes,
-              linkedCodeMappings: embeddedFile.linkedCodeMappings,
-            })
+      return [
+        factory({
+          ts: options.modules.typescript,
+          ...options,
+        }),
+      ].flatMap((result) => {
+        if (result.resolveVirtualCode) {
+          result.resolveEmbeddedCode ??= (
+            filePath: string,
+            sfc: Sfc,
+            embeddedFile: VueEmbeddedCode,
+          ) => {
+            for (const source of ['script', 'scriptSetup'] as const) {
+              const ast = sfc[source]?.ast
+              if (!ast) continue
+              result.resolveVirtualCode({
+                ast,
+                source,
+                filePath,
+                id: embeddedFile.id,
+                codes: embeddedFile.content,
+                languageId: embeddedFile.lang,
+                embeddedCodes: embeddedFile.embeddedCodes,
+                linkedCodeMappings: embeddedFile.linkedCodeMappings,
+              })
+            }
           }
         }
-        result.order =
+        result.order ??=
           result.enforce === 'pre' ? -1 : result.enforce === 'post' ? 1 : 0
         result.version ??= 2.1
         return result
-      }
+      })
     }
     return (context: any) => factory(context, options)
   }
