@@ -61,21 +61,23 @@ export function getPluginsFromVite(
         if (!item) return
 
         for (const path of [
-          `${item.from}/volar`,
           // support unplugin
           `${item.from.split('/').slice(0, -1).join('/')}/volar`,
+          `${item.from}/volar`,
         ]) {
           try {
             const from = require.resolve(path, {
               paths: [configDir],
             })
+            let module = require(from)
+            module = module?.default ?? module
             return ts.isCallExpression(plugin)
-              ? require(from)(
+              ? module(
                   plugin.arguments[0]
                     ? eval(`(${getText(plugin.arguments[0], ast, ts)})`)
                     : undefined,
                 )
-              : require(from)
+              : module(from)
           } catch {}
         }
       })
