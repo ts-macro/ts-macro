@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.8...v) (2024-11-25)
+
+
+### Features
+
+* **language-plugin:** support export default plugin ([292a83d](https://github.com/volarjs/starter/commit/292a83de3a1da356efe3d6af196865334fb96059))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.7...v) (2024-11-19)
 
 
