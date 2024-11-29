@@ -26,11 +26,7 @@ export class TsmVirtualCode implements VirtualCode {
     private readonly plugins: TsmLanguagePlugin[] = [],
   ) {
     this.id = `root_${this.languageId}`
-    this.codes.push(
-      `/* placeholder */\n`,
-      [`\n`, undefined, 0, allCodeFeatures],
-      [ast.text, undefined, 0, allCodeFeatures],
-    )
+    this.codes.push([ast.text, undefined, 0, allCodeFeatures])
 
     for (const plugin of this.plugins) {
       try {
@@ -39,6 +35,13 @@ export class TsmVirtualCode implements VirtualCode {
         console.error(`[${plugin.name}]:`, error)
       }
     }
+
+    this.codes.unshift(`/* placeholder */\n`, [
+      `\n`,
+      undefined,
+      0,
+      allCodeFeatures,
+    ])
 
     this.mappings = buildMappings(this.codes)
     const text = toString(this.codes)
