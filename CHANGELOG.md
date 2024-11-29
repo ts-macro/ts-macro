@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.9...v) (2024-11-29)
+
+
+### Features
+
+* add placeholder comment after all plugins have finished executing ([ed2a31f](https://github.com/volarjs/starter/commit/ed2a31ff0d5bdbf206cf1affa99ab56d176c40e8))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.8...v) (2024-11-25)
 
 

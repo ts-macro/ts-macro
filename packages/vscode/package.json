@@ -1,6 +1,6 @@
 {
   "name": "vscode-ts-macro",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Define TS(X) macro powered by Volar.js",
   "repository": {
     "type": "git",
