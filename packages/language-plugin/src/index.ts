@@ -25,13 +25,12 @@ export const getLanguagePlugins = (
   const currentDirectory = ts.sys.getCurrentDirectory()
   try {
     options = jiti(`${currentDirectory}/tsm.config`).default
+    const vitePlugins = getPluginsFromVite(currentDirectory, ts)
+    if (vitePlugins) {
+      plugins.push(...vitePlugins)
+    }
     plugins.push(...(options?.plugins ?? []))
   } catch {}
-
-  const vitePlugins = getPluginsFromVite(currentDirectory, ts)
-  if (vitePlugins) {
-    plugins.push(...vitePlugins)
-  }
 
   const resolvedPlugins = resolvePlugins(
     plugins.flatMap((plugin) => {
@@ -112,5 +111,8 @@ function resolvePlugins(
 
   // unique
   const map = new Map()
-  return result.filter((a) => !map.has(a.name) && map.set(a.name, 1))
+  for (const [index, plugin] of result.entries()) {
+    map.set(plugin.name || `plugin-${index}`, plugin)
+  }
+  return [...map.values()]
 }

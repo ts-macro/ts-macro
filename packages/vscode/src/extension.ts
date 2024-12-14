@@ -66,7 +66,8 @@ export = defineExtension(async () => {
     client.clientOptions.initializationOptions = await getInitializationOptions(
       extensionContext.value!,
     )
-    return client.restart()
+    await client.stop()
+    return client.start()
   }
 
   const watcher = useFsWatcher(['**/tsm.config.*'])

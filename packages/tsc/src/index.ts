@@ -2,10 +2,9 @@ import { getLanguagePlugins } from '@ts-macro/language-plugin'
 import { runTsc } from '@volar/typescript/lib/quickstart/runTsc'
 
 export function run() {
-  const tscSdk = require.resolve('typescript/lib/tsc')
   const main = () => {
     runTsc(
-      tscSdk,
+      require.resolve('typescript/lib/tsc'),
       {
         extraSupportedExtensions: ['.ts', '.tsx'],
         extraExtensionsToRemove: [],
@@ -15,6 +14,7 @@ export function run() {
           languagePlugins: getLanguagePlugins(ts, runTscOptions.options),
         }
       },
+      `require('typescript')`,
     )
   }
 
