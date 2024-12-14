@@ -1,3 +1,12 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.10...v) (2024-12-14)
+
+
+### Features
+
+* support ts 5.7 ([c5f026d](https://github.com/volarjs/starter/commit/c5f026d59abb52de82ec765866be9903ca42a527))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.9...v) (2024-11-29)
 
 
