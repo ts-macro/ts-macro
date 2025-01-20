@@ -1,5 +1,3 @@
-import { getText } from './utils'
-
 export function getPluginsFromVite(
   configDir: string,
   ts: typeof import('typescript'),
@@ -25,7 +23,7 @@ export function getPluginsFromVite(
         for (const prop of node.expression.arguments[0].properties) {
           if (
             ts.isPropertyAssignment(prop) &&
-            getText(prop.name, ast, ts) === 'plugins' &&
+            prop.name.getText(ast) === 'plugins' &&
             ts.isArrayLiteralExpression(prop.initializer)
           ) {
             exportPlugins = [...prop.initializer.elements]
@@ -36,15 +34,15 @@ export function getPluginsFromVite(
         if (node.importClause.namedBindings) {
           ts.forEachChild(node.importClause.namedBindings, (child) => {
             if (ts.isImportSpecifier(child)) {
-              locals.push(getText(child.name, ast, ts))
+              locals.push(child.name.getText(ast))
             }
           })
         } else {
-          locals.push(getText(node.importClause, ast, ts))
+          locals.push(node.importClause.getText(ast))
         }
         imports.push({
           locals,
-          from: getText(node.moduleSpecifier, ast, ts).slice(1, -1),
+          from: node.moduleSpecifier.getText(ast).slice(1, -1),
         })
       }
     }
@@ -52,11 +50,10 @@ export function getPluginsFromVite(
 
     return exportPlugins
       .map((plugin) => {
-        const pluginName = getText(
-          ts.isCallExpression(plugin) ? plugin.expression : plugin,
-          ast,
-          ts,
-        )
+        const pluginName = (
+          ts.isCallExpression(plugin) ? plugin.expression : plugin
+        ).getText(ast)
+
         const item = imports.find((i) => i.locals.includes(pluginName))
         if (!item) return
 
@@ -74,7 +71,7 @@ export function getPluginsFromVite(
             return ts.isCallExpression(plugin)
               ? module(
                   plugin.arguments[0]
-                    ? eval(`(${getText(plugin.arguments[0], ast, ts)})`)
+                    ? eval(`(${plugin.arguments[0].getText(ast)})`)
                     : undefined,
                 )
               : module(from)

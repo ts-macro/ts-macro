@@ -1,37 +1,16 @@
 /// <reference types="@volar/typescript" />
 
-import { createFilter } from '@rollup/pluginutils'
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
-import { createJiti } from 'jiti'
-import {
-  TsmVirtualCode,
-  type Options,
-  type Plugin,
-  type TsmLanguagePlugin,
-} from 'ts-macro'
-import { getPluginsFromVite } from './config'
+import { createFilter } from 'rollup-utils'
+import { TsmVirtualCode, type TsmLanguagePlugin } from 'ts-macro'
+import type { Options } from './options'
 import type { URI } from 'vscode-uri'
-
-export * from './config'
-
-const jiti = createJiti(import.meta.url)
 
 export const getLanguagePlugins = (
   ts: typeof import('typescript'),
   compilerOptions: import('typescript').CompilerOptions,
+  { exclude, include, plugins }: Options,
 ): LanguagePlugin<string | URI>[] => {
-  let options: Options | undefined
-  const plugins: Plugin[] = []
-  const currentDirectory = ts.sys.getCurrentDirectory()
-  try {
-    options = jiti(`${currentDirectory}/tsm.config`).default
-    const vitePlugins = getPluginsFromVite(currentDirectory, ts)
-    if (vitePlugins) {
-      plugins.push(...vitePlugins)
-    }
-    plugins.push(...(options?.plugins ?? []))
-  } catch {}
-
   const resolvedPlugins = resolvePlugins(
     plugins.flatMap((plugin) => {
       if (typeof plugin === 'function') {
@@ -49,9 +28,9 @@ export const getLanguagePlugins = (
   if (!resolvedPlugins.length) return []
 
   const filter = createFilter(
-    options?.include,
-    options?.exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
-    { resolve: currentDirectory },
+    include,
+    exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
+    { resolve: ts.sys?.getCurrentDirectory() },
   )
 
   return [

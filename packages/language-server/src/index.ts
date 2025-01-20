@@ -1,4 +1,5 @@
 import { getLanguagePlugins } from '@ts-macro/language-plugin'
+import { getOptions } from '@ts-macro/language-plugin/options'
 import {
   createConnection,
   createServer,
@@ -31,7 +32,11 @@ connection.onInitialize(async (params) => {
           configFileName,
         )
         return {
-          languagePlugins: getLanguagePlugins(tsdk.typescript, compilerOptions),
+          languagePlugins: getLanguagePlugins(
+            tsdk.typescript,
+            compilerOptions,
+            getOptions(tsdk.typescript),
+          ),
         }
       },
     ),

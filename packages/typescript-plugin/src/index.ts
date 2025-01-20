@@ -1,4 +1,5 @@
 import { getLanguagePlugins } from '@ts-macro/language-plugin'
+import { getOptions } from '@ts-macro/language-plugin/options'
 import { createLanguageServicePlugin } from '@volar/typescript/lib/quickstart/createLanguageServicePlugin'
 
 const plugin = createLanguageServicePlugin((ts, info) => {
@@ -8,6 +9,7 @@ const plugin = createLanguageServicePlugin((ts, info) => {
     languagePlugins: getLanguagePlugins(
       ts,
       info.languageServiceHost.getCompilationSettings(),
+      getOptions(ts),
     ),
   }
 })

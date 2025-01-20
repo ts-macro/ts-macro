@@ -1,4 +1,5 @@
 import { getLanguagePlugins } from '@ts-macro/language-plugin'
+import { getOptions } from '@ts-macro/language-plugin/options'
 import { runTsc } from '@volar/typescript/lib/quickstart/runTsc'
 
 export function run() {
@@ -11,7 +12,11 @@ export function run() {
       },
       (ts, runTscOptions) => {
         return {
-          languagePlugins: getLanguagePlugins(ts, runTscOptions.options),
+          languagePlugins: getLanguagePlugins(
+            ts,
+            runTscOptions.options,
+            getOptions(ts),
+          ),
         }
       },
       `require('typescript')`,

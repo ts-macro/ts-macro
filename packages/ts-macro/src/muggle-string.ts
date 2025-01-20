@@ -1,6 +1,18 @@
-import { replaceSourceRange, type Segment } from 'muggle-string'
-
-export * from 'muggle-string'
+import {
+  create,
+  getLength,
+  getStack,
+  offsetStack,
+  replace,
+  replaceAll,
+  replaceSourceRange,
+  resetOffsetStack,
+  setTracking,
+  toString,
+  track,
+  type Segment,
+  type StackNode,
+} from 'muggle-string'
 
 export function replaceRange<T extends Segment<any>>(
   segments: T[],
@@ -15,4 +27,19 @@ export function replaceRange<T extends Segment<any>>(
     endOffset,
     ...newSegments,
   )
+}
+
+export {
+  create,
+  getLength,
+  getStack,
+  offsetStack,
+  replace,
+  replaceAll,
+  resetOffsetStack,
+  setTracking,
+  toString,
+  track,
+  type Segment,
+  type StackNode,
 }

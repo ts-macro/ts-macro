@@ -14,6 +14,25 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
+    "./options": {
+      "dev": "./src/options.ts",
+      "require": "./dist/options.js",
+      "import": "./dist/options.mjs"
+    },
+    "./*": [
+      "./*",
+      "./*.d.ts"
+    ]
+  },
+  "publishConfig": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./options": {
+      "require": "./dist/options.js",
+      "import": "./dist/options.mjs"
+    },
     "./*": [
       "./*",
       "./*.d.ts"
@@ -25,10 +44,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.3",
     "@volar/language-core": "catalog:",
     "@volar/typescript": "catalog:",
     "jiti": "^2.3.3",
+    "rollup-utils": "^0.0.1",
     "ts-macro": "workspace:*",
     "vscode-uri": "catalog:"
   }
