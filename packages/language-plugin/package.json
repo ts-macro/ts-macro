@@ -47,7 +47,7 @@
     "@volar/language-core": "catalog:",
     "@volar/typescript": "catalog:",
     "jiti": "^2.3.3",
-    "rollup-utils": "^0.0.1",
+    "rollup-utils": "^0.0.2",
     "ts-macro": "workspace:*",
     "vscode-uri": "catalog:"
   }

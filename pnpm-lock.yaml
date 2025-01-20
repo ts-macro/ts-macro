@@ -72,8 +72,8 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
       rollup-utils:
-        specifier: ^0.0.1
-        version: 0.0.1(rollup@4.28.1)
+        specifier: ^0.0.2
+        version: 0.0.2(rollup@4.28.1)
       ts-macro:
         specifier: workspace:*
         version: link:../ts-macro
@@ -3461,8 +3461,8 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  rollup-utils@0.0.1:
-    resolution: {integrity: sha512-+aXa+q+uUN+jv+X408kTdUAtVHoAKmocrRXkxgcFny+8+db40L7rIWkxtL9g3kljZqA0TE1TlZtK/agDJNeAEw==}
+  rollup-utils@0.0.2:
+    resolution: {integrity: sha512-AG1m8fwwkm20WELaXubxgs8ir1gEN7sv+1FfFyEPJA8HtPjL0JndzpLIVzbXyQ5meBfWfv8OnouZ9AC+OsNP+A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
@@ -7612,7 +7612,7 @@ snapshots:
 
   reusify@1.0.4: {}
 
-  rollup-utils@0.0.1(rollup@4.28.1):
+  rollup-utils@0.0.2(rollup@4.28.1):
     dependencies:
       '@types/estree': 1.0.6
       estree-walker: 2.0.2
