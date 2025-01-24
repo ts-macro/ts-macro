@@ -10,11 +10,9 @@
 
 This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://github.com/volarjs/volar.js).
 
-> [REPL](https://repl.zmjs.dev)
-
 ## Usage
 
-1. Install [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro)
+1. Install the [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro), or use a [REPL](https://repl.zmjs.dev) that supports ts-macro.
 
 2. Create `tsm.config.ts` at the same level of `tsconfig.json`.
    > `TS Macro` supports automatic registration of Volar plugins from vite.config.ts, similar to `xxx.d.ts`. \
