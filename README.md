@@ -55,11 +55,12 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 
            function walk(
              node: import('typescript').Node,
-             parent: import('typescript').Node,
            ) {
+             ts.forEachChild(node, walk)
+
              if (
                ts.isCallExpression(node) &&
-               node.expression.getText(ast).startsWith(userOptions.macro)
+               node.expression.getText(ast) === userOptions.macro
              ) {
                // Add generic type for defineStyle.
                replaceRange(
@@ -69,10 +70,6 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                  '<{ foo: string }>',
                )
              }
-
-             ts.forEachChild(node, (child) => {
-               walk(child, node)
-             })
            }
          },
        }
