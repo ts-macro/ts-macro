@@ -10,6 +10,8 @@
 
 This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://github.com/volarjs/volar.js).
 
+> [REPL](https://repl.zmjs.dev)
+
 ## Usage
 
 1. Install [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro)
