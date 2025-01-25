@@ -108,7 +108,7 @@ Usage in package.json.
 ```json
 {
   "scripts": {
-    "typecheck": "tsmc --onEmit"
+    "typecheck": "tsmc --noEmit"
   }
 }
 ```
