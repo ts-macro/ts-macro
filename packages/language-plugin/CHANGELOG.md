@@ -1,5 +1,12 @@
 # @ts-macro/language-plugin
 
+## 0.1.17
+### Patch Changes
+
+- remove code
+- Updated dependencies
+  - ts-macro@0.1.17
+
 ## 0.1.16
 ### Patch Changes
 
