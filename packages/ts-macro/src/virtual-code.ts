@@ -15,7 +15,6 @@ export class TsmVirtualCode implements VirtualCode {
   id: string
   mappings: CodeMapping[]
   embeddedCodes: VirtualCode[] = []
-  code = ''
   codes: Code[] = []
   snapshot: import('typescript').IScriptSnapshot
   source: 'script' | 'scriptSetup' | undefined
@@ -46,10 +45,10 @@ export class TsmVirtualCode implements VirtualCode {
       ])
 
     this.mappings = buildMappings(this.codes)
-    this.code = toString(this.codes)
+    const text = toString(this.codes)
     this.snapshot = {
-      getLength: () => this.code.length,
-      getText: (start, end) => this.code.slice(start, end),
+      getLength: () => text.length,
+      getText: (start, end) => text.slice(start, end),
       getChangeRange() {
         return undefined
       },
