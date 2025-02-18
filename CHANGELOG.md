@@ -3,6 +3,15 @@
 
 ### Features
 
+* **ts-macro:** add code for TsmVirtualCode ([c7510d5](https://github.com/volarjs/starter/commit/c7510d5d9e164d4049b69c84e3361c66cfb1d065))
+
+
+
+# [](https://github.com/volarjs/starter/compare/v0.1.13...v) (2025-02-18)
+
+
+### Features
+
 * **ts-macro:** add code for TsmVirtualCode ([55c4fb8](https://github.com/volarjs/starter/commit/55c4fb88420b4e1d99cfd070e62ca7ee5e887412))
 
 
