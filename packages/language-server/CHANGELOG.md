@@ -1,5 +1,12 @@
 # @ts-macro/language-server
 
+## 0.1.18
+### Patch Changes
+
+- support nested plugins for @vue/language-tools
+- Updated dependencies
+  - @ts-macro/language-plugin@0.1.18
+
 ## 0.1.17
 ### Patch Changes
 

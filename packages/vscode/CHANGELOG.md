@@ -1,5 +1,10 @@
 # vscode-ts-macro
 
+## 0.1.18
+### Patch Changes
+
+- support nested plugins for @vue/language-tools
+
 ## 0.1.17
 ### Patch Changes
 
