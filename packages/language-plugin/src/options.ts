@@ -2,7 +2,7 @@ import { createJiti } from 'jiti'
 import { getPluginsFromVite } from './config'
 import type { Options as _Options, Plugin } from 'ts-macro'
 
-const jiti = createJiti(import.meta.url)
+export const jiti = createJiti(import.meta.url)
 
 export type Options = ReturnType<typeof getOptions>
 
