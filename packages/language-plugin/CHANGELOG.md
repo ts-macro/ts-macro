@@ -1,5 +1,12 @@
 # @ts-macro/language-plugin
 
+## 0.1.19
+### Patch Changes
+
+- support load esm plugins
+- Updated dependencies
+  - ts-macro@0.1.19
+
 ## 0.1.18
 ### Patch Changes
 
