@@ -1,3 +1,17 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.20...v) (2025-03-09)
+
+
+### Bug Fixes
+
+* lint ([c95e616](https://github.com/ts-macro/ts-macro/commit/c95e6169e42ad29c33068f2dce29a5cd88bdc7a3))
+
+
+### Features
+
+* **language-plugin:** support auto load  plugins without tsm.config.ts ([13c08e9](https://github.com/ts-macro/ts-macro/commit/13c08e9df1c2aaa0ec8e1f198f0e6c6c3029abf1))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.13...v) (2025-03-09)
 
 
