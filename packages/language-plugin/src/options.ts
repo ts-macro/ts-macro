@@ -12,14 +12,22 @@ export function getOptions(ts: typeof import('typescript')) {
   const currentDirectory = ts.sys.getCurrentDirectory()
   try {
     options = jiti(`${currentDirectory}/tsm.config`).default
-    const vitePlugins = getPluginsFromVite(currentDirectory, ts)
-    if (vitePlugins) {
-      plugins.push(...vitePlugins)
+  } catch (error: any) {
+    if (
+      !(
+        error.code === 'MODULE_NOT_FOUND' &&
+        error.message.includes(`tsm.config'`)
+      )
+    ) {
+      console.error(error)
     }
-    plugins.push(...(options?.plugins ?? []))
-  } catch (error) {
-    console.error(error)
   }
+
+  const vitePlugins = getPluginsFromVite(currentDirectory, ts)
+  if (vitePlugins) {
+    plugins.push(...vitePlugins)
+  }
+  plugins.push(...(options?.plugins ?? []))
 
   return {
     ...options,
