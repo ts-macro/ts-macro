@@ -17,7 +17,9 @@ export function getOptions(ts: typeof import('typescript')) {
       plugins.push(...vitePlugins)
     }
     plugins.push(...(options?.plugins ?? []))
-  } catch {}
+  } catch (error) {
+    console.error(error)
+  }
 
   return {
     ...options,
