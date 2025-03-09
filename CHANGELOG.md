@@ -1,3 +1,27 @@
+# [](https://github.com/volarjs/starter/compare/v0.1.13...v) (2025-03-09)
+
+
+### Bug Fixes
+
+* ci ([973e1cb](https://github.com/volarjs/starter/commit/973e1cb7799bac351d8010d1dc0936a9d8dc8522))
+* ci ([0ba1cfc](https://github.com/volarjs/starter/commit/0ba1cfc72ae0c59d72dddf53009c692fc1277166))
+* ci ([7353289](https://github.com/volarjs/starter/commit/7353289dbab60f5e351b5057b9723029641aac97))
+
+
+### Features
+
+* **language-plugin:** print error log ([cc51184](https://github.com/volarjs/starter/commit/cc5118448aa62b3d7987d14de8bce1d7a2af0d7c))
+* **language-plugin:** support load esm plugins ([f6421cf](https://github.com/volarjs/starter/commit/f6421cff01f8c8babd0e048cbb67b2bebcccf631))
+* **ts-macro:** add code for TsmVirtualCode ([c7510d5](https://github.com/volarjs/starter/commit/c7510d5d9e164d4049b69c84e3361c66cfb1d065))
+* **ts-macro:** support nested plugins for @vue/language-tools ([9c9be07](https://github.com/volarjs/starter/commit/9c9be07742fb45d5a3d20bebb0bb26372269dbe8))
+
+
+### Reverts
+
+* remove code ([49ee659](https://github.com/volarjs/starter/commit/49ee659682bf7dc184d03363c2b758db4b07b3f1))
+
+
+
 # [](https://github.com/volarjs/starter/compare/v0.1.13...v) (2025-02-18)
 
 
