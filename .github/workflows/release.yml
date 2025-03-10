@@ -40,7 +40,12 @@ jobs:
         run: pnpm build
 
       - name: Publish to NPM
-        run: pnpm publish --filter=\"!vscode-ts-macro\ --access public --no-git-checks
+        run: pnpm publish --filter=\"!vscode-ts-macro\" --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+
+      - name: Publish to VSCode
+        run: pnpm run --filter=\"vscode-ts-macro\" release
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
