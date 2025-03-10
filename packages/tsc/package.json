@@ -8,6 +8,15 @@
     "Macro"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/ts-macro/ts-macro#readme",
+  "bugs": {
+    "url": "https://github.com/ts-macro/ts-macro/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ts-macro/ts-macro.git",
+    "directory": "packages/tsc"
+  },
   "author": "zhiyuanzmj",
   "files": [
     "bin",
