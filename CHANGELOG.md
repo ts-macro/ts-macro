@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.21...v) (2025-03-10)
+
+
+### Bug Fixes
+
+* resolve publint issues ([1e9f86b](https://github.com/ts-macro/ts-macro/commit/1e9f86b0d0f4c5f0691fdf881238aadf3454f6d3))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.20...v) (2025-03-09)
 
 
