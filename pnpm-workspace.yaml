@@ -7,5 +7,6 @@ catalog:
   '@volar/language-server': ^2.4.11
   '@volar/typescript': ^2.4.11
   '@volar/vscode': ^2.4.11
+  unplugin-utils: ^0.2.4
   typescript: ^5.7.2
   vscode-uri: ^3.0.8
