@@ -51,6 +51,6 @@
     "@volar/language-core": "catalog:",
     "@vue/language-core": "^2.1.10",
     "muggle-string": "^0.4.1",
-    "unplugin-utils": "^0.2.4"
+    "unplugin-utils": "catalog:"
   }
 }

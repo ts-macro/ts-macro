@@ -60,8 +60,8 @@
     "@volar/language-core": "catalog:",
     "@volar/typescript": "catalog:",
     "jiti": "^2.3.3",
-    "rollup-utils": "^0.0.2",
     "ts-macro": "workspace:*",
+    "unplugin-utils": "catalog:",
     "vscode-uri": "catalog:"
   }
 }

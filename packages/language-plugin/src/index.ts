@@ -1,8 +1,8 @@
 /// <reference types="@volar/typescript" />
 
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
-import { createFilter } from 'rollup-utils'
 import { TsmVirtualCode, type TsmLanguagePlugin } from 'ts-macro'
+import { createFilter } from 'unplugin-utils'
 import type { Options } from './options'
 import type { URI } from 'vscode-uri'
 

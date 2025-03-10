@@ -21,6 +21,9 @@ catalogs:
     typescript:
       specifier: ^5.7.2
       version: 5.7.2
+    unplugin-utils:
+      specifier: ^0.2.4
+      version: 0.2.4
 
 overrides:
   vscode-uri: ^3.0.8
@@ -71,12 +74,12 @@ importers:
       jiti:
         specifier: ^2.3.3
         version: 2.3.3
-      rollup-utils:
-        specifier: ^0.0.2
-        version: 0.0.2(rollup@4.28.1)
       ts-macro:
         specifier: workspace:*
         version: link:../ts-macro
+      unplugin-utils:
+        specifier: 'catalog:'
+        version: 0.2.4
       vscode-uri:
         specifier: ^3.0.8
         version: 3.0.8
@@ -111,7 +114,7 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1
       unplugin-utils:
-        specifier: ^0.2.4
+        specifier: 'catalog:'
         version: 0.2.4
 
   packages/tsc:
@@ -3512,15 +3515,6 @@ packages:
   reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
-
-  rollup-utils@0.0.2:
-    resolution: {integrity: sha512-AG1m8fwwkm20WELaXubxgs8ir1gEN7sv+1FfFyEPJA8HtPjL0JndzpLIVzbXyQ5meBfWfv8OnouZ9AC+OsNP+A==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
 
   rollup@4.24.3:
     resolution: {integrity: sha512-HBW896xR5HGmoksbi3JBDtmVzWiPAYqp7wip50hjQ67JbDz61nyoMPdqu1DvVW9asYb2M65Z20ZHsyJCMqMyDg==}
@@ -7703,15 +7697,6 @@ snapshots:
       supports-preserve-symlinks-flag: 1.0.0
 
   reusify@1.0.4: {}
-
-  rollup-utils@0.0.2(rollup@4.28.1):
-    dependencies:
-      '@types/estree': 1.0.6
-      estree-walker: 2.0.2
-      pathe: 2.0.2
-      picomatch: 4.0.2
-    optionalDependencies:
-      rollup: 4.28.1
 
   rollup@4.24.3:
     dependencies:
