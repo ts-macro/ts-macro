@@ -1,8 +1,8 @@
 import type { TsmVirtualCode } from './virtual-code'
-import type { FilterPattern } from '@rollup/pluginutils'
 import type { CodeInformation, VirtualCode } from '@volar/language-core'
 import type { VueCompilerOptions } from '@vue/language-core'
 import type { Segment } from 'muggle-string'
+import type { FilterPattern } from 'unplugin-utils'
 
 export type Options = {
   exclude?: FilterPattern

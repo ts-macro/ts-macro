@@ -91,19 +91,16 @@ importers:
         version: 2.4.11
       volar-service-css:
         specifier: volar-2.4
-        version: 0.0.62(@volar/language-service@2.4.11)
+        version: 0.0.60(@volar/language-service@2.4.11)
       volar-service-emmet:
         specifier: volar-2.4
-        version: 0.0.62(@volar/language-service@2.4.11)
+        version: 0.0.60(@volar/language-service@2.4.11)
       volar-service-typescript:
         specifier: volar-2.4
-        version: 0.0.62(@volar/language-service@2.4.11)
+        version: 0.0.60(@volar/language-service@2.4.11)
 
   packages/ts-macro:
     dependencies:
-      '@rollup/pluginutils':
-        specifier: ^5.1.3
-        version: 5.1.3(rollup@4.28.1)
       '@volar/language-core':
         specifier: 'catalog:'
         version: 2.4.11
@@ -113,6 +110,9 @@ importers:
       muggle-string:
         specifier: ^0.4.1
         version: 0.4.1
+      unplugin-utils:
+        specifier: ^0.2.4
+        version: 0.2.4
 
   packages/tsc:
     dependencies:
@@ -151,7 +151,7 @@ importers:
         version: 2.4.11
       '@vscode/vsce':
         specifier: latest
-        version: 3.2.1
+        version: 3.2.2
       reactive-vscode:
         specifier: 0.2.7
         version: 0.2.7(@types/vscode@1.96.0)
@@ -166,7 +166,7 @@ importers:
         version: link:../packages/tsc
       '@vue-macros/jsx-directive':
         specifier: latest
-        version: 0.9.4(rollup@4.28.1)(typescript@5.7.2)
+        version: 3.0.0-beta.4(typescript@5.7.2)
       '@vue-macros/jsx-macros':
         specifier: https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@30f3da2
         version: https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@30f3da2(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))
@@ -321,6 +321,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.9':
+    resolution: {integrity: sha512-81NWa1njQblgZbQHxWHpxxCzNsa3ZwvFqpUg7P+NNUU6f3UU2jBEg4OlF/J6rl8+PQGh1q6/zWScd001YwcA5A==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -347,6 +352,10 @@ packages:
 
   '@babel/types@7.26.3':
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.9':
+    resolution: {integrity: sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==}
     engines: {node: '>=6.9.0'}
 
   '@conventional-changelog/git-client@1.0.1':
@@ -1524,8 +1533,8 @@ packages:
   '@vscode/vsce-sign@2.0.5':
     resolution: {integrity: sha512-GfYWrsT/vypTMDMgWDm75iDmAOMe7F71sZECJ+Ws6/xyIfmB3ELVnVN+LwMFAvmXY+e6eWhR2EzNGF/zAhWY3Q==}
 
-  '@vscode/vsce@3.2.1':
-    resolution: {integrity: sha512-AY9vBjwExakK1c0cI/3NN2Ey0EgiKLBye/fxl/ue+o4q6RZ7N+xzd1jAD6eI6eBeMVANi617+V2rxIAkDPco2Q==}
+  '@vscode/vsce@3.2.2':
+    resolution: {integrity: sha512-4TqdUq/yKlQTHcQMk/DamR632bq/+IJDomSbexOMee/UAYWqYm0XHWA6scGslsCpzY+sCWEhhl0nqdOB0XW1kw==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -1543,9 +1552,9 @@ packages:
       vue:
         optional: true
 
-  '@vue-macros/common@1.15.1':
-    resolution: {integrity: sha512-O0ZXaladWXwHplQnSjxLbB/G1KpdWCUNJPNYVHIxHonGex1BGpoB4fBZZLgddHgAiy18VZG/Iu5L0kwG+SV7JQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/common@3.0.0-beta.4':
+    resolution: {integrity: sha512-OggEBsGKvXgwRboRHqjbOQPjHMIHbHNTfiEQP+A1RmHqfu20GfBH+1y4t7BOGq8Snlxf7HDeHPFGhWz/Ba5AJQ==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
     peerDependenciesMeta:
@@ -1567,9 +1576,9 @@ packages:
     version: 0.5.1
     engines: {node: '>=16.14.0'}
 
-  '@vue-macros/jsx-directive@0.9.4':
-    resolution: {integrity: sha512-VbGWEglPiCVo8ScNbauV/xEbPxTt9jmRXl7A8r58OuKkX8mADBAlJIw+0cSNzhAgZdHE+8v++3Bt1OQqNwldWQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/jsx-directive@3.0.0-beta.4':
+    resolution: {integrity: sha512-opzglrN2MIwKpZRfypBXPqaElq1a4SwgcpnUrk7INyKqN7NPDV9zyrMenAvzeb1/LTjAY7XdoCEXWQhm+MNH8A==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/jsx-macros@https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@30f3da2':
     resolution: {tarball: https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@30f3da2}
@@ -1713,8 +1722,8 @@ packages:
     resolution: {integrity: sha512-3bIRV4s/cNAee2rKjuvYdoG+0CMqtOIgCvWrJL6zG8R0fDyMwYzStspX5JqXPbdMzM+qxHZ6g2rMHKhr3HkPlQ==}
     engines: {node: '>=16.14.0'}
 
-  ast-kit@1.3.2:
-    resolution: {integrity: sha512-gdvX700WVC6sHCJQ7bJGfDvtuKAh6Sa6weIZROxfzUZKP7BjvB8y0SMlM/o4omSQ3L60PQSJROBJsb0vEViVnA==}
+  ast-kit@1.4.2:
+    resolution: {integrity: sha512-lvGehj1XsrIoQrD5CfPduIzQbcpuX2EPjlk/vDMDQF9U9HLRB6WwMTdighj5n52hdhh8xg9VgPTU7Q25MuJ/rw==}
     engines: {node: '>=16.14.0'}
 
   asynckit@0.4.0:
@@ -1878,12 +1887,12 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
+
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
-
-  commander@6.2.1:
-    resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==}
     engines: {node: '>= 6'}
 
   comment-parser@1.4.1:
@@ -2909,11 +2918,18 @@ packages:
     resolution: {integrity: sha512-C9sgUzVZtUtzCBoMdYtwrIRQ4IucGRFGgdhkjL7PXsVfPYmTuWtewqzk7dlipaCMWH/gOYehW9rgMoa4Oebtpw==}
     engines: {node: '>=16.14.0'}
 
+  magic-string-ast@0.8.0:
+    resolution: {integrity: sha512-e9eH6YOYl2OuDd3fNt2ciFhj/l2vxJmGeWLLcY+0NcW6k0Xitq7XIxN2++QVVhswXeJLy95SjF8oVKRyJC95GQ==}
+    engines: {node: '>=20.18.0'}
+
   magic-string@0.30.12:
     resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
 
   magic-string@0.30.15:
     resolution: {integrity: sha512-zXeaYRgZ6ldS1RJJUrMrYgNJ4fdwnyI6tVqoiIhyCyv5IVTK9BU8Ic2l253GGETQHxI4HNUwhJ3fjDhKqEoaAw==}
+
+  magic-string@0.30.17:
+    resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
   magicast@0.3.5:
     resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
@@ -3884,6 +3900,10 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
+  unplugin-utils@0.2.4:
+    resolution: {integrity: sha512-8U/MtpkPkkk3Atewj1+RcKIjb5WBimZ/WSLhhR3w6SsIj8XJuKTacSP8g+2JhfSGw0Cb125Y+2zA/IzJZDVbhA==}
+    engines: {node: '>=18.12.0'}
+
   unplugin-vue-reactivity-function@0.3.3:
     resolution: {integrity: sha512-J9MfyvhtDZnrK8nWFdsv3/Vz4+no3Zwpll1xhw33qjkdsy/XKkYjQ3R7oUacRsn4riFnC9stQPrhyZ5Q1nkSvw==}
     engines: {node: '>=16.14.0'}
@@ -3900,6 +3920,10 @@ packages:
   unplugin@1.16.0:
     resolution: {integrity: sha512-5liCNPuJW8dqh3+DM6uNM2EI3MLLpCKp/KY+9pB5M2S2SR2qvvDHhKgBOaTWEbZTAws3CXfB0rKTIolWKL05VQ==}
     engines: {node: '>=14.0.0'}
+
+  unplugin@2.2.0:
+    resolution: {integrity: sha512-m1ekpSwuOT5hxkJeZGRxO7gXbXT3gF26NjQ7GdVHoLoF8/nopLcd/QfPigpCy7i51oFHiRJg/CyHhj4vs2+KGw==}
+    engines: {node: '>=18.12.0'}
 
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
@@ -3964,26 +3988,26 @@ packages:
       terser:
         optional: true
 
-  volar-service-css@0.0.62:
-    resolution: {integrity: sha512-JwNyKsH3F8PuzZYuqPf+2e+4CTU8YoyUHEHVnoXNlrLe7wy9U3biomZ56llN69Ris7TTy/+DEX41yVxQpM4qvg==}
+  volar-service-css@0.0.60:
+    resolution: {integrity: sha512-c6xlnonhaDaTybWpi2wXaNET9tNIvZh3XiCdTwijVNNma69AwhG48r4zlwuqPvVrTnFpur1JBlwPZFeO+gM88w==}
     peerDependencies:
-      '@volar/language-service': ~2.4.0
+      '@volar/language-service': ~2.4.0-alpha.19
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
 
-  volar-service-emmet@0.0.62:
-    resolution: {integrity: sha512-U4dxWDBWz7Pi4plpbXf4J4Z/ss6kBO3TYrACxWNsE29abu75QzVS0paxDDhI6bhqpbDFXlpsDhZ9aXVFpnfGRQ==}
+  volar-service-emmet@0.0.60:
+    resolution: {integrity: sha512-/xuVKdfOhteWJMmtfm/dzhH5CjW2M/jq+xSib3nqyzESsm88YuFoGVYUMXWlcMAEL4iE8rrcY9/Yivf5v4fV+A==}
     peerDependencies:
-      '@volar/language-service': ~2.4.0
+      '@volar/language-service': ~2.4.0-alpha.19
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
 
-  volar-service-typescript@0.0.62:
-    resolution: {integrity: sha512-p7MPi71q7KOsH0eAbZwPBiKPp9B2+qrdHAd6VY5oTo9BUXatsOAdakTm9Yf0DUj6uWBAaOT01BSeVOPwucMV1g==}
+  volar-service-typescript@0.0.60:
+    resolution: {integrity: sha512-QDGC66exWZMH6fs93M6XFIBMxDObxgV9q1XENII7vGzvW5KqikYG4f06AO+MWsHmAna8cI+X28xITb0SzzB0Yw==}
     peerDependencies:
-      '@volar/language-service': ~2.4.0
+      '@volar/language-service': ~2.4.0-alpha.19
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
@@ -4286,6 +4310,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.3
 
+  '@babel/parser@7.26.9':
+    dependencies:
+      '@babel/types': 7.26.9
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -4320,6 +4348,11 @@ snapshots:
       '@babel/helper-validator-identifier': 7.25.9
 
   '@babel/types@7.26.3':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.9':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -5237,7 +5270,7 @@ snapshots:
       '@vscode/vsce-sign-win32-arm64': 2.0.2
       '@vscode/vsce-sign-win32-x64': 2.0.2
 
-  '@vscode/vsce@3.2.1':
+  '@vscode/vsce@3.2.2':
     dependencies:
       '@azure/identity': 4.5.0
       '@vscode/vsce-sign': 2.0.5
@@ -5245,7 +5278,7 @@ snapshots:
       chalk: 2.4.2
       cheerio: 1.0.0
       cockatiel: 3.2.1
-      commander: 6.2.1
+      commander: 12.1.0
       form-data: 4.0.1
       glob: 11.0.0
       hosted-git-info: 4.1.0
@@ -5289,25 +5322,22 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  '@vue-macros/common@1.15.1(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))':
+  '@vue-macros/common@3.0.0-beta.4(vue@3.5.13(typescript@5.7.2))':
     dependencies:
-      '@babel/types': 7.26.3
-      '@rollup/pluginutils': 5.1.3(rollup@4.28.1)
       '@vue/compiler-sfc': 3.5.13
-      ast-kit: 1.3.2
-      local-pkg: 0.5.1
-      magic-string-ast: 0.6.3
+      ast-kit: 1.4.2
+      local-pkg: 1.1.1
+      magic-string-ast: 0.8.0
+      unplugin-utils: 0.2.4
     optionalDependencies:
       vue: 3.5.13(typescript@5.7.2)
-    transitivePeerDependencies:
-      - rollup
 
   '@vue-macros/common@https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/common@30f3da21d22c34b0f51bc41a9f06464e4f0a300c(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))':
     dependencies:
-      '@babel/types': 7.26.3
+      '@babel/types': 7.26.9
       '@rollup/pluginutils': 5.1.3(rollup@4.28.1)
       '@vue/compiler-sfc': 3.5.13
-      ast-kit: 1.3.2
+      ast-kit: 1.4.2
       local-pkg: 0.5.1
       magic-string-ast: 0.6.3
     optionalDependencies:
@@ -5325,13 +5355,12 @@ snapshots:
       - supports-color
       - vue
 
-  '@vue-macros/jsx-directive@0.9.4(rollup@4.28.1)(typescript@5.7.2)':
+  '@vue-macros/jsx-directive@3.0.0-beta.4(typescript@5.7.2)':
     dependencies:
-      '@vue-macros/common': 1.15.1(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))
-      unplugin: 1.16.0
+      '@vue-macros/common': 3.0.0-beta.4(vue@3.5.13(typescript@5.7.2))
+      unplugin: 2.2.0
       vue: 3.5.13(typescript@5.7.2)
     transitivePeerDependencies:
-      - rollup
       - typescript
 
   '@vue-macros/jsx-macros@https://pkg.pr.new/vue-macros/vue-macros/@vue-macros/jsx-macros@30f3da2(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))':
@@ -5527,10 +5556,10 @@ snapshots:
       '@babel/parser': 7.26.2
       pathe: 1.1.2
 
-  ast-kit@1.3.2:
+  ast-kit@1.4.2:
     dependencies:
-      '@babel/parser': 7.26.3
-      pathe: 1.1.2
+      '@babel/parser': 7.26.9
+      pathe: 2.0.3
 
   asynckit@0.4.0: {}
 
@@ -5735,9 +5764,9 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  commander@4.1.1: {}
+  commander@12.1.0: {}
 
-  commander@6.2.1: {}
+  commander@4.1.1: {}
 
   comment-parser@1.4.1: {}
 
@@ -6906,7 +6935,11 @@ snapshots:
 
   magic-string-ast@0.6.3:
     dependencies:
-      magic-string: 0.30.15
+      magic-string: 0.30.17
+
+  magic-string-ast@0.8.0:
+    dependencies:
+      magic-string: 0.30.17
 
   magic-string@0.30.12:
     dependencies:
@@ -6916,10 +6949,14 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  magic-string@0.30.17:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
   magicast@0.3.5:
     dependencies:
-      '@babel/parser': 7.26.3
-      '@babel/types': 7.26.3
+      '@babel/parser': 7.26.9
+      '@babel/types': 7.26.9
       source-map-js: 1.2.1
     optional: true
 
@@ -7305,7 +7342,7 @@ snapshots:
   mlly@1.7.4:
     dependencies:
       acorn: 8.14.0
-      pathe: 2.0.2
+      pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.5.4
 
@@ -7496,7 +7533,7 @@ snapshots:
     dependencies:
       confbox: 0.1.8
       mlly: 1.7.4
-      pathe: 2.0.2
+      pathe: 2.0.3
 
   pkg-types@2.1.0:
     dependencies:
@@ -8122,6 +8159,11 @@ snapshots:
 
   universalify@2.0.1: {}
 
+  unplugin-utils@0.2.4:
+    dependencies:
+      pathe: 2.0.3
+      picomatch: 4.0.2
+
   unplugin-vue-reactivity-function@0.3.3(rollup@4.28.1)(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@vue-macros/common': 1.15.0(rollup@4.28.1)(vue@3.5.13(typescript@5.7.2))
@@ -8140,6 +8182,11 @@ snapshots:
       webpack-virtual-modules: 0.6.2
 
   unplugin@1.16.0:
+    dependencies:
+      acorn: 8.14.0
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@2.2.0:
     dependencies:
       acorn: 8.14.0
       webpack-virtual-modules: 0.6.2
@@ -8196,7 +8243,7 @@ snapshots:
       '@types/node': 22.9.0
       fsevents: 2.3.3
 
-  volar-service-css@0.0.62(@volar/language-service@2.4.11):
+  volar-service-css@0.0.60(@volar/language-service@2.4.11):
     dependencies:
       vscode-css-languageservice: 6.3.1
       vscode-languageserver-textdocument: 1.0.12
@@ -8204,7 +8251,7 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.11
 
-  volar-service-emmet@0.0.62(@volar/language-service@2.4.11):
+  volar-service-emmet@0.0.60(@volar/language-service@2.4.11):
     dependencies:
       '@emmetio/css-parser': 0.4.0
       '@emmetio/html-matcher': 1.3.0
@@ -8213,7 +8260,7 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.11
 
-  volar-service-typescript@0.0.62(@volar/language-service@2.4.11):
+  volar-service-typescript@0.0.60(@volar/language-service@2.4.11):
     dependencies:
       path-browserify: 1.0.1
       semver: 7.6.3
