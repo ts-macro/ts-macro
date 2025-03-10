@@ -2,6 +2,7 @@
   "name": "@ts-macro/typescript-plugin",
   "version": "0.1.21",
   "packageManager": "pnpm@10.4.1",
+  "type": "commonjs",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
   "bugs": {
@@ -23,6 +24,14 @@
       "dev": "./src/index.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "require": "./dist/index.js",
+        "import": "./dist/index.mjs"
+      }
     }
   },
   "scripts": {

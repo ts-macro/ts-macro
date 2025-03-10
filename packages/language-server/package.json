@@ -2,6 +2,7 @@
   "name": "@ts-macro/language-server",
   "version": "0.1.21",
   "packageManager": "pnpm@10.4.1",
+  "type": "commonjs",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
   "bugs": {
@@ -27,6 +28,14 @@
   },
   "bin": {
     "tsm-language-server": "./bin/tsm-language-server.js"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "require": "./dist/index.js",
+        "import": "./dist/index.mjs"
+      }
+    }
   },
   "scripts": {
     "dev": "tsup --watch",

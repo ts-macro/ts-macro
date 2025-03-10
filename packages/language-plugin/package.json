@@ -2,6 +2,7 @@
   "name": "@ts-macro/language-plugin",
   "version": "0.1.21",
   "packageManager": "pnpm@10.4.1",
+  "type": "commonjs",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
   "bugs": {
@@ -35,18 +36,20 @@
     ]
   },
   "publishConfig": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    },
-    "./options": {
-      "require": "./dist/options.js",
-      "import": "./dist/options.mjs"
-    },
-    "./*": [
-      "./*",
-      "./*.d.ts"
-    ]
+    "exports": {
+      ".": {
+        "require": "./dist/index.js",
+        "import": "./dist/index.mjs"
+      },
+      "./options": {
+        "require": "./dist/options.js",
+        "import": "./dist/options.mjs"
+      },
+      "./*": [
+        "./*",
+        "./*.d.ts"
+      ]
+    }
   },
   "scripts": {
     "dev": "tsup --watch",
