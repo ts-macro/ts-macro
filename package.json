@@ -12,7 +12,7 @@
     "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
-    "release": "pnpm run build && bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm publish --filter=\"!vscode-ts-macro\" && pnpm run --filter=\"vscode-ts-macro\" release",
+    "release": "pnpm run build && bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm run --filter=\"vscode-ts-macro\" release",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint --max-warnings 0 --cache .",
     "format": "prettier --write --cache ."
