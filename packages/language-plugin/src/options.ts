@@ -14,10 +14,8 @@ export function getOptions(ts: typeof import('typescript')) {
     options = jiti(`${currentDirectory}/tsm.config`).default
   } catch (error: any) {
     if (
-      !(
-        error.code === 'MODULE_NOT_FOUND' &&
-        error.message.includes(`tsm.config'`)
-      )
+      error.code !== 'MODULE_NOT_FOUND' ||
+      !error.message.includes(`tsm.config'`)
     ) {
       console.error(error)
     }

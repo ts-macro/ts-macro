@@ -14,7 +14,7 @@
     "pack": "cd ./packages/vscode && npm run pack",
     "release": "pnpm run build && bumpp packages/*/package.json --all -x 'pnpm run changelog' && pnpm publish --filter=\"!vscode-ts-macro\" && pnpm run --filter=\"vscode-ts-macro\" release",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "lint": "eslint --max-warnings 0 --cache --flag unstable_ts_config .",
+    "lint": "eslint --max-warnings 0 --cache .",
     "format": "prettier --write --cache ."
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "@types/node": "^22.10.2",
     "bumpp": "^9.9.1",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.17.0",
+    "eslint": "^9.22.0",
     "jiti": "^2.4.1",
     "prettier": "^3.4.2",
     "tsup": "^8.3.5",
