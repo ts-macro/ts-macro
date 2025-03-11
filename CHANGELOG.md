@@ -1,3 +1,17 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.23...v) (2025-03-11)
+
+
+### Features
+
+* **ts-macro:** export replaceSourceRange ([1e63eba](https://github.com/ts-macro/ts-macro/commit/1e63eba9248bdfd7b9db5dda1a2000da7257b01d))
+
+
+### Reverts
+
+* **language-plugin:** use require to support auto-import plugins ([8814c41](https://github.com/ts-macro/ts-macro/commit/8814c41eb9621185790334712e070a7e211ca5a2))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.22...v) (2025-03-11)
 
 
