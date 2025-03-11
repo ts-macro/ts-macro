@@ -1,5 +1,3 @@
-import { jiti } from '../options'
-
 export function getPluginsFromVite(
   configDir: string,
   ts: typeof import('typescript'),
@@ -68,7 +66,7 @@ export function getPluginsFromVite(
             const from = require.resolve(path, {
               paths: [configDir],
             })
-            let module = jiti(from).default
+            let module = require(from)
             module = module?.default ?? module
             return ts.isCallExpression(plugin)
               ? module(
