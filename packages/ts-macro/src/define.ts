@@ -1,5 +1,4 @@
 import type { Factory, Options, PluginReturn } from './types'
-import type { Sfc, VueEmbeddedCode } from '@vue/language-core'
 
 export function defineConfig(config: Options) {
   return config
@@ -21,8 +20,8 @@ export function createPlugin(factory: any) {
           if (result.resolveVirtualCode) {
             result.resolveEmbeddedCode ??= (
               filePath: string,
-              sfc: Sfc,
-              embeddedFile: VueEmbeddedCode,
+              sfc: any,
+              embeddedFile: any,
             ) => {
               for (const source of ['script', 'scriptSetup'] as const) {
                 const ast = sfc[source]?.ast
