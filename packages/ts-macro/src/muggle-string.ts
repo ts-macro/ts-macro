@@ -36,6 +36,7 @@ export {
   offsetStack,
   replace,
   replaceAll,
+  replaceSourceRange,
   resetOffsetStack,
   setTracking,
   toString,
