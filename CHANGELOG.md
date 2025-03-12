@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.24...v) (2025-03-12)
+
+
+### Features
+
+* **language-plugin:** use jiti to support esm ([7c7cffc](https://github.com/ts-macro/ts-macro/commit/7c7cffc2779f02423b57c642616630560c5aeac0))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.23...v) (2025-03-11)
 
 
