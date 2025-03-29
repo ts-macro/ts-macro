@@ -40,20 +40,20 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 
    ```ts
    // tsm.config.ts
-   import { createPlugin, replaceRange } from 'ts-macro'
+   import { createPlugin, replaceSourceRange } from 'ts-macro'
 
-   const defineStylePlugin = createPlugin<{ macro: string }>(
+   const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
      (
       { 
         ts, 
         compilerOptions, 
-        vueCompilerOptions // only useful in @vue/language-tools
+        vueCompilerOptions // only useful in '@vue/language-tools'
       }, 
-      userOptions = vueCompilerOptions?.defineStyle ?? { macro: 'defineStyle' }
+      userOptions = vueCompilerOptions?.defineStyle ?? { macro: 'defineStyle' } // default options
     ) => {
        return {
          name: 'ts-macro-define-style',
-         resolveVirtualCode({ ast, codes }) {
+         resolveVirtualCode({ ast, codes, source }) {
            codes.push(
              `declare function ${userOptions.macro}<T>(style: string): T `,
            )
@@ -70,8 +70,11 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                node.expression.getText(ast) === userOptions.macro
              ) {
                // add generic type for defineStyle.
-               replaceRange(
+               // if your plugin don't support vue file, you can use replaceRange instead.
+               replaceSourceRange(
                  codes,
+                 // in vue file will be 'script' | 'scriptSetup', in tsx file will be undefined.
+                 source,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
                  // should be use regex to generate type, for simple use string instead.
