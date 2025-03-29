@@ -36,14 +36,21 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    }
    ```
 
-   Or You can use `createPlugin` to define plugin.
+   Or You can use `createPlugin` to define plugin. also compatibility with [@vue/language-tools](https://github.com/vuejs/language-tools) plugin.
 
    ```ts
    // tsm.config.ts
    import { createPlugin, replaceRange } from 'ts-macro'
 
    const defineStylePlugin = createPlugin<{ macro: string }>(
-     ({ ts, compilerOptions }, userOptions) => {
+     (
+      { 
+        ts, 
+        compilerOptions, 
+        vueCompilerOptions // only useful in @vue/language-tools
+      }, 
+      userOptions = vueCompilerOptions?.defineStyle ?? { macro: 'defineStyle' }
+    ) => {
        return {
          name: 'ts-macro-define-style',
          resolveVirtualCode({ ast, codes }) {
@@ -62,11 +69,12 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                ts.isCallExpression(node) &&
                node.expression.getText(ast) === userOptions.macro
              ) {
-               // Add generic type for defineStyle.
+               // add generic type for defineStyle.
                replaceRange(
                  codes,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
+                 // should be use regex to generate type, for simple use string instead.
                  '<{ foo: string }>',
                )
              }
@@ -89,9 +97,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    
    <img width="369" alt="image" src="https://github.com/user-attachments/assets/31578a94-fd0d-4f7d-836d-87d83b8e9bbc">
 
-## Example
-
-https://github.com/ts-macro/ts-macro/blob/main/playground
+> Full implementation: [define-style](https://github.com/vuejs/vue-jsx-vapor/blob/main/packages/macros/src/volar/define-style.ts)
 
 ## TSC
 
@@ -120,4 +126,9 @@ Thanks for these great projects, I have learned a lot from them.
 - https://github.com/volarjs/volar.js
 - https://github.com/vue-vine/vue-vine
 - https://kermanx.github.io/reactive-vscode
+- https://github.com/vue-macros/vue-macros
+
+## Who are using ts-macro
+
+- https://github.com/vuejs/vue-jsx-vapor
 - https://github.com/vue-macros/vue-macros
