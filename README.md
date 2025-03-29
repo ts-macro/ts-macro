@@ -73,7 +73,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                // if your plugin don't support vue file, you can use replaceRange instead.
                replaceSourceRange(
                  codes,
-                 // in vue file will be 'script' | 'scriptSetup', in tsx file will be undefined.
+                 // in vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
                  source,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
