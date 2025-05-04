@@ -18,6 +18,7 @@ export class TsmVirtualCode implements VirtualCode {
   codes: Code[] = []
   snapshot: import('typescript').IScriptSnapshot
   source: 'script' | 'scriptSetup' | undefined
+  linkedCodeMappings: Mapping[] = []
 
   constructor(
     public readonly filePath: string,
