@@ -1,3 +1,13 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.25...v) (2025-05-04)
+
+
+### Features
+
+* **ts-macro:** add linkedCodeMappings ([1377ca3](https://github.com/ts-macro/ts-macro/commit/1377ca3d7a609fa79ff4f6412736455d06cc8188))
+* **vscode:** add useOutputChannel ([ac42bbc](https://github.com/ts-macro/ts-macro/commit/ac42bbc9ca74eb5d7a523ab4dd0d14a2cbabef41))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.24...v) (2025-03-12)
 
 
