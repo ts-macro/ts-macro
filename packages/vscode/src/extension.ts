@@ -70,6 +70,7 @@ export = defineExtension(async () => {
       extensionContext.value!,
     )
     await client.stop()
+    outputChannel.clear()
     return client.start()
   }
 
