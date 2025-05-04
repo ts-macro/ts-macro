@@ -13,10 +13,12 @@ import {
   onDeactivate,
   useCommand,
   useFsWatcher,
+  useOutputChannel,
 } from 'reactive-vscode'
 import * as vscode from 'vscode'
 
 export = defineExtension(async () => {
+  const outputChannel = useOutputChannel('TSM Language Server')
   const clientOptions: LanguageClientOptions = {
     documentSelector: [
       { language: 'typescript' },
@@ -25,6 +27,7 @@ export = defineExtension(async () => {
     initializationOptions: await getInitializationOptions(
       extensionContext.value!,
     ),
+    outputChannel,
   }
   const serverModule = vscode.Uri.joinPath(
     extensionContext.value!.extensionUri,
