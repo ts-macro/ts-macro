@@ -1,4 +1,5 @@
 import { jiti } from '../options'
+import type { Expression } from 'typescript'
 
 export function getPluginsFromVite(
   configDir: string,
@@ -14,15 +15,24 @@ export function getPluginsFromVite(
       content,
       99 satisfies typeof ts.ScriptTarget.Latest,
     )
-    let exportPlugins: import('typescript').Expression[] = []
+    let exportPlugins: Expression[] = []
     const imports: { locals: string[]; from: string }[] = []
     for (const node of ast.statements) {
-      if (
-        ts.isExportAssignment(node) &&
-        ts.isCallExpression(node.expression) &&
-        ts.isObjectLiteralExpression(node.expression.arguments[0])
-      ) {
-        for (const prop of node.expression.arguments[0].properties) {
+      if (ts.isExportAssignment(node)) {
+        let arg: Expression | undefined = ts.isCallExpression(node.expression)
+          ? node.expression.arguments[0]
+          : node.expression
+        if (ts.isArrowFunction(arg)) {
+          arg = ts.isBlock(arg.body)
+            ? arg.body.statements.find((i) => ts.isReturnStatement(i))
+                ?.expression
+            : ts.isParenthesizedExpression(arg.body)
+              ? arg.body.expression
+              : undefined
+        }
+        const properties =
+          arg && ts.isObjectLiteralExpression(arg) ? arg.properties : []
+        for (const prop of properties) {
           if (
             ts.isPropertyAssignment(prop) &&
             prop.name.getText(ast) === 'plugins' &&
@@ -73,7 +83,14 @@ export function getPluginsFromVite(
             return ts.isCallExpression(plugin)
               ? module(
                   plugin.arguments[0]
-                    ? eval(`(${plugin.arguments[0].getText(ast)})`)
+                    ? new Function(
+                        `return ${jiti
+                          .transform({
+                            source: `(${plugin.arguments[0].getText(ast)})`,
+                            ts: true,
+                          })
+                          .slice(13, -1)}`,
+                      )()
                     : undefined,
                 )
               : module(from)
