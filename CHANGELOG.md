@@ -1,3 +1,13 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.26...v) (2025-05-05)
+
+
+### Features
+
+* **language-plugin:** use new Function instead of eval ([2cf5b0e](https://github.com/ts-macro/ts-macro/commit/2cf5b0e2a874e99b88b56c9edbf0fdfa156aee17))
+* **vscode:** clear outputChannel ([7abac7e](https://github.com/ts-macro/ts-macro/commit/7abac7e03cd98b6e13db6ab0ef939b0c11ce97c9))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.25...v) (2025-05-04)
 
 
