@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./packages/vscode/assets/logo.png" width="250px" />
+  <img src="/packages/vscode/assets/logo.png" width="250px" />
 </p>
 
 # TS Macro
