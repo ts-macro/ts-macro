@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.28...v) (2025-05-09)
+
+
+### Bug Fixes
+
+* **language-server:** add tsconfig.json suffix for configFileName ([a215e00](https://github.com/ts-macro/ts-macro/commit/a215e004845235aa24ecaa4d4f731083ddfccf26))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.27...v) (2025-05-09)
 
 
