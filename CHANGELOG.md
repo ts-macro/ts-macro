@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.27...v) (2025-05-09)
+
+
+### Bug Fixes
+
+* **ts-macro:** remove @vue/language-core ([41fc28d](https://github.com/ts-macro/ts-macro/commit/41fc28d4b669b77ef1f27679719d19783e07b719))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.26...v) (2025-05-05)
 
 
