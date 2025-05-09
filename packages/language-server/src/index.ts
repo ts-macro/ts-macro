@@ -1,3 +1,4 @@
+import { join } from 'node:path'
 import { getLanguagePlugins } from '@ts-macro/language-plugin'
 import { getOptions } from '@ts-macro/language-plugin/options'
 import {
@@ -63,6 +64,9 @@ function getCompilerOptions(
   configFileName?: string,
 ) {
   if (configFileName) {
+    configFileName = configFileName.endsWith('.json')
+      ? configFileName
+      : join(configFileName, 'tsconfig.json')
     const parsedCommandLine = ts.parseJsonSourceFileConfigFileContent(
       ts.readJsonConfigFile(configFileName, ts.sys.readFile),
       ts.sys,

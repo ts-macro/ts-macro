@@ -48,8 +48,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "muggle-string": "^0.4.1"
+  },
+  "devDependencies": {
     "@volar/language-core": "catalog:",
-    "muggle-string": "^0.4.1",
     "unplugin-utils": "catalog:"
   }
 }

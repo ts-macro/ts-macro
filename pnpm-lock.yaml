@@ -104,12 +104,13 @@ importers:
 
   packages/ts-macro:
     dependencies:
-      '@volar/language-core':
-        specifier: 'catalog:'
-        version: 2.4.13
       muggle-string:
         specifier: ^0.4.1
         version: 0.4.1
+    devDependencies:
+      '@volar/language-core':
+        specifier: 'catalog:'
+        version: 2.4.13
       unplugin-utils:
         specifier: 'catalog:'
         version: 0.2.4
