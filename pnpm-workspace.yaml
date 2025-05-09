@@ -3,10 +3,10 @@ packages:
   - playground
 
 catalog:
-  '@volar/language-core': ^2.4.11
-  '@volar/language-server': ^2.4.11
-  '@volar/typescript': ^2.4.11
-  '@volar/vscode': ^2.4.11
+  '@volar/language-core': ^2.4.13
+  '@volar/language-server': ^2.4.13
+  '@volar/typescript': ^2.4.13
+  '@volar/vscode': ^2.4.13
   typescript: ^5.7.2
   unplugin-utils: ^0.2.4
   vscode-uri: ^3.0.8

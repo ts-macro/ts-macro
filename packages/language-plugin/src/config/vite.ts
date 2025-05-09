@@ -84,12 +84,14 @@ export function getPluginsFromVite(
               ? module(
                   plugin.arguments[0]
                     ? new Function(
-                        `return ${jiti
-                          .transform({
-                            source: `(${plugin.arguments[0].getText(ast)})`,
-                            ts: true,
-                          })
-                          .slice(13, -1)}`,
+                        `return ${
+                          ts.transpileModule(
+                            `(${plugin.arguments[0].getText(ast)})`,
+                            {
+                              compilerOptions: { module: ts.ModuleKind.ESNext },
+                            },
+                          ).outputText
+                        }`,
                       )()
                     : undefined,
                 )

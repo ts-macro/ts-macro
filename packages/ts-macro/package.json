@@ -49,7 +49,6 @@
   },
   "dependencies": {
     "@volar/language-core": "catalog:",
-    "@vue/language-core": "^2.2.8",
     "muggle-string": "^0.4.1",
     "unplugin-utils": "catalog:"
   }
