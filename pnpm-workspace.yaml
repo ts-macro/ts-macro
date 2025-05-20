@@ -8,5 +8,5 @@ catalog:
   '@volar/typescript': ^2.4.13
   '@volar/vscode': ^2.4.13
   typescript: ^5.7.2
-  unplugin-utils: ^0.2.4
+  rollup-utils: ^0.0.3
   vscode-uri: ^3.0.8

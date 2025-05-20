@@ -1,8 +1,8 @@
 /// <reference types="@volar/typescript" />
 
 import { forEachEmbeddedCode, type LanguagePlugin } from '@volar/language-core'
+import { createFilter } from 'rollup-utils'
 import { TsmVirtualCode, type TsmLanguagePlugin } from 'ts-macro'
-import { createFilter } from 'unplugin-utils'
 import type { Options } from './options'
 import type { URI } from 'vscode-uri'
 
@@ -30,7 +30,7 @@ export const getLanguagePlugins = (
   const filter = createFilter(
     include,
     exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
-    { resolve: ts.sys?.getCurrentDirectory() },
+    { resolve: normalizePath(ts.sys?.getCurrentDirectory()) },
   )
 
   return [
@@ -94,4 +94,14 @@ function resolvePlugins(
     map.set(plugin.name || `plugin-${index}`, plugin)
   }
   return [...map.values()]
+}
+
+function normalizePath(path: string) {
+  if (path) {
+    path = path.replaceAll('\\', '/')
+    if (!path.startsWith('/')) {
+      path = `/${path}`
+    }
+  }
+  return path
 }

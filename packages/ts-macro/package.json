@@ -51,7 +51,6 @@
     "muggle-string": "^0.4.1"
   },
   "devDependencies": {
-    "@volar/language-core": "catalog:",
-    "unplugin-utils": "catalog:"
+    "@volar/language-core": "catalog:"
   }
 }
