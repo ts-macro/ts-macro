@@ -29,7 +29,12 @@ export const getLanguagePlugins = (
 
   const filter = createFilter(
     include,
-    exclude ?? [/\/tsm\.config\.*$/, /root_tsx?\.tsx?$/],
+    [
+      ...[exclude || []].flat(),
+      /\/tsm\.config\.*$/,
+      /root_tsx?\.tsx?$/,
+      /node_modules/,
+    ],
     { resolve: normalizePath(ts.sys?.getCurrentDirectory()) },
   )
 
@@ -39,7 +44,7 @@ export const getLanguagePlugins = (
         return undefined
       },
       createVirtualCode(uri, rawLanguageId, snapshot) {
-        const filePath = typeof uri === 'string' ? uri : uri.path
+        const filePath = normalizePath(typeof uri === 'string' ? uri : uri.path)
         if (
           ['typescript', 'typescriptreact'].includes(rawLanguageId) &&
           filter(filePath)

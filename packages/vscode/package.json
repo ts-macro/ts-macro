@@ -74,7 +74,8 @@
     "typescriptServerPlugins": [
       {
         "name": "tsm-typescript-plugin",
-        "enableForWorkspaceTypeScriptVersions": true
+        "enableForWorkspaceTypeScriptVersions": true,
+        "configNamespace": "typescript"
       }
     ]
   }
