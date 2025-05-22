@@ -7,6 +7,6 @@ catalog:
   '@volar/language-server': ^2.4.13
   '@volar/typescript': ^2.4.13
   '@volar/vscode': ^2.4.13
-  typescript: ^5.7.2
   rollup-utils: ^0.0.3
+  typescript: ^5.7.2
   vscode-uri: ^3.0.8
