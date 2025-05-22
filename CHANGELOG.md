@@ -1,3 +1,17 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.29...v) (2025-05-22)
+
+
+### Bug Fixes
+
+* **language-plugin:** use rollup-utils to support windows ([5f32cfa](https://github.com/ts-macro/ts-macro/commit/5f32cfab7f8371980928e14168d6ad6e4b121579))
+
+
+### Features
+
+* **language-plugin:** exclude node_modules by default ([d2080d2](https://github.com/ts-macro/ts-macro/commit/d2080d2d40ec1b704638a5a9b20f81a679a27570))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.28...v) (2025-05-09)
 
 
