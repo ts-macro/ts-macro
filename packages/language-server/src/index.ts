@@ -8,7 +8,6 @@ import {
   loadTsdkByPath,
 } from '@volar/language-server/node'
 import { create as createCssService } from 'volar-service-css'
-import { create as createEmmetService } from 'volar-service-emmet'
 import { create as createTypeScriptServices } from 'volar-service-typescript'
 
 const connection = createConnection()
@@ -43,7 +42,6 @@ connection.onInitialize(async (params) => {
     ),
     [
       createCssService(),
-      createEmmetService(),
       ...createTypeScriptServices(tsdk.typescript).filter(
         (plugin) => plugin.name === 'typescript-syntactic',
       ),
