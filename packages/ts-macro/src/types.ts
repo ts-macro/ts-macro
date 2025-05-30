@@ -2,7 +2,7 @@ import type { TsmVirtualCode } from './virtual-code'
 import type { CodeInformation, VirtualCode } from '@volar/language-core'
 import type { Segment } from 'muggle-string'
 
-type FilterPattern = ReadonlyArray<string | RegExp> | string | RegExp | null
+type FilterPattern = Array<string | RegExp> | string | RegExp | null
 
 export type Options = {
   exclude?: FilterPattern
