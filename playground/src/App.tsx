@@ -4,7 +4,7 @@ import { DefineSlots } from './define-slots'
 
 // eslint-disable-next-line import/no-default-export
 export default () => {
-  const exposeRef = useRef()
+  const exposeRef = useRef(null)
   const [double, setDouble] = useState<number>()
   useEffect(() => {
     setDouble(exposeRef.current?.double)

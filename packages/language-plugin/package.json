@@ -1,7 +1,7 @@
 {
   "name": "@ts-macro/language-plugin",
   "version": "0.1.30",
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.11.0",
   "type": "commonjs",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
@@ -59,8 +59,8 @@
   "dependencies": {
     "@volar/language-core": "catalog:",
     "@volar/typescript": "catalog:",
-    "jiti": "^2.3.3",
-    "rollup-utils": "catalog:",
+    "jiti": "^2.4.2",
+    "rollup-utils": "^0.0.5",
     "ts-macro": "workspace:*",
     "vscode-uri": "catalog:"
   }

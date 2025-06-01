@@ -1,7 +1,7 @@
 {
   "name": "vscode-ts-macro",
   "version": "0.1.30",
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.11.0",
   "description": "Define TS(X) macro powered by Volar.js",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
@@ -30,15 +30,15 @@
   "devDependencies": {
     "@ts-macro/language-server": "workspace:*",
     "@ts-macro/typescript-plugin": "workspace:*",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.100.0",
     "@volar/language-server": "catalog:",
     "@volar/vscode": "catalog:",
     "@vscode/vsce": "latest",
-    "reactive-vscode": "0.2.7",
+    "reactive-vscode": "0.2.19",
     "vscode-uri": "catalog:"
   },
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.100.0"
   },
   "activationEvents": [
     "onLanguage:typescript",
