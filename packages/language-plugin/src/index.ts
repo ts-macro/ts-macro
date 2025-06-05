@@ -54,7 +54,7 @@ export const getLanguagePlugins = (
             `index.${languageId}`,
             snapshot.getText(0, snapshot.getLength()).toString(),
             99 satisfies typeof ts.ScriptTarget.Latest,
-            true
+            true,
           )
           return new TsmVirtualCode(filePath, ast, languageId, resolvedPlugins)
         }
