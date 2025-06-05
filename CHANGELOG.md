@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.31...v) (2025-06-05)
+
+
+### Features
+
+* **language-plugin:** enable setParentNodes for createSourceFile ([22be684](https://github.com/ts-macro/ts-macro/commit/22be6848463a28e4d869ce0a96871d16acf3efe8))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.30...v) (2025-06-01)
 
 
