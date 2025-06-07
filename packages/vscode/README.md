@@ -15,9 +15,10 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 1. Install the [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro), or use a [REPL](https://repl.zmjs.dev) that supports ts-macro.
 
 2. Create `tsm.config.ts` at the same level of `tsconfig.json`.
+
    > `TS Macro` supports automatic registration of Volar plugins from vite.config.ts, similar to `xxx.d.ts`. \
-     For plugin authors, you need to export a `volar` file, and `TS Macro` will automatically load the plugin and share userOptions with the vite plugin. [Example](https://github.com/zhiyuanzmj/unplugin-vue-reactivity-function/tree/main/src). \
-     For plugin users, you only need to install the `TS Macro` VSCode plugin, and there's no need to write tsm.config.ts.
+   >  For plugin authors, you need to export a `volar` file, and `TS Macro` will automatically load the plugin and share userOptions with the vite plugin. [Example](https://github.com/zhiyuanzmj/unplugin-vue-reactivity-function/tree/main/src). \
+   >  For plugin users, you only need to install the `TS Macro` VSCode plugin, and there's no need to write tsm.config.ts.
 
 3. Writing your first plugin.
 
@@ -40,48 +41,38 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 
    ```ts
    // tsm.config.ts
-   import { createPlugin, replaceSourceRange } from 'ts-macro'
+   import { createPlugin, replaceRange } from 'ts-macro'
 
    const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
      (
-      { 
-        ts, 
-        compilerOptions, 
-        vueCompilerOptions // only useful in '@vue/language-tools'
-      }, 
-      userOptions = vueCompilerOptions?.defineStyle ?? { macro: 'defineStyle' } // default options
-    ) => {
+       { ts, compilerOptions },
+       userOptions = vueCompilerOptions?.defineStyle ?? {
+         macro: 'defineStyle',
+       }, // default options
+     ) => {
        return {
-         name: 'ts-macro-define-style',
-         resolveVirtualCode({ ast, codes, source }) {
+         name: 'volar-plugin-define-style',
+         resolveVirtualCode({ ast, codes }) {
            codes.push(
              `declare function ${userOptions.macro}<T>(style: string): T `,
            )
 
-           ts.forEachChild(ast, walk)
-
-           function walk(
-             node: import('typescript').Node,
-           ) {
-             ts.forEachChild(node, walk)
-
+           ast.forEachChild(function walk(node) {
              if (
                ts.isCallExpression(node) &&
                node.expression.getText(ast) === userOptions.macro
              ) {
                // add generic type for defineStyle.
-               // if your plugin don't support vue file, you can use replaceRange instead.
-               replaceSourceRange(
+               replaceRange(
                  codes,
-                 // in vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
-                 source,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
-                 // should be use regex to generate type, for simple use string instead.
+                 // for simple cases, use strings instead of regex to generate types.
                  '<{ foo: string }>',
                )
              }
-           }
+             node.forEachChild(walk)
+           })
          },
        }
      },
@@ -96,8 +87,66 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    }
    ```
 
+   <details>
+   <summary>Compatible with Vue</summary>
+
+   ```ts
+   // tsm.config.ts
+   import { createPlugin, replaceSourceRange } from 'ts-macro'
+
+   const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
+     (
+       {
+         ts,
+         compilerOptions,
+         vueCompilerOptions, // only useful in '@vue/language-tools'
+       },
+       userOptions = vueCompilerOptions?.defineStyle ?? {
+         macro: 'defineStyle',
+       }, // default options
+     ) => {
+       return {
+         name: 'volar-plugin-define-style',
+         resolveVirtualCode({ ast, codes, source }) {
+           codes.push(
+             `declare function ${userOptions.macro}<T>(style: string): T `,
+           )
+
+           ts.forEachChild(ast, function walk(node) {
+             if (
+               ts.isCallExpression(node) &&
+               node.expression.getText(ast) === userOptions.macro
+             ) {
+               // add generic type for defineStyle.
+               replaceSourceRange(
+                 codes,
+                 // in vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
+                 source,
+                 node.arguments.pos - 1,
+                 node.arguments.pos - 1,
+                 // for simple cases, use strings instead of regex to generate types.
+                 '<{ foo: string }>',
+               )
+             }
+             ts.forEachChild(node, walk)
+           })
+         },
+       }
+     },
+   )
+
+   export default {
+     plugins: [
+       defineStylePlugin({
+         macro: 'defineStyle',
+       }),
+     ],
+   }
+   ```
+   </details>
+
 4. Result
-   
+
    <img width="369" alt="image" src="https://github.com/user-attachments/assets/31578a94-fd0d-4f7d-836d-87d83b8e9bbc">
 
 > Full implementation: [define-style](https://github.com/vuejs/vue-jsx-vapor/blob/main/packages/macros/src/volar/define-style.ts)

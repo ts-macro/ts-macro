@@ -36,4 +36,8 @@ export type PluginReturn<UserOptions, Nested extends boolean = boolean> = (
 ) => FactoryReturn<Nested>
 
 export type Code = Segment<CodeInformation>
+export type CodeWithoutSource =
+  | string
+  | [text: string, sourceOffset: number, data: CodeInformation]
+  | Code
 export { CodeInformation, VirtualCode }
