@@ -1,3 +1,13 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.32...v) (2025-06-07)
+
+
+### Features
+
+* **ts-macro:** add CodeWithoutSource type for replaceRange ([61e321c](https://github.com/ts-macro/ts-macro/commit/61e321c9c990369f3554a02a2bc2d3a9c554318d))
+* **ts-macro:** export getText and getStart function for vue ([83a4e63](https://github.com/ts-macro/ts-macro/commit/83a4e63f8bcfe1ad5a0b9ec3eac30d2d6be03e30))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.31...v) (2025-06-05)
 
 
