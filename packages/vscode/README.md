@@ -48,7 +48,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
        { ts, compilerOptions },
        userOptions = vueCompilerOptions?.defineStyle ?? {
          macro: 'defineStyle',
-       }, // default options
+       }, // Default options
      ) => {
        return {
          name: 'volar-plugin-define-style',
@@ -62,12 +62,12 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                ts.isCallExpression(node) &&
                node.expression.getText(ast) === userOptions.macro
              ) {
-               // add generic type for defineStyle.
+               // Add generic type for defineStyle.
                replaceRange(
                  codes,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
-                 // for simple cases, use strings instead of regex to generate types.
+                 // For simple cases, use strings instead of regex to generate types.
                  '<{ foo: string }>',
                )
              }
@@ -90,20 +90,19 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    <details>
    <summary>Compatible with Vue</summary>
 
+   For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
+
    ```ts
    // tsm.config.ts
-   import { createPlugin, replaceSourceRange } from 'ts-macro'
+
+   import { createPlugin, getText, replaceSourceRange } from 'ts-macro'
 
    const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
      (
-       {
-         ts,
-         compilerOptions,
-         vueCompilerOptions, // only useful in '@vue/language-tools'
-       },
+       { ts, compilerOptions, vueCompilerOptions },
        userOptions = vueCompilerOptions?.defineStyle ?? {
          macro: 'defineStyle',
-       }, // default options
+       }, // Default options
      ) => {
        return {
          name: 'volar-plugin-define-style',
@@ -115,16 +114,16 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
            ts.forEachChild(ast, function walk(node) {
              if (
                ts.isCallExpression(node) &&
-               node.expression.getText(ast) === userOptions.macro
+               getText(node.expression, ast, ts) === userOptions.macro
              ) {
-               // add generic type for defineStyle.
+               // Add generic type for defineStyle.
                replaceSourceRange(
                  codes,
-                 // in vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
+                 // In vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
                  source,
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
-                 // for simple cases, use strings instead of regex to generate types.
+                 // For simple cases, use strings instead of regex to generate types.
                  '<{ foo: string }>',
                )
              }
