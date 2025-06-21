@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.33...v) (2025-06-21)
+
+
+### Bug Fixes
+
+* **ts-macro:** remove placeholder ([7da1bea](https://github.com/ts-macro/ts-macro/commit/7da1bea53e45c888983745032a06de5ac0e5be6b))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.32...v) (2025-06-07)
 
 
