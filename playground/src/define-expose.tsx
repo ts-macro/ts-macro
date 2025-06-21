@@ -1,10 +1,11 @@
-import { useRef } from 'react'
+import { computed } from 'vue'
+import { useRef } from 'vue-jsx-vapor'
 
 export const DefineExpose = <T extends number>({ foo = {} as T }) => {
   const aRef = useRef()
   defineExpose({
-    double: foo * 2,
+    double: computed(() => foo * 2),
     aRef,
   })
-  return <a ref={(e) => (aRef.current = e)}>{foo} x 2 = </a>
+  return <a ref={(e) => (aRef.value = e)}>{foo} x 2 = </a>
 }

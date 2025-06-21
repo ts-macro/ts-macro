@@ -22,5 +22,5 @@ export function Comp({ color = 'red' }) {
       color: red;
     }
   `)
-  return <div className={fooBar}>{fooBar}</div>
+  return <div class={fooBar}>{fooBar}</div>
 }
