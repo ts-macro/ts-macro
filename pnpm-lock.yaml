@@ -25,6 +25,11 @@ catalogs:
 overrides:
   vscode-uri: ^3.1.0
 
+patchedDependencies:
+  '@volar/typescript':
+    hash: 35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344
+    path: patches/@volar__typescript.patch
+
 importers:
 
   .:
@@ -67,7 +72,7 @@ importers:
         version: 2.4.14
       '@volar/typescript':
         specifier: 'catalog:'
-        version: 2.4.14
+        version: 2.4.14(patch_hash=35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344)
       jiti:
         specifier: ^2.4.2
         version: 2.4.2
@@ -113,7 +118,7 @@ importers:
         version: link:../language-plugin
       '@volar/typescript':
         specifier: 'catalog:'
-        version: 2.4.14
+        version: 2.4.14(patch_hash=35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344)
 
   packages/typescript-plugin:
     dependencies:
@@ -122,7 +127,7 @@ importers:
         version: link:../language-plugin
       '@volar/typescript':
         specifier: 'catalog:'
-        version: 2.4.14
+        version: 2.4.14(patch_hash=35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344)
 
   packages/vscode:
     devDependencies:
@@ -4813,7 +4818,7 @@ snapshots:
     dependencies:
       '@volar/language-core': 2.4.14
       '@volar/language-service': 2.4.14
-      '@volar/typescript': 2.4.14
+      '@volar/typescript': 2.4.14(patch_hash=35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344)
       path-browserify: 1.0.1
       request-light: 0.7.0
       vscode-languageserver: 9.0.1
@@ -4830,7 +4835,7 @@ snapshots:
 
   '@volar/source-map@2.4.14': {}
 
-  '@volar/typescript@2.4.14':
+  '@volar/typescript@2.4.14(patch_hash=35836f2b8d23b10c24542ba149ce5a774fdc18a3f63bc60d3b501156ba479344)':
     dependencies:
       '@volar/language-core': 2.4.14
       path-browserify: 1.0.1

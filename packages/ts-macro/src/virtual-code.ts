@@ -37,14 +37,6 @@ export class TsmVirtualCode implements VirtualCode {
       }
     }
 
-    if (ast.statements[0]?.kind !== 272)
-      this.codes.unshift(`/* placeholder */\n`, [
-        `\n`,
-        undefined,
-        0,
-        allCodeFeatures,
-      ])
-
     this.mappings = buildMappings(this.codes)
     const text = toString(this.codes)
     this.snapshot = {
