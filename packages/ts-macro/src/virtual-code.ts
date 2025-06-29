@@ -49,7 +49,7 @@ export class TsmVirtualCode implements VirtualCode {
   }
 }
 
-function buildMappings<T>(chunks: Segment<T>[]) {
+export function buildMappings<T>(chunks: Segment<T>[]) {
   let length = 0
   const mappings: Mapping<T>[] = []
   for (const segment of chunks) {
