@@ -16,11 +16,14 @@ export function getOptions(
   const plugins: Plugin[] = []
   const currentDirectory = ts.sys.getCurrentDirectory()
   try {
-    options = jiti(`${currentDirectory}/tsm.config`).default
+    options =
+      jiti(`${currentDirectory}/ts-macro.config`).default ||
+      jiti(`${currentDirectory}/tsm.config`).default
   } catch (error: any) {
     if (
       error.code !== 'MODULE_NOT_FOUND' ||
-      !error.message.includes(`tsm.config'`)
+      (!error.message.includes(`ts-macro.config'`) &&
+        !error.message.includes(`tsm.config'`))
     ) {
       console.error(error)
     }

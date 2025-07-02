@@ -14,16 +14,16 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
 
 1. Install the [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=zhiyuanzmj.vscode-ts-macro), or use a [REPL](https://repl.zmjs.dev) that supports ts-macro.
 
-2. Create `tsm.config.ts` at the same level of `tsconfig.json`.
+2. Create `ts-macro.config.ts` at the same level of `tsconfig.json`.
 
    > `TS Macro` supports automatic registration of Volar plugins from vite.config.ts, similar to `xxx.d.ts`. \
    >  For plugin authors, you need to export a `volar` file, and `TS Macro` will automatically load the plugin and share userOptions with the vite plugin. [Example](https://github.com/zhiyuanzmj/unplugin-vue-reactivity-function/tree/main/src). \
-   >  For plugin users, you only need to install the `TS Macro` VSCode plugin, and there's no need to write tsm.config.ts.
+   >  For plugin users, you only need to install the `TS Macro` VSCode plugin, and there's no need to config `ts-macro.config.ts`.
 
 3. Writing your first plugin.
 
    ```ts
-   // tsm.config.ts
+   // ts-macro.config.ts
    export default {
      plugins: [
        {
@@ -40,7 +40,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    Or You can use `createPlugin` to define plugin. also compatibility with [@vue/language-tools](https://github.com/vuejs/language-tools) plugin.
 
    ```ts
-   // tsm.config.ts
+   // ts-macro.config.ts
    import { createPlugin, replaceRange } from 'ts-macro'
 
    const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
@@ -93,7 +93,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
 
    ```ts
-   // tsm.config.ts
+   // ts-macro.config.ts
 
    import { createPlugin, getText, replaceSourceRange } from 'ts-macro'
 

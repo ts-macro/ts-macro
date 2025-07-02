@@ -74,7 +74,7 @@ export = defineExtension(async () => {
     return client.start()
   }
 
-  const watcher = useFsWatcher(['**/tsm.config.*'])
+  const watcher = useFsWatcher(['**/ts-macro.config.*', '**/tsm.config.*'])
   watcher.onDidChange(() => {
     vscode.window.showInformationMessage(`Restart TS Macro Server.`)
     restartServer()

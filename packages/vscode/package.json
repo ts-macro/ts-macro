@@ -3,6 +3,10 @@
   "version": "0.1.34",
   "packageManager": "pnpm@10.11.0",
   "description": "Define TS(X) macro powered by Volar.js",
+  "keywords": [
+    "tsm",
+    "ts-macro"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",
   "bugs": {
