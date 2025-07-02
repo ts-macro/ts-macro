@@ -19,7 +19,9 @@ export const getLanguagePlugins = (
             ts,
             compilerOptions,
           })
-        } catch {}
+        } catch (error) {
+          console.error(`[${plugin.name}]:`, error)
+        }
       } else {
         return plugin
       }

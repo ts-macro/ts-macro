@@ -2,9 +2,10 @@ import { jiti } from '../options'
 import type { Expression } from 'typescript'
 
 export function getPluginsFromVite(
-  configDir: string,
   ts: typeof import('typescript'),
+  pluginCache = [] as string[],
 ) {
+  const configDir = ts.sys.getCurrentDirectory()
   try {
     const filename = `${configDir}/vite.config.ts`
     const content = ts.sys.readFile(filename, 'utf-8')
@@ -80,6 +81,9 @@ export function getPluginsFromVite(
             })
             let module = jiti(from)
             module = module?.default ?? module
+            if (module) {
+              pluginCache.push(plugin.getText(ast))
+            }
             return ts.isCallExpression(plugin)
               ? module(
                   plugin.arguments[0]

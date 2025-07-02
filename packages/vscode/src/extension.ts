@@ -80,6 +80,21 @@ export = defineExtension(async () => {
     restartServer()
   })
 
+  const viteWatcher = useFsWatcher(['**/vite.config.*'])
+  viteWatcher.onDidChange(async () => {
+    const res = await vscode.commands.executeCommand(
+      'typescript.tsserverRequest',
+      '_tsm:getPluginsFromVite',
+    )
+    if (res) {
+      const reload = await vscode.window.showInformationMessage(
+        `Found new plugins in vite.config.ts.`,
+        'Restart TS Macro Server',
+      )
+      reload && restartServer()
+    }
+  })
+
   onDeactivate(() => {
     client?.stop()
   })

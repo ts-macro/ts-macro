@@ -6,7 +6,12 @@ export const jiti = createJiti(import.meta.url)
 
 export type Options = ReturnType<typeof getOptions>
 
-export function getOptions(ts: typeof import('typescript')) {
+export { getPluginsFromVite }
+
+export function getOptions(
+  ts: typeof import('typescript'),
+  pluginCache: string[] = [],
+) {
   let options: _Options | undefined
   const plugins: Plugin[] = []
   const currentDirectory = ts.sys.getCurrentDirectory()
@@ -21,7 +26,7 @@ export function getOptions(ts: typeof import('typescript')) {
     }
   }
 
-  const vitePlugins = getPluginsFromVite(currentDirectory, ts)
+  const vitePlugins = getPluginsFromVite(ts, pluginCache)
   if (vitePlugins) {
     plugins.push(...vitePlugins)
   }
