@@ -195,6 +195,7 @@ export function isReferenced(
 /**
  * Checks if the given node is a function type.
  *
+ * @param ts The TypeScript module.
  * @param node - The node to check.
  * @returns True if the node is a function type, false otherwise.
  */
@@ -338,6 +339,7 @@ export function walkFunctionParams(
 
 /**
  * Extract identifiers of the given node.
+ * @param ts The TypeScript module.
  * @param node The node to extract.
  * @param identifiers The array to store the extracted identifiers.
  * @see https://github.com/vuejs/core/blob/1f6a1102aa09960f76a9af2872ef01e7da8538e3/packages/compiler-core/src/babelUtils.ts#L208
