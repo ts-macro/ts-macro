@@ -1,3 +1,14 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.34...v) (2025-07-02)
+
+
+### Features
+
+* **ts-macro:** add ast kit ([1b36501](https://github.com/ts-macro/ts-macro/commit/1b365018f799dc336b1f7afdaeef5a928c6caf59))
+* use ts-macro.config.ts instead of tsm.config.ts ([085edda](https://github.com/ts-macro/ts-macro/commit/085edda8889caa13e41f86b14dc6bda223e3f239))
+* **vscode:** add restart notice when vite config is changed ([6cf89a1](https://github.com/ts-macro/ts-macro/commit/6cf89a128f3cce9706e65935b13e57502d5a5628))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.33...v) (2025-06-21)
 
 
