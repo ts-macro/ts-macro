@@ -88,7 +88,7 @@ export = defineExtension(async () => {
     )
     if (res) {
       const reload = await vscode.window.showInformationMessage(
-        `Found new plugins in vite.config.ts.`,
+        `The TS Macro config inferred from the Vite config has been updated.`,
         'Restart TS Macro Server',
       )
       reload && restartServer()
