@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.1.35...v) (2025-07-08)
+
+
+### Features
+
+* proxy codes with muggle-string ([6116ea9](https://github.com/ts-macro/ts-macro/commit/6116ea959f0d67f585fa348cb2dfc8af09a9bcf4))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.34...v) (2025-07-02)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@ts-macro/tsc",
-  "version": "0.1.35",
+  "version": "0.2.0",
   "packageManager": "pnpm@10.12.4",
   "description": "Command line typescript checker for TS Macro",
   "type": "commonjs",
