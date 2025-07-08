@@ -41,3 +41,27 @@ export type CodeWithoutSource =
   | [text: string, sourceOffset: number, data: CodeInformation]
   | Code
 export { CodeInformation, VirtualCode }
+
+export interface Codes extends Array<Code> {
+  replaceRange: (
+    startOffset: number,
+    endOffset: number,
+    ...newSegments: CodeWithoutSource[]
+  ) => boolean
+  replaceSourceRange: (
+    source: string | undefined,
+    startOffset: number,
+    endOffset: number,
+    ...newSegments: CodeWithoutSource[]
+  ) => boolean
+  replace: (
+    pattern: string | RegExp,
+    ...replacers: (Code | ((match: string) => Code))[]
+  ) => void
+  replaceAll: (
+    pattern: string | RegExp,
+    ...replacers: (Code | ((match: string) => Code))[]
+  ) => void
+  toString: () => string
+  getLength: () => number
+}

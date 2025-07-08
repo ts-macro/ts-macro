@@ -1,4 +1,4 @@
-import { toString, type Segment } from 'muggle-string'
+import { codesProxyHandler, toString, type Segment } from './muggle-string'
 import type { Code, TsmLanguagePlugin } from './types'
 import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
 
@@ -15,7 +15,8 @@ export class TsmVirtualCode implements VirtualCode {
   id: string
   mappings: CodeMapping[]
   embeddedCodes: VirtualCode[] = []
-  codes: Code[] = []
+  private _codes: Code[] = []
+  codes = codesProxyHandler(this._codes)
   snapshot: import('typescript').IScriptSnapshot
   source: 'script' | 'scriptSetup' | undefined
   linkedCodeMappings: Mapping[] = []

@@ -1,3 +1,4 @@
+import { codesProxyHandler } from './muggle-string'
 import type { Factory, Options, PluginReturn } from './types'
 
 export function defineConfig(config: Options) {
@@ -31,7 +32,7 @@ export function createPlugin(factory: any) {
                   source,
                   filePath,
                   id: embeddedFile.id,
-                  codes: embeddedFile.content,
+                  codes: codesProxyHandler(embeddedFile.content),
                   languageId: embeddedFile.lang,
                   embeddedCodes: embeddedFile.embeddedCodes,
                   linkedCodeMappings: embeddedFile.linkedCodeMappings,
