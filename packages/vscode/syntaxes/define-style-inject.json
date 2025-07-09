@@ -4,104 +4,105 @@
   "injectionSelector": "L:source -comment.line -comment.block",
   "patterns": [
     {
-      "begin": "(defineStyle)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.css.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "2": { "name": "meta.brace.round.ts" },
-        "3": { "name": "punctuation.definition.string.begin.css.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.css.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
+      "begin": "(?<=defineStyle\\()\\s*`",
+      "end": "`",
       "patterns": [{ "include": "source.css" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(scss)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.scss.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "3": { "name": "punctuation.accessor.ts" },
-        "2": { "name": "support.style.macro.scss.ts" },
-        "4": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.scss.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.scss.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
+      "begin": "(?<=defineStyle\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css" }]
+        }
+      ]
+    },
+
+    {
+      "begin": "(?<=defineStyle\\.scss\\()\\s*`",
+      "end": "`",
       "patterns": [{ "include": "source.css.scss" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(sass)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.sass.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "2": { "name": "punctuation.accessor.ts" },
-        "4": { "name": "support.style.macro.sass.ts" },
-        "3": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.sass.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.sass.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
+      "begin": "(?<=defineStyle\\.scss\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css.scss" }]
+        }
+      ]
+    },
+
+    {
+      "begin": "(?<=defineStyle\\.sass\\()\\s*`",
+      "end": "`",
       "patterns": [{ "include": "source.css.sass" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(less)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.less.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "2": { "name": "punctuation.accessor.ts" },
-        "4": { "name": "support.style.macro.less.ts" },
-        "3": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.less.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.less.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
+      "begin": "(?<=defineStyle\\.sass\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css.sass" }]
+        }
+      ]
+    },
+
+    {
+      "begin": "(?<=defineStyle\\.less\\()\\s*`",
+      "end": "`",
       "patterns": [{ "include": "source.css.less" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(stylus)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.stylus.start.ts" },
-        "1": { "name": "support.name.macro.style.ts" },
-        "3": { "name": "punctuation.accessor.ts" },
-        "2": { "name": "support.style.macro.stylus.ts" },
-        "4": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.stylus.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.stylus.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
-      "patterns": [{ "include": "source.stylus" }]
+      "begin": "(?<=defineStyle\\.less\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css.less" }]
+        }
+      ]
+    },
+
+    {
+      "begin": "(?<=defineStyle\\.stylus\\()\\s*`",
+      "end": "`",
+      "patterns": [{ "include": "source.css.stylus" }]
     },
     {
-      "begin": "(defineStyle)(\\.)(postcss)(\\()(`)",
-      "beginCaptures": {
-        "0": { "name": "meta.name.function.macro.postcss.start.ts" },
-        "1": { "name": "support.style.macro.style.ts" },
-        "2": { "name": "punctuation.accessor.ts" },
-        "4": { "name": "support.style.macro.postcss.ts" },
-        "3": { "name": "meta.brace.round.ts" },
-        "5": { "name": "punctuation.definition.string.begin.postcss.ts" }
-      },
-      "end": "(`)(?:\\s*)(\\))",
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.postcss.ts" },
-        "2": { "name": "meta.brace.round.ts" }
-      },
+      "begin": "(?<=defineStyle\\.stylus\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css.stylus" }]
+        }
+      ]
+    },
+
+    {
+      "begin": "(?<=defineStyle\\.postcss\\()\\s*`",
+      "end": "`",
       "patterns": [{ "include": "source.css.postcss" }]
+    },
+    {
+      "begin": "(?<=defineStyle\\.postcss\\()",
+      "end": "(?<=`)",
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "patterns": [{ "include": "source.css.postcss" }]
+        }
+      ]
     }
   ]
 }
