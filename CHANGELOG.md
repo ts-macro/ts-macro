@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.0...v) (2025-07-09)
+
+
+### Bug Fixes
+
+* **vscode:** simplify end pattern for defineStyle ([b331ad3](https://github.com/ts-macro/ts-macro/commit/b331ad31c92ec2ea1f296d440aae3b89f92bc1c2))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.1.35...v) (2025-07-08)
 
 
