@@ -50,7 +50,10 @@ export function replaceSourceRange(
   )
 }
 
-export function codesProxyHandler(codes: Code[]) {
+export function codesProxyHandler(
+  codes: Code[],
+  source?: string,
+) {
   return new Proxy(codes, {
     get: (target, p, receiver) => {
       if (p === 'replaceRange') {
@@ -59,22 +62,16 @@ export function codesProxyHandler(codes: Code[]) {
           endOffset: number,
           ...newSegments: CodeWithoutSource[]
         ) => {
+          if (source) {
+            return replaceSourceRange(
+              codes,
+              source,
+              startOffset,
+              endOffset,
+              ...newSegments,
+            )
+          }
           return replaceRange(codes, startOffset, endOffset, ...newSegments)
-        }
-      } else if (p === 'replaceSourceRange') {
-        return (
-          source: string | undefined,
-          startOffset: number,
-          endOffset: number,
-          ...newSegments: CodeWithoutSource[]
-        ) => {
-          return replaceSourceRange(
-            codes,
-            source,
-            startOffset,
-            endOffset,
-            ...(newSegments as any),
-          )
         }
       } else if (p === 'replace') {
         return (

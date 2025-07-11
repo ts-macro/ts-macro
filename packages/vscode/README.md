@@ -63,8 +63,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
                node.expression.getText(ast) === userOptions.macro
              ) {
                // Add generic type for defineStyle.
-               replaceRange(
-                 codes,
+               codes.replaceRange(
                  node.arguments.pos - 1,
                  node.arguments.pos - 1,
                  // For simple cases, use strings instead of regex to generate types.
@@ -88,61 +87,8 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    ```
 
    <details>
-   <summary>Compatible with Vue</summary>
 
    For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
-
-   ```ts
-   // ts-macro.config.ts
-
-   import { createPlugin, getText, replaceSourceRange } from 'ts-macro'
-
-   const defineStylePlugin = createPlugin<{ macro: string } | undefined>(
-     (
-       { ts, compilerOptions, vueCompilerOptions },
-       userOptions = vueCompilerOptions?.defineStyle ?? {
-         macro: 'defineStyle',
-       }, // Default options
-     ) => {
-       return {
-         name: 'volar-plugin-define-style',
-         resolveVirtualCode({ ast, codes, source }) {
-           codes.push(
-             `declare function ${userOptions.macro}<T>(style: string): T `,
-           )
-
-           ts.forEachChild(ast, function walk(node) {
-             if (
-               ts.isCallExpression(node) &&
-               getText(node.expression, ast, ts) === userOptions.macro
-             ) {
-               // Add generic type for defineStyle.
-               replaceSourceRange(
-                 codes,
-                 // In vue file will be 'script' | 'scriptSetup', in ts file will be undefined.
-                 source,
-                 node.arguments.pos - 1,
-                 node.arguments.pos - 1,
-                 // For simple cases, use strings instead of regex to generate types.
-                 '<{ foo: string }>',
-               )
-             }
-             ts.forEachChild(node, walk)
-           })
-         },
-       }
-     },
-   )
-
-   export default {
-     plugins: [
-       defineStylePlugin({
-         macro: 'defineStyle',
-       }),
-     ],
-   }
-   ```
-   </details>
 
 4. Result
 

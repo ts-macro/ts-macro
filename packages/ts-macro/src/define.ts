@@ -32,7 +32,7 @@ export function createPlugin(factory: any) {
                   source,
                   filePath,
                   id: embeddedFile.id,
-                  codes: codesProxyHandler(embeddedFile.content),
+                  codes: codesProxyHandler(embeddedFile.content, embeddedFile.source),
                   languageId: embeddedFile.lang,
                   embeddedCodes: embeddedFile.embeddedCodes,
                   linkedCodeMappings: embeddedFile.linkedCodeMappings,
