@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.1...v) (2025-07-12)
+
+
+### Features
+
+* remove replaceSourceRange ([b92df38](https://github.com/ts-macro/ts-macro/commit/b92df38203d379d662a5e112d9cee83220ea464f))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.0...v) (2025-07-09)
 
 
