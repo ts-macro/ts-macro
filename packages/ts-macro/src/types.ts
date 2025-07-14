@@ -48,12 +48,6 @@ export interface Codes extends Array<Code> {
     endOffset: number,
     ...newSegments: CodeWithoutSource[]
   ) => boolean
-  replaceSourceRange: (
-    source: string | undefined,
-    startOffset: number,
-    endOffset: number,
-    ...newSegments: CodeWithoutSource[]
-  ) => boolean
   replace: (
     pattern: string | RegExp,
     ...replacers: (Code | ((match: string) => Code))[]
