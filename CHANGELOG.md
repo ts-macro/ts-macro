@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.2...v) (2025-07-14)
+
+
+### Bug Fixes
+
+* use correct source for vue ([dcf9ccf](https://github.com/ts-macro/ts-macro/commit/dcf9ccfe9e589b7cf11735ff98e2767483a9b645))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.1...v) (2025-07-12)
 
 
