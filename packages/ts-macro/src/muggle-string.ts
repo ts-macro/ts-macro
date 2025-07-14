@@ -50,10 +50,7 @@ export function replaceSourceRange(
   )
 }
 
-export function codesProxyHandler(
-  codes: Code[],
-  source?: string,
-) {
+export function codesProxyHandler(codes: Code[], source?: string) {
   return new Proxy(codes, {
     get: (target, p, receiver) => {
       if (p === 'replaceRange') {
