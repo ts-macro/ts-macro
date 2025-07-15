@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.4...v) (2025-07-15)
+
+
+### Features
+
+* **ts-macro:** add `push`, `unshift` and `splice` proxy for codes ([5fcda45](https://github.com/ts-macro/ts-macro/commit/5fcda455f3feaa70dae754e16357d2bbf370284c))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.3...v) (2025-07-15)
 
 
