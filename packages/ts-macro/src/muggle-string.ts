@@ -3,10 +3,10 @@ import { allCodeFeatures } from './virtual-code'
 import type { Code, CodeInformation, Codes } from './types'
 import type { Segment } from 'muggle-string'
 
-export const resolveSegment = (segment: Code) => {
+export const resolveSegment = (segment: Code, source?: string) => {
   if (Array.isArray(segment)) {
     if (typeof segment[1] === 'number') {
-      segment.splice(1, 0, undefined)
+      segment.splice(1, 0, source)
     }
     if (typeof segment.at(-1) !== 'object') {
       segment.push(allCodeFeatures)
@@ -26,7 +26,7 @@ export function replaceRange(
     undefined,
     startOffset,
     endOffset,
-    ...newSegments.map(resolveSegment),
+    ...newSegments.map((code) => resolveSegment(code)),
   )
 }
 
@@ -42,7 +42,7 @@ export function replaceSourceRange(
     source,
     startOffset,
     endOffset,
-    ...newSegments.map(resolveSegment),
+    ...newSegments.map((code) => resolveSegment(code, source)),
   )
 }
 
@@ -57,24 +57,28 @@ export function getLength(segments: Code[]) {
 export function replace(
   segments: Code[],
   pattern: string | RegExp,
-  ...replacers: (Code | ((match: string) => Code))[]
+  ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
 ) {
   return ms.replace(
-    segments.map(resolveSegment),
+    segments as Segment<CodeInformation>[],
     pattern,
-    ...(replacers as any),
+    ...replacers.map((code) =>
+      typeof code === 'function' ? code : resolveSegment(code),
+    ),
   )
 }
 
 export function replaceAll(
   segments: Code[],
   pattern: string | RegExp,
-  ...replacers: (Code | ((match: string) => Code))[]
+  ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
 ) {
   return ms.replaceAll(
-    segments.map(resolveSegment),
+    segments as Segment<CodeInformation>[],
     pattern as RegExp,
-    ...(replacers as any),
+    ...replacers.map((code) =>
+      typeof code === 'function' ? code : resolveSegment(code),
+    ),
   )
 }
 
@@ -101,17 +105,27 @@ export function codesProxyHandler(codes: Code[], source?: string) {
       } else if (p === 'replace') {
         return (
           pattern: string | RegExp,
-          ...replacers: (Code | ((match: string) => Code))[]
+          ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
         ) => replace(codes, pattern, ...replacers)
       } else if (p === 'replaceAll') {
         return (
           pattern: string | RegExp,
-          ...replacers: (Code | ((match: string) => Code))[]
+          ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
         ) => replaceAll(codes, pattern, ...replacers)
       } else if (p === 'toString') {
         return () => toString(codes)
       } else if (p === 'getLength') {
         return () => getLength(codes)
+      } else if (['push', 'unshift'].includes(p as string)) {
+        return (...args: Code[]) =>
+          codes.push(...args.map((code) => resolveSegment(code, source)))
+      } else if (p === 'splice') {
+        return (start: number, deleteCount: number, ...args: Code[]) =>
+          codes.splice(
+            start,
+            deleteCount,
+            ...args.map((code) => resolveSegment(code, source)),
+          )
       }
 
       return Reflect.get(target, p, receiver)

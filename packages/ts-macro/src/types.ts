@@ -49,11 +49,11 @@ export interface Codes extends Array<Code> {
   ) => boolean
   replace: (
     pattern: string | RegExp,
-    ...replacers: (Code | ((match: string) => Code))[]
+    ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
   ) => void
   replaceAll: (
     pattern: string | RegExp,
-    ...replacers: (Code | ((match: string) => Code))[]
+    ...replacers: (Code | ((match: string) => Segment<CodeInformation>))[]
   ) => void
   toString: () => string
   getLength: () => number
