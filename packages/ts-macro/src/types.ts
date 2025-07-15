@@ -35,18 +35,17 @@ export type PluginReturn<UserOptions, Nested extends boolean = boolean> = (
   ...args: undefined extends UserOptions ? [UserOptions] | [] : [UserOptions]
 ) => FactoryReturn<Nested>
 
-export type Code = Segment<CodeInformation>
-export type CodeWithoutSource =
+export type Code =
   | string
-  | [text: string, sourceOffset: number, data: CodeInformation]
-  | Code
+  | [text: string, sourceOffset: number, data?: CodeInformation]
+  | Segment<CodeInformation>
 export { CodeInformation, VirtualCode }
 
 export interface Codes extends Array<Code> {
   replaceRange: (
     startOffset: number,
     endOffset: number,
-    ...newSegments: CodeWithoutSource[]
+    ...newSegments: Code[]
   ) => boolean
   replace: (
     pattern: string | RegExp,

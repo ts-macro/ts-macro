@@ -1,31 +1,32 @@
-import {
-  replaceSourceRange as _replaceSourceRange,
-  create,
-  getLength,
-  replace,
-  replaceAll,
-  toString,
-  type Segment,
-} from 'muggle-string'
-import type { Code, Codes, CodeWithoutSource } from './types'
+import * as ms from 'muggle-string'
+import { allCodeFeatures } from './virtual-code'
+import type { Code, CodeInformation, Codes } from './types'
+import type { Segment } from 'muggle-string'
+
+export const resolveSegment = (segment: Code) => {
+  if (Array.isArray(segment)) {
+    if (typeof segment[1] === 'number') {
+      segment.splice(1, 0, undefined)
+    }
+    if (typeof segment.at(-1) !== 'object') {
+      segment.push(allCodeFeatures)
+    }
+  }
+  return segment as Segment<CodeInformation>
+}
 
 export function replaceRange(
   segments: Code[],
   startOffset: number,
   endOffset: number,
-  ...newSegments: CodeWithoutSource[]
+  ...newSegments: Code[]
 ) {
-  return _replaceSourceRange(
-    segments,
+  return ms.replaceSourceRange(
+    segments as Segment<CodeInformation>[],
     undefined,
     startOffset,
     endOffset,
-    ...newSegments.map((i: any) => {
-      if (Array.isArray(i) && typeof i[1] === 'number') {
-        i.splice(1, 0, undefined)
-      }
-      return i
-    }),
+    ...newSegments.map(resolveSegment),
   )
 }
 
@@ -34,19 +35,46 @@ export function replaceSourceRange(
   source: string | undefined,
   startOffset: number,
   endOffset: number,
-  ...newSegments: CodeWithoutSource[]
+  ...newSegments: Code[]
 ) {
-  return _replaceSourceRange(
-    segments,
+  return ms.replaceSourceRange(
+    segments as Segment<CodeInformation>[],
     source,
     startOffset,
     endOffset,
-    ...newSegments.map((i: any) => {
-      if (Array.isArray(i) && typeof i[1] === 'number') {
-        i.splice(1, 0, source)
-      }
-      return i
-    }),
+    ...newSegments.map(resolveSegment),
+  )
+}
+
+export function toString(segments: Code[]) {
+  return ms.toString(segments.map(resolveSegment))
+}
+
+export function getLength(segments: Code[]) {
+  return ms.getLength(segments.map(resolveSegment))
+}
+
+export function replace(
+  segments: Code[],
+  pattern: string | RegExp,
+  ...replacers: (Code | ((match: string) => Code))[]
+) {
+  return ms.replace(
+    segments.map(resolveSegment),
+    pattern,
+    ...(replacers as any),
+  )
+}
+
+export function replaceAll(
+  segments: Code[],
+  pattern: string | RegExp,
+  ...replacers: (Code | ((match: string) => Code))[]
+) {
+  return ms.replaceAll(
+    segments.map(resolveSegment),
+    pattern as RegExp,
+    ...(replacers as any),
   )
 }
 
@@ -57,7 +85,7 @@ export function codesProxyHandler(codes: Code[], source?: string) {
         return (
           startOffset: number,
           endOffset: number,
-          ...newSegments: CodeWithoutSource[]
+          ...newSegments: Code[]
         ) => {
           if (source) {
             return replaceSourceRange(
@@ -79,7 +107,7 @@ export function codesProxyHandler(codes: Code[], source?: string) {
         return (
           pattern: string | RegExp,
           ...replacers: (Code | ((match: string) => Code))[]
-        ) => replaceAll(codes, pattern as RegExp, ...replacers)
+        ) => replaceAll(codes, pattern, ...replacers)
       } else if (p === 'toString') {
         return () => toString(codes)
       } else if (p === 'getLength') {
@@ -91,4 +119,4 @@ export function codesProxyHandler(codes: Code[], source?: string) {
   }) as Codes
 }
 
-export { create, getLength, replace, replaceAll, toString, type Segment }
+export { type Segment }

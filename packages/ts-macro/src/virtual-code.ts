@@ -1,4 +1,4 @@
-import { codesProxyHandler, toString, type Segment } from './muggle-string'
+import { codesProxyHandler, resolveSegment, toString } from './muggle-string'
 import type { Code, TsmLanguagePlugin } from './types'
 import type { CodeMapping, Mapping, VirtualCode } from '@volar/language-core'
 
@@ -50,18 +50,19 @@ export class TsmVirtualCode implements VirtualCode {
   }
 }
 
-export function buildMappings<T>(chunks: Segment<T>[]) {
+export function buildMappings<T>(chunks: Code[]) {
   let length = 0
   const mappings: Mapping<T>[] = []
   for (const segment of chunks) {
     if (typeof segment === 'string') {
       length += segment.length
     } else {
+      resolveSegment(segment)
       mappings.push({
-        sourceOffsets: [segment[2]],
+        sourceOffsets: [segment[2] as number],
         generatedOffsets: [length],
         lengths: [segment[0].length],
-        data: segment[3]!,
+        data: segment[3] as T,
       })
       length += segment[0].length
     }
