@@ -47,11 +47,11 @@ export function replaceSourceRange(
 }
 
 export function toString(segments: Code[]) {
-  return ms.toString(segments.map(resolveSegment))
+  return ms.toString(segments as Segment<CodeInformation>[])
 }
 
 export function getLength(segments: Code[]) {
-  return ms.getLength(segments.map(resolveSegment))
+  return ms.getLength(segments as Segment<CodeInformation>[])
 }
 
 export function replace(
