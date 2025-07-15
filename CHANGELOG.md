@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.3...v) (2025-07-15)
+
+
+### Features
+
+* **ts-macro:** add default features for codeInformation ([ea5dc69](https://github.com/ts-macro/ts-macro/commit/ea5dc69689258884d646d7ce0c2057c559808dff))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.2...v) (2025-07-14)
 
 

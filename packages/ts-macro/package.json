@@ -1,6 +1,6 @@
 {
   "name": "ts-macro",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "packageManager": "pnpm@10.12.4",
   "type": "commonjs",
   "license": "MIT",
