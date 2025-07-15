@@ -27,7 +27,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    export default {
      plugins: [
        {
-         name: 'ts-macro-define-style',
+         name: 'volar-plugin-define-style',
          resolveVirtualCode({ codes }) {
            // declare the `defineStyle` function type for every TS(X) files.
            codes.push('declare function defineStyle<T>(style: string): T ')
@@ -86,9 +86,7 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    }
    ```
 
-   <details>
-
-   For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
+   > For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
 
 4. Result
 
