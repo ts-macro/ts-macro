@@ -24,6 +24,7 @@ export function createPlugin(factory: any) {
               sfc: any,
               embeddedFile: any,
             ) => {
+              if (!['script_ts', 'script_tsx'].includes(embeddedFile.id)) return
               for (const source of ['script', 'scriptSetup'] as const) {
                 const ast = sfc[source]?.ast
                 if (!ast) continue
