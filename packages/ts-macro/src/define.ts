@@ -60,15 +60,17 @@ export function createPlugin(factory: any) {
   }
 }
 
-function patchAST(ast: any, ts: typeof import('typescript')) {
-  if (ast._patched) return
-  ast._patched = true
-  addProperties(Object.getPrototypeOf(ast))
+function patchAST(
+  ast: import('typescript').SourceFile,
+  ts: typeof import('typescript'),
+) {
+  // eslint-disable-next-line no-extra-boolean-cast
+  if (!!ast.forEachChild) return
+  addProperties(ast)
   ts.forEachChild(ast, function walk(node: Node, parent: Node = ast) {
     // @ts-ignore
     node.parent = parent
     if (ts.isIdentifier(node) && !node.text) {
-      addProperties(Object.getPrototypeOf(node))
       Object.defineProperty(Object.getPrototypeOf(node), 'text', {
         get() {
           return ts.idText(this)
@@ -76,9 +78,8 @@ function patchAST(ast: any, ts: typeof import('typescript')) {
         enumerable: true,
         configurable: true,
       })
-    } else if (!node.forEachChild) {
-      addProperties(node)
     }
+    addProperties(node)
     ts.forEachChild(node, (child) => {
       walk(child, node)
     })
@@ -89,8 +90,6 @@ function patchAST(ast: any, ts: typeof import('typescript')) {
   }
 
   function addProperties(node: Node) {
-    // eslint-disable-next-line no-extra-boolean-cast
-    if (!!node.getSourceFile) return
     node.getSourceFile = () => {
       while (node && node.kind !== ts.SyntaxKind.SourceFile) {
         node = node.parent
