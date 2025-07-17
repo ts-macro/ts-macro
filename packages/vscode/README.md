@@ -86,8 +86,6 @@ This is a VSCode plugin for define TS(X) macro powered by [Volar.js](https://git
    }
    ```
 
-   > For Vue, your should import getText and getStart from ts-macro, and use `ts.forEachChild` instead of `node.forEachChild`. Relation issue: https://github.com/volarjs/volar.js/issues/165
-
 4. Result
 
    <img width="369" alt="image" src="https://github.com/user-attachments/assets/31578a94-fd0d-4f7d-836d-87d83b8e9bbc">
