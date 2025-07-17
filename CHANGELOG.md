@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.6...v) (2025-07-17)
+
+
+### Bug Fixes
+
+* **ts-macro:** prevent add utils to prototype ([d49e354](https://github.com/ts-macro/ts-macro/commit/d49e354e3e0c7f1921e0658db59d4d0687eba100))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.5...v) (2025-07-17)
 
 
