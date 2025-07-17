@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.5...v) (2025-07-17)
+
+
+### Bug Fixes
+
+* **ts-macro:** only handle script and scriptSetup block for vue ([ca71743](https://github.com/ts-macro/ts-macro/commit/ca71743be3685ab8b876bacb2d3dcaa575a66b67))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.4...v) (2025-07-15)
 
 
