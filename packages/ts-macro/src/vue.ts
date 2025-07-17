@@ -4,7 +4,7 @@ export function getStart(
   node:
     | import('typescript').Node
     | import('typescript').NodeArray<import('typescript').Node>,
-  ast: import('typescript').SourceFile,
+  ast?: import('typescript').SourceFileLike | undefined,
   ts?: typeof import('typescript'),
 ): number {
   return ts ? (ts as any).getTokenPosOfNode(node, ast) : node.pos
@@ -12,10 +12,10 @@ export function getStart(
 
 export function getText(
   node: import('typescript').Node,
-  ast: import('typescript').SourceFile,
+  ast?: import('typescript').SourceFileLike,
   ts?: typeof import('typescript'),
 ): string {
-  return ast!.text.slice(getStart(node, ast, ts), node.end)
+  return ast ? ast.text.slice(getStart(node, ast, ts), node.end) : ''
 }
 
 export function isJsxExpression(
