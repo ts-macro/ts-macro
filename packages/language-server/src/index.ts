@@ -45,7 +45,10 @@ connection.onInitialize(async (params) => {
       ...createTypeScriptServices(tsdk.typescript).filter(
         (plugin) => plugin.name === 'typescript-syntactic',
       ),
-    ],
+    ].map((service) => {
+      delete service.capabilities.documentHighlightProvider
+      return service
+    }),
   )
 
   result.capabilities.semanticTokensProvider = undefined
