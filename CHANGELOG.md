@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.7...v) (2025-07-21)
+
+
+### Bug Fixes
+
+* **language-server:** remove css documentHighlightProvider to support ts highlight ([e2a7cb8](https://github.com/ts-macro/ts-macro/commit/e2a7cb85fefb9827cacc6151efaa0fe995d40a31))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.6...v) (2025-07-17)
 
 
