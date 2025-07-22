@@ -4,12 +4,12 @@
   "injectionSelector": "L:source -comment.line -comment.block",
   "patterns": [
     {
-      "begin": "(?<=defineStyle\\()\\s*`",
+      "begin": "(?<=defineStyle\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css" }]
     },
     {
-      "begin": "(?<=defineStyle\\()",
+      "begin": "(?<=defineStyle\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
@@ -21,12 +21,12 @@
     },
 
     {
-      "begin": "(?<=defineStyle\\.scss\\()\\s*`",
+      "begin": "(?<=defineStyle\\.scss\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css.scss" }]
     },
     {
-      "begin": "(?<=defineStyle\\.scss\\()",
+      "begin": "(?<=defineStyle\\.scss\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
@@ -38,12 +38,12 @@
     },
 
     {
-      "begin": "(?<=defineStyle\\.sass\\()\\s*`",
+      "begin": "(?<=defineStyle\\.sass\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css.sass" }]
     },
     {
-      "begin": "(?<=defineStyle\\.sass\\()",
+      "begin": "(?<=defineStyle\\.sass\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
@@ -55,12 +55,12 @@
     },
 
     {
-      "begin": "(?<=defineStyle\\.less\\()\\s*`",
+      "begin": "(?<=defineStyle\\.less\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css.less" }]
     },
     {
-      "begin": "(?<=defineStyle\\.less\\()",
+      "begin": "(?<=defineStyle\\.less\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
@@ -72,12 +72,12 @@
     },
 
     {
-      "begin": "(?<=defineStyle\\.stylus\\()\\s*`",
+      "begin": "(?<=defineStyle\\.stylus\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css.stylus" }]
     },
     {
-      "begin": "(?<=defineStyle\\.stylus\\()",
+      "begin": "(?<=defineStyle\\.stylus\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
@@ -89,12 +89,12 @@
     },
 
     {
-      "begin": "(?<=defineStyle\\.postcss\\()\\s*`",
+      "begin": "(?<=defineStyle\\.postcss\\(\\s*)`",
       "end": "`",
       "patterns": [{ "include": "source.css.postcss" }]
     },
     {
-      "begin": "(?<=defineStyle\\.postcss\\()",
+      "begin": "(?<=defineStyle\\.postcss\\(\\s*)$",
       "end": "(?<=`)",
       "patterns": [
         {
