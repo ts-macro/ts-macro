@@ -9,6 +9,3 @@ catalog:
   '@volar/vscode': ^2.4.20
   typescript: ^5.8.3
   vscode-uri: ^3.1.0
-
-patchedDependencies:
-  "@volar/typescript": "patches/@volar__typescript.patch"
