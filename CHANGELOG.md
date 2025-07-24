@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.2.8...v) (2025-07-24)
+
+
+### Bug Fixes
+
+* **vscode:** update define-style regex ([f84cdc8](https://github.com/ts-macro/ts-macro/commit/f84cdc856a33c4ec060c05057dea4636ac11b044))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.7...v) (2025-07-21)
 
 

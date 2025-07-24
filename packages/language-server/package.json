@@ -1,6 +1,6 @@
 {
   "name": "@ts-macro/language-server",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "packageManager": "pnpm@10.12.4",
   "type": "module",
   "license": "MIT",
