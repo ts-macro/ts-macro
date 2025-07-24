@@ -85,6 +85,8 @@ export = defineExtension(async () => {
     const res = await vscode.commands.executeCommand(
       'typescript.tsserverRequest',
       '_tsm:getPluginsFromVite',
+      {},
+      { isAsync: true, lowPriority: true },
     )
     if (res) {
       const reload = await vscode.window.showInformationMessage(

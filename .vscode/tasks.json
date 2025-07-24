@@ -3,24 +3,6 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "compile",
-      "group": "build",
-      "presentation": {
-        "panel": "dedicated",
-        "reveal": "never"
-      },
-      "problemMatcher": {
-        "pattern": {
-          "regexp": "__________"
-        },
-        "background": {
-          "beginsPattern": "building\\.\\.\\.",
-          "endsPattern": "finished\\."
-        }
-      }
-    },
-    {
-      "type": "npm",
       "script": "watch",
       "isBackground": true,
       "group": {
@@ -37,8 +19,8 @@
         },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "building\\.\\.\\.",
-          "endsPattern": "watching\\.\\.\\."
+          "beginsPattern": "Build start",
+          "endsPattern": "Watching for changes"
         }
       }
     }

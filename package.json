@@ -9,7 +9,7 @@
     "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
     "build": "pnpm run --filter=\"./packages/*\" build",
     "play": "pnpm run --filter=\"./playground\" dev",
-    "typecheck": "pnpm run --filter=\"./packages/*\" --parallel typecheck",
+    "typecheck": "pnpm run -r --parallel typecheck",
     "watch": "cd ./packages/vscode && npm run watch",
     "pack": "cd ./packages/vscode && npm run pack",
     "release": "bumpp -r --all -x 'pnpm run changelog'",
@@ -26,7 +26,7 @@
     "eslint": "^9.30.1",
     "jiti": "^2.4.2",
     "prettier": "^3.6.2",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.13.0",
     "typescript": "catalog:"
   },
   "pnpm": {

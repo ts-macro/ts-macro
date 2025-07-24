@@ -3,7 +3,6 @@
   "version": "0.2.8",
   "packageManager": "pnpm@10.12.4",
   "description": "Command line typescript checker for TS Macro",
-  "type": "commonjs",
   "keywords": [
     "TS",
     "Macro"
@@ -27,8 +26,8 @@
     "tsmc": "./bin/tsmc.js"
   },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup --minify"
+    "dev": "DEV=true tsdown",
+    "build": "tsdown"
   },
   "dependencies": {
     "@ts-macro/language-plugin": "workspace:*",

@@ -3,7 +3,7 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
     "baseUrl": "./",
-    "customConditions": ["dev"],
+    "customConditions": ["tsm-dev"],
     "module": "Preserve",
     "moduleResolution": "bundler",
     "strict": true,
