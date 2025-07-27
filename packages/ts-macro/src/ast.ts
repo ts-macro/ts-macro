@@ -207,7 +207,8 @@ export function isFunctionType(
     !!node &&
     (ts.isFunctionDeclaration(node) ||
       ts.isFunctionExpression(node) ||
-      ts.isMethodDeclaration(node))
+      ts.isMethodDeclaration(node) ||
+      ts.isArrowFunction(node))
   )
 }
 
