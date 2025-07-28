@@ -21,10 +21,12 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./src/index.d.ts",
       "tsm-dev": "./src/index.ts",
       "default": "./dist/index.js"
     },
     "./options": {
+      "types": "./src/options.d.ts",
       "tsm-dev": "./src/options.ts",
       "default": "./dist/options.js"
     },
