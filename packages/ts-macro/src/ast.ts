@@ -326,6 +326,7 @@ function markScopeIdentifier(
 export function walkFunctionParams(
   ts: typeof import('typescript'),
   node:
+    | import('typescript').ArrowFunction
     | import('typescript').FunctionExpression
     | import('typescript').FunctionDeclaration
     | import('typescript').MethodDeclaration,
