@@ -11,7 +11,7 @@
     "@ts-macro/tsc": "workspace:*",
     "ts-macro": "workspace:*",
     "unplugin-vue-reactivity-function": "^1.2.0",
-    "vue": "https://pkg.pr.new/vue@72d63f1",
+    "vue": "3.6.0-alpha.2",
     "vue-jsx-vapor": "latest"
   },
   "devDependencies": {

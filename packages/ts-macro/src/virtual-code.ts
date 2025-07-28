@@ -20,14 +20,28 @@ export class TsmVirtualCode implements VirtualCode {
   snapshot: import('typescript').IScriptSnapshot
   source: 'script' | 'scriptSetup' | undefined
   linkedCodeMappings: Mapping[] = []
+  lang: 'js' | 'ts' | 'tsx' | 'jsx' = 'tsx'
 
   constructor(
     public readonly filePath: string,
     public readonly ast: import('typescript').SourceFile,
-    public readonly languageId: string = 'tsx',
+    public readonly languageId:
+      | 'typescript'
+      | 'typescriptreact'
+      | 'javascript'
+      | 'javascriptreact'
+      | ({} & string) = 'typescriptreact',
     private readonly plugins: TsmLanguagePlugin[] = [],
   ) {
-    this.id = `root_${this.languageId}`
+    this.lang =
+      languageId === 'javascript'
+        ? 'js'
+        : languageId === 'javascriptreact'
+          ? 'jsx'
+          : languageId === 'typescriptreact'
+            ? 'tsx'
+            : 'ts'
+    this.id = `root_${this.lang}`
     this.codes.push([ast.text, undefined, 0, allCodeFeatures])
 
     for (const plugin of this.plugins) {

@@ -45,15 +45,14 @@ export const getLanguagePlugins = (
       getLanguageId() {
         return undefined
       },
-      createVirtualCode(uri, rawLanguageId, snapshot) {
+      createVirtualCode(uri, languageId, snapshot) {
         const filePath = normalizePath(typeof uri === 'string' ? uri : uri.path)
         if (
-          ['typescript', 'typescriptreact'].includes(rawLanguageId) &&
+          ['typescript', 'typescriptreact'].includes(languageId) &&
           filter(filePath)
         ) {
-          const languageId = rawLanguageId === 'typescript' ? 'ts' : 'tsx'
           const ast = ts.createSourceFile(
-            `index.${languageId}`,
+            filePath,
             snapshot.getText(0, snapshot.getLength()).toString(),
             99 satisfies typeof ts.ScriptTarget.Latest,
             true,

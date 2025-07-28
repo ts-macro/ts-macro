@@ -42,7 +42,15 @@ export function createPlugin(factory: any) {
                   filePath,
                   id: embeddedFile.id,
                   codes: codesProxyHandler(embeddedFile.content, source),
-                  languageId: embeddedFile.lang,
+                  lang: embeddedFile.lang,
+                  languageId:
+                    embeddedFile.lang === 'js'
+                      ? 'javascript'
+                      : embeddedFile.lang === 'jsx'
+                        ? 'javascriptreact'
+                        : embeddedFile.lang === 'tsx'
+                          ? 'typescriptreact'
+                          : 'typescript',
                   embeddedCodes: embeddedFile.embeddedCodes,
                   linkedCodeMappings: embeddedFile.linkedCodeMappings,
                 })
@@ -67,9 +75,7 @@ function patchAST(
   // eslint-disable-next-line no-extra-boolean-cast
   if (!!ast.forEachChild) return
   addProperties(ast)
-  ts.forEachChild(ast, function walk(node: Node, parent: Node = ast) {
-    // @ts-ignore
-    node.parent = parent
+  ts.forEachChild(ast, function walk(node: Node) {
     if (ts.isIdentifier(node) && !node.text) {
       Object.defineProperty(Object.getPrototypeOf(node), 'text', {
         get() {
@@ -81,7 +87,7 @@ function patchAST(
     }
     addProperties(node)
     ts.forEachChild(node, (child) => {
-      walk(child, node)
+      walk(child)
     })
   })
 

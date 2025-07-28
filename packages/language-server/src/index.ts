@@ -6,6 +6,7 @@ import {
   createServer,
   createTypeScriptProject,
   loadTsdkByPath,
+  type LanguageServicePlugin,
 } from '@volar/language-server/node'
 import { create as createCssService } from 'volar-service-css'
 import { create as createTypeScriptServices } from 'volar-service-typescript'
@@ -42,16 +43,14 @@ connection.onInitialize(async (params) => {
     ),
     [
       createCssService(),
-      ...createTypeScriptServices(tsdk.typescript).filter(
+      createTypeScriptServices(tsdk.typescript).find(
         (plugin) => plugin.name === 'typescript-syntactic',
-      ),
-    ].map((service) => {
-      delete service.capabilities.documentHighlightProvider
-      return service
-    }),
+      ) as LanguageServicePlugin,
+    ],
   )
 
   result.capabilities.semanticTokensProvider = undefined
+  result.capabilities.documentHighlightProvider = undefined
 
   return result
 })
