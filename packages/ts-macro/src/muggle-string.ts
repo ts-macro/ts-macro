@@ -116,9 +116,12 @@ export function codesProxyHandler(codes: Code[], source?: string) {
         return () => toString(codes)
       } else if (p === 'getLength') {
         return () => getLength(codes)
-      } else if (['push', 'unshift'].includes(p as string)) {
+      } else if (p === 'push') {
         return (...args: Code[]) =>
           codes.push(...args.map((code) => resolveSegment(code, source)))
+      } else if (p === 'unshift') {
+        return (...args: Code[]) =>
+          codes.unshift(...args.map((code) => resolveSegment(code, source)))
       } else if (p === 'splice') {
         return (start: number, deleteCount: number, ...args: Code[]) =>
           codes.splice(
