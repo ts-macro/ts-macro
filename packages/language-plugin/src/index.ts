@@ -64,11 +64,12 @@ export const getLanguagePlugins = (
         extraFileExtensions: [],
         getServiceScript(root) {
           for (const code of forEachEmbeddedCode(root)) {
-            if (code.id === `root_${code.languageId}`) {
+            const lang = code.languageId === 'typescriptreact' ? 'tsx' : 'ts'
+            if (code.id === `root_${lang}`) {
               return {
                 code,
-                extension: `.${code.languageId}`,
-                scriptKind: code.languageId === 'tsx' ? 4 : 3,
+                extension: `.${lang}`,
+                scriptKind: lang === 'tsx' ? 4 : 3,
               }
             }
           }

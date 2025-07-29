@@ -70,6 +70,8 @@
           "source.stylus": "stylus"
         },
         "injectTo": [
+          "source.js",
+          "source.jsx",
           "source.ts",
           "source.tsx"
         ]

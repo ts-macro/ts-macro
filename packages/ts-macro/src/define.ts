@@ -44,13 +44,9 @@ export function createPlugin(factory: any) {
                   codes: codesProxyHandler(embeddedFile.content, source),
                   lang: embeddedFile.lang,
                   languageId:
-                    embeddedFile.lang === 'js'
-                      ? 'javascript'
-                      : embeddedFile.lang === 'jsx'
-                        ? 'javascriptreact'
-                        : embeddedFile.lang === 'tsx'
-                          ? 'typescriptreact'
-                          : 'typescript',
+                    embeddedFile.lang === 'tsx'
+                      ? 'typescriptreact'
+                      : 'typescript',
                   embeddedCodes: embeddedFile.embeddedCodes,
                   linkedCodeMappings: embeddedFile.linkedCodeMappings,
                 })

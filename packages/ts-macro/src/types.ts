@@ -5,8 +5,8 @@ import type { Segment } from 'muggle-string'
 type FilterPattern = Array<string | RegExp> | string | RegExp | null
 
 export type Options = {
-  exclude?: FilterPattern
   include?: FilterPattern
+  exclude?: FilterPattern
   plugins?: Plugin[]
 }
 

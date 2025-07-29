@@ -6,10 +6,9 @@ import {
   createServer,
   createTypeScriptProject,
   loadTsdkByPath,
-  type LanguageServicePlugin,
 } from '@volar/language-server/node'
 import { create as createCssService } from 'volar-service-css'
-import { create as createTypeScriptServices } from 'volar-service-typescript'
+import { create as createTypeScriptSyntacticPlugin } from 'volar-service-typescript/lib/plugins/syntactic'
 
 const connection = createConnection()
 const server = createServer(connection)
@@ -21,7 +20,6 @@ connection.onInitialize(async (params) => {
     params.initializationOptions.typescript.tsdk,
     params.locale,
   )
-
   const result = await server.initialize(
     params,
     createTypeScriptProject(
@@ -41,12 +39,7 @@ connection.onInitialize(async (params) => {
         }
       },
     ),
-    [
-      createCssService(),
-      createTypeScriptServices(tsdk.typescript).find(
-        (plugin) => plugin.name === 'typescript-syntactic',
-      ) as LanguageServicePlugin,
-    ],
+    [createCssService(), createTypeScriptSyntacticPlugin(tsdk.typescript)],
   )
 
   result.capabilities.semanticTokensProvider = undefined
