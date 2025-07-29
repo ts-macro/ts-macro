@@ -1,3 +1,13 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.0...v) (2025-07-29)
+
+
+### Bug Fixes
+
+* **ts-macro:** add isArrowFunction for isFunctionType ([341c3ca](https://github.com/ts-macro/ts-macro/commit/341c3cadc1a9604831689b3320fd9f135defef81))
+* **ts-macro:** add unshift method for codesProxyHandler ([52f452a](https://github.com/ts-macro/ts-macro/commit/52f452a8f558c774682c056fb4149aef16a53b7d))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.2.8...v) (2025-07-24)
 
 
