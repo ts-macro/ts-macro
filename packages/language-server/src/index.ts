@@ -6,9 +6,9 @@ import {
   createServer,
   createTypeScriptProject,
   loadTsdkByPath,
-} from '@volar/language-server/node'
+} from '@volar/language-server/node.js'
 import { create as createCssService } from 'volar-service-css'
-import { create as createTypeScriptSyntacticPlugin } from 'volar-service-typescript/lib/plugins/syntactic'
+import { create as createTypeScriptSyntacticPlugin } from 'volar-service-typescript/lib/plugins/syntactic.js'
 
 const connection = createConnection()
 const server = createServer(connection)
