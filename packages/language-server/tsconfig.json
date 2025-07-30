@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "module": "Node16",
+    "moduleResolution": "node16"
   },
   "include": ["src"]
 }
