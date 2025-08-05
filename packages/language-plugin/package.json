@@ -16,19 +16,21 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
       "tsm-dev": "./src/index.ts",
-      "default": "./dist/index.js"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./options": {
       "types": "./src/options.d.ts",
       "tsm-dev": "./src/options.ts",
-      "default": "./dist/options.js"
+      "require": "./dist/options.cjs",
+      "import": "./dist/options.js"
     },
     "./*": [
       "./*",
