@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.2...v) (2025-08-08)
+
+
+### Bug Fixes
+
+* **typescript-plugin:** avoid registering duplicate protocol handlers ([dfd63c5](https://github.com/ts-macro/ts-macro/commit/dfd63c506e9b58511c0442825f2e9c6b6b459428))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.3.1...v) (2025-08-05)
 
 
