@@ -11,7 +11,10 @@ const plugin = createLanguageServicePlugin((ts, info) => {
 
   const pluginCache: string[] = []
   const options = getOptions(ts, pluginCache)
-  if (info.session) {
+  if (
+    info.session &&
+    !(info.session as any).handlers.has('_tsm:getPluginsFromVite')
+  ) {
     info.session.addProtocolHandler('_tsm:getPluginsFromVite', () => {
       const newPluginCache: string[] = []
       getPluginsFromVite(ts, newPluginCache)
