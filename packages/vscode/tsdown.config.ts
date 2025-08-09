@@ -17,7 +17,6 @@ export default defineConfig([
     watch: !!process.env.DEV,
     sourcemap: !!process.env.DEV,
     external: ['vscode'],
-    bundle: true,
     shims: true,
     define: { 'process.env.NODE_ENV': '"production"' },
     plugins: [
