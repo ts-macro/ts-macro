@@ -1,3 +1,13 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.3...v) (2025-08-10)
+
+
+### Bug Fixes
+
+* **ts-macro:** `types` path ([1421f74](https://github.com/ts-macro/ts-macro/commit/1421f7496c28a09becc2f5dddd57d2a29efbf7c8))
+* types path ([d870da6](https://github.com/ts-macro/ts-macro/commit/d870da6008a6554e76a0636db54dc0bd79b776d3))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.3.2...v) (2025-08-08)
 
 
