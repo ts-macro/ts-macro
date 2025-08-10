@@ -21,7 +21,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "tsm-dev": "./src/index.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"

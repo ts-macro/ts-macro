@@ -21,13 +21,13 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "tsm-dev": "./src/index.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
     "./options": {
-      "types": "./src/options.d.ts",
+      "types": "./dist/options.d.ts",
       "tsm-dev": "./src/options.ts",
       "require": "./dist/options.cjs",
       "import": "./dist/options.js"
