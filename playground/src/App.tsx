@@ -6,7 +6,7 @@ export default () => {
   const exposeRef = useRef(null)
   const double = ref<number>()
   watchEffect(() => {
-    double.value = exposeRef.value?.double
+    double.value = exposeRef.value?.double.value
   })
   return (
     <>

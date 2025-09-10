@@ -11,11 +11,11 @@ type NodeWithScopeIds = Node & { scopeIds?: Set<string> }
 
 // TSTypeAssertion
 export const TS_NODE_TYPES = [
-  234 satisfies import('typescript').SyntaxKind.AsExpression, // foo as number
-  216 satisfies import('typescript').SyntaxKind.TypeAssertionExpression, // (<number>foo)
-  235 satisfies import('typescript').SyntaxKind.NonNullExpression, // foo!
-  233 satisfies import('typescript').SyntaxKind.ExpressionWithTypeArguments, // foo<string>
-  238 satisfies import('typescript').SyntaxKind.SatisfiesExpression, // foo satisfies T
+  235 satisfies import('typescript').SyntaxKind.AsExpression, // foo as number
+  217 satisfies import('typescript').SyntaxKind.TypeAssertionExpression, // (<number>foo)
+  236 satisfies import('typescript').SyntaxKind.NonNullExpression, // foo!
+  234 satisfies import('typescript').SyntaxKind.ExpressionWithTypeArguments, // foo<string>
+  239 satisfies import('typescript').SyntaxKind.SatisfiesExpression, // foo satisfies T
 ]
 
 export function isReferencedIdentifier(
