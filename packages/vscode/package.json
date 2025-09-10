@@ -1,7 +1,7 @@
 {
   "name": "vscode-ts-macro",
   "version": "0.3.4",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.15.1",
   "description": "Define TS(X) macro powered by Volar.js",
   "keywords": [
     "tsm",

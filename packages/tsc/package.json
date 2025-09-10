@@ -1,7 +1,7 @@
 {
   "name": "@ts-macro/tsc",
   "version": "0.3.4",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.15.1",
   "description": "Command line typescript checker for TS Macro",
   "type": "commonjs",
   "keywords": [
@@ -23,6 +23,7 @@
     "bin",
     "dist"
   ],
+  "main": "./dist/index.js",
   "bin": {
     "tsmc": "./bin/tsmc.js"
   },

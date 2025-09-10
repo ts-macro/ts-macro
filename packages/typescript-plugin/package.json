@@ -1,7 +1,7 @@
 {
   "name": "@ts-macro/typescript-plugin",
   "version": "0.3.4",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.15.1",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/ts-macro/ts-macro#readme",

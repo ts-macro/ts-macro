@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.15.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/ts-macro/ts-macro.git"
@@ -18,14 +18,14 @@
     "format": "prettier --write --cache ."
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.0.6",
-    "@sxzz/prettier-config": "^2.2.3",
-    "@types/node": "^22.16.5",
-    "bumpp": "^10.2.0",
+    "@sxzz/eslint-config": "^7.1.4",
+    "@sxzz/prettier-config": "^2.2.4",
+    "@types/node": "^22.18.1",
+    "bumpp": "^10.2.3",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.31.0",
+    "eslint": "^9.35.0",
     "prettier": "^3.6.2",
-    "tsdown": "^0.13.4",
+    "tsdown": "^0.13.5",
     "typescript": "catalog:"
   },
   "pnpm": {
