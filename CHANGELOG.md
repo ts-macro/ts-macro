@@ -1,3 +1,12 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.4...v) (2025-09-10)
+
+
+### Features
+
+* **tsc:** expose main ([cf33ba1](https://github.com/ts-macro/ts-macro/commit/cf33ba13fa236bb236ba9c3e5c3427b9289410a0))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.3.3...v) (2025-08-10)
 
 
