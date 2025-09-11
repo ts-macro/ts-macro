@@ -10,14 +10,14 @@ const plugin = createLanguageServicePlugin((ts, info) => {
     info.languageServiceHost.getCurrentDirectory()
 
   let pluginCache: string[] = []
-  const options = getOptions(ts, pluginCache)
+  const options = getOptions(ts, undefined, pluginCache)
   if (
     info.session &&
     !(info.session as any).handlers.has('_tsm:getPluginsFromVite')
   ) {
     info.session.addProtocolHandler('_tsm:getPluginsFromVite', () => {
       const newPluginCache: string[] = []
-      getPluginsFromVite(ts, newPluginCache)
+      getPluginsFromVite(ts, undefined, newPluginCache)
       const response = pluginCache.join('') !== newPluginCache.join('')
       if (response) {
         pluginCache = [...newPluginCache]

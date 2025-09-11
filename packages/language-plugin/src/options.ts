@@ -10,11 +10,11 @@ export { getPluginsFromVite }
 
 export function getOptions(
   ts: typeof import('typescript'),
+  currentDirectory = ts.sys.getCurrentDirectory(),
   pluginCache: string[] = [],
 ) {
   let options: _Options | undefined
   const plugins: Plugin[] = []
-  const currentDirectory = ts.sys.getCurrentDirectory()
   try {
     options =
       jiti(`${currentDirectory}/ts-macro.config`).default ||
@@ -29,7 +29,7 @@ export function getOptions(
     }
   }
 
-  const vitePlugins = getPluginsFromVite(ts, pluginCache)
+  const vitePlugins = getPluginsFromVite(ts, currentDirectory, pluginCache)
   if (vitePlugins) {
     plugins.push(...vitePlugins)
   }

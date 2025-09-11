@@ -3,9 +3,9 @@ import type { Expression } from 'typescript'
 
 export function getPluginsFromVite(
   ts: typeof import('typescript'),
+  configDir = ts.sys.getCurrentDirectory(),
   pluginCache = [] as string[],
 ) {
-  const configDir = ts.sys.getCurrentDirectory()
   try {
     const filename = `${configDir}/vite.config.ts`
     const content = ts.sys.readFile(filename, 'utf-8')
