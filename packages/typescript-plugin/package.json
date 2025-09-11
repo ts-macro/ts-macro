@@ -1,6 +1,6 @@
 {
   "name": "@ts-macro/typescript-plugin",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "packageManager": "pnpm@10.15.1",
   "type": "module",
   "license": "MIT",

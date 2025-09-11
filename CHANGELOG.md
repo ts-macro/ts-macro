@@ -1,3 +1,17 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.5...v) (2025-09-11)
+
+
+### Bug Fixes
+
+* **typescript-plugin:** cache plugins diff result ([80563e7](https://github.com/ts-macro/ts-macro/commit/80563e750a26d6acd434295236f21eed2ea291d6))
+
+
+### Features
+
+* **language-plugin:** add currentDirectory option for getOptions ([52a925d](https://github.com/ts-macro/ts-macro/commit/52a925dce818ce993a5c79e3fedcb5a85199bec2))
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.3.4...v) (2025-09-10)
 
 
