@@ -9,7 +9,7 @@ const plugin = createLanguageServicePlugin((ts, info) => {
   ts.sys.getCurrentDirectory = () =>
     info.languageServiceHost.getCurrentDirectory()
 
-  const pluginCache: string[] = []
+  let pluginCache: string[] = []
   const options = getOptions(ts, pluginCache)
   if (
     info.session &&
@@ -18,7 +18,11 @@ const plugin = createLanguageServicePlugin((ts, info) => {
     info.session.addProtocolHandler('_tsm:getPluginsFromVite', () => {
       const newPluginCache: string[] = []
       getPluginsFromVite(ts, newPluginCache)
-      return { response: pluginCache.join('') !== newPluginCache.join('') }
+      const response = pluginCache.join('') !== newPluginCache.join('')
+      if (response) {
+        pluginCache = [...newPluginCache]
+      }
+      return { response }
     })
   }
 
