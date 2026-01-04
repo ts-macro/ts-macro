@@ -1,4 +1,3 @@
-import { jiti } from '../options'
 import type { Expression } from 'typescript'
 
 export function getPluginsFromVite(
@@ -79,7 +78,7 @@ export function getPluginsFromVite(
             const from = require.resolve(path, {
               paths: [configDir],
             })
-            let module = jiti(from)
+            let module = require(from)
             module = module?.default ?? module
             if (module) {
               pluginCache.push(plugin.getText(ast))
