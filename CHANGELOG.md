@@ -1,3 +1,7 @@
+# [](https://github.com/ts-macro/ts-macro/compare/v0.3.6...v) (2026-01-04)
+
+
+
 # [](https://github.com/ts-macro/ts-macro/compare/v0.3.5...v) (2025-09-11)
 
 
